@@ -22,6 +22,23 @@ onMounted(async function() {
   <div class="flex flex-col items-center justify-center">
     <div class="w-11/12 md:w-3/4 mb-[86px]">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6 xl:gap-8">
+        <section class="flex">
+          <div class="w-full relative text-white overflow-hidden rounded-3xl flex shadow-lg">
+            <div class="w-full flex flex-col bg-gray-200">
+              <div class="sm:max-w-sm sm:flex-none md:w-auto flex flex-col items-start relative p-6 xl:p-8">
+                <h1 class="text-xl font-semibold mb-2 text-gray-800">
+                  <i-ri-chat-quote-line />
+                </h1>
+                <p class="font-medium text-lg text-gray-800 mb-4">
+                  Submit quote milimu dengan cara berkontribusi di github langsung.
+                </p>
+              </div>
+              <div class="p-6 pt-1 mt-auto">
+                <a class="rounded-xl text-gray-800 bg-gray-300 hover:bg-[#afb8c5] transition-colors py-2 px-4" href="https://github.com/nyancodeid/quotes#contribute">Kontribusi Sekarang <i-ri-arrow-right-line class="inline-block" /></a>
+              </div>
+            </div>
+          </div>
+        </section>
         <section class="flex" v-for="quote: any in quotes" :key="quote.id">
           <quote-card :quote="quote" />
         </section>
