@@ -2,18 +2,11 @@
 import { ref, onMounted } from "vue";
 
 const quotes = ref({});
-
-async function loadQuotes () {
-  const quotes_url = new URL('../assets/quotes.json', import.meta.url).href
-
-  const res = await fetch(quotes_url, { method: "GET" })
-  const data = await res.json();
-
-  quotes.value = data;
-}
+const loadQuotes = () => import(`../assets/quotes.json`);
 
 onMounted(async function() {
-  await loadQuotes();
+  const quotes_data = await loadQuotes();
+  quotes.value = quotes_data.default;
 });
 
 </script>
