@@ -30,7 +30,7 @@ onMounted(async function() {
                   <i-ri-chat-quote-line class="text-3xl" />
                 </h1>
                 <p class="font-medium text-2xl text-gray-800 mb-4">
-                  Submit quote milimu dengan berkontribusi langsung di Repository Github.
+                  Submit quote milikmu dengan berkontribusi langsung di Repository Github.
                 </p>
               </div>
               <div class="p-6 pt-1 mt-auto">
