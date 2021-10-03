@@ -42,7 +42,7 @@ function getGradientByIndex (index: number = 0) {
         <p class="text-sm text-gray-100">- {{ props.quote?.author }}</p>
       </div>
       <div class="mt-auto p-6 pt-1">
-        <div class="flex items-start">
+        <div class="flex items-start" v-if="props.quote?.github?.available">
           <img :src="props.quote?.github?.avatar_url" class="rounded-full w-[24px] h-[24px] mr-2" alt="Github Profile Pic" />
 
           <div class="flex flex-col">
