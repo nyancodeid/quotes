@@ -14,7 +14,7 @@ onMounted(async function() {
 <template>
   <div class="flex flex-col items-center justify-center">
     <div class="w-11/12 md:w-3/4 mb-[86px]">
-      <div class="grid grid-cols-1 md:grid-cols-3 2xl:grid-cols-4 gap-5 md:gap-6 xl:gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-5 md:gap-6 xl:gap-8">
         <section class="flex">
           <div class="w-full relative text-white overflow-hidden rounded-3xl flex shadow-lg">
             <div class="w-full flex flex-col bg-gradient-to-br from-red-100 to-blue-100">
