@@ -43,7 +43,7 @@ function getGradientByIndex (index: number = 0) {
       </div>
       <div class="mt-auto p-6 pt-1">
         <div class="flex items-start" v-if="props.quote?.github?.available">
-          <img :src="props.quote?.github?.avatar_url" class="rounded-full w-[24px] h-[24px] mr-2" alt="Github Profile Pic" />
+          <img :src="props.quote?.github?.avatar_url" class="rounded-full w-[24px] h-[24px] mr-2" loading="lazy" alt="Github Profile Pic" />
 
           <div class="flex flex-col">
             <a class="text-xs" :href="`https://github.com/${props.quote?.username}`" nofollow="true" target="_blank">{{ props.quote?.github?.name }}</a>
