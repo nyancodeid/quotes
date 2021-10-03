@@ -86,6 +86,8 @@ function randomGradientIndex () {
   const quotes_raw = await fetchAllQuotesYaml();
   const quotes = await generateQuotesFile(quotes_raw);
 
+  console.info(`[GENERATOR]: ${quotes.length} quotes has been generated.`)
+
   const file_contents = JSON.stringify(shuffleQuotes(quotes));
 
   fs.writeFileSync(path.join(__dirname, `../src/assets/quotes.json`), file_contents);
