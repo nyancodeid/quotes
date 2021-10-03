@@ -15,11 +15,11 @@ $ npm run dev
 ```
 
 ## Getting Started
-Kami membuka peluang bagi kamu untuk saling berkontribusi untuk menambahkan fitur atau memperbaiki bug yang mungkin dilaporkan di-halaman issues repository ini, atau membantu kami dengan menambah daftar quotes. Untuk berkontribusi pada project ini kamu bisa clone repository ini terlebih dahulu. 
+Kami membuka peluang untuk memeriahkan event Hacktoberfest 2021 dengan cara berkontribusi menambahkan fitur dan memperbaiki bug yang mungkin dilaporkan di-halaman issues repository ini, atau membantu kami dengan menambah quotes milikmu. 
 
-Kamu bisa mulai berkontribusi dengan membuat quotes atau menambahkan quotes yang kamu tau kedalam file `[your-github-username].yaml` (*nama file ini harus sesuai dengan username github kamu*) pada folder `quotes/`. Pastikan username github kamu ada dan tertulis dengan benar ya.
+Kamu bisa mulai berkontribusi dengan membuat quotes atau menambahkan quotes tokoh yang kamu sukai kedalam file `[your-github-username].yaml` (*nama file ini harus sesuai dengan username github kamu*) pada folder `quotes/`. Pastikan username github kamu ada dan tertulis dengan benar ya.
 
-Format filenya kita menggunakan YAML, dan pastikan format penulisannya sama ya. Setiap user hanya diperbolehkan mengubah file miliknya sendiri. Jika ada kesalah penulisan milik user lain kamu bisa membuat `Issue`.
+Untuk format filenya kita menggunakan YAML, dan pastikan format penulisannya sama ya. Setiap user hanya diperbolehkan mengubah file miliknya sendiri. Jika terdapat kesalahan penulisan pada file pengguna lain kamu bisa membantunya dengan membuatkan `issue`.
 
 ```yaml
 username: nyancodeid
@@ -32,6 +32,6 @@ quotes:
     created_at: '3 Oktober 2021'
 ```
 
-Agar quotes bisa dikonsumsi oleh website kita perlu men-*generate* quotes kita. Cara dengan menjalankan perintah `npm run generate:quotes`. Perintah ini diperlukan setiap kita mengubah file YAML kita. 
+Agar quotes bisa digunakan/dikonsumsi oleh website, kita perlu men-*generate* quotes kita. Caranya dengan menjalankan perintah `npm run generate:quotes`. Perintah ini diperlukan setiap kita mengubah file YAML kita. 
 
-Untuk melihat versi webiste nya kamu bisa menjalankan perintah `npm run dev` untuk menjalankan web server dalam mode development yang berjalan pada port `localhost:3000`.
+Untuk melihat versi website nya kamu bisa menjalankan perintah `npm run dev` untuk menjalankan web server dalam mode development yang berjalan pada port `localhost:3000`.
