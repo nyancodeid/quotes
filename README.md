@@ -5,7 +5,7 @@
 ![Issues](https://img.shields.io/github/issues/nyancodeid/quotes)
 ![Pull Request](https://img.shields.io/github/issues-pr/nyancodeid/quotes)
 
-Website sederhana yang menampilkan Kutipan Inspirasional secara acak. Website ini menampilkan kutipan yang mengagumkan. Dapatkan kutipan harian anda dan tetap termotivasi!
+Website sederhana yang menampilkan Kutipan Inspirasional secara acak. Website ini menampilkan kutipan yang submit oleh para kontributor terbuka dan para peserta event Hacktoberfest 2021. Dapatkan kutipan yang membuatmu tetap termotivasi!
 
 ## Contribute
 Kami membuka peluang untuk memeriahkan event Hacktoberfest 2021 dengan cara berkontribusi menambahkan fitur dan memperbaiki bug yang mungkin dilaporkan di-halaman issues repository ini, atau membantu kami dengan menambah quotes milikmu. 
