@@ -8,10 +8,14 @@
     "generate:quotes": "node quotes/generator.js"
   },
   "dependencies": {
+    "dom-to-image": "^2.6.0",
+    "file-saver": "^2.0.5",
     "vue": "^3.2.16"
   },
   "devDependencies": {
     "@iconify/json": "^1.1.409",
+    "@types/dom-to-image": "^2.6.3",
+    "@types/file-saver": "^2.0.3",
     "@vitejs/plugin-vue": "^1.9.2",
     "autoprefixer": "^10.3.6",
     "js-yaml": "^4.1.0",
