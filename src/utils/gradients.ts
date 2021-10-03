@@ -11,5 +11,5 @@ export const gradients: string[] = [
   "bg-gradient-to-br from-red-400 via-pink-500 to-indigo-500",
   "bg-gradient-to-r from-blue-500 to-blue-600",
   "bg-gradient-to-tl from-blue-400 to-blue-500",
-  "bg-gradient-to-tl from-fuchsia-600 to-pink-600"
+  "bg-gradient-to-tl from-purple-600 to-pink-600"
 ];
