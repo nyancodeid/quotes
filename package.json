@@ -1,0 +1,28 @@
+{
+  "name": "quotes",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "npm run generate:quotes && vue-tsc --noEmit && vite build",
+    "serve": "vite preview",
+    "generate:quotes": "node quotes/generator.js"
+  },
+  "dependencies": {
+    "vue": "^3.2.16"
+  },
+  "devDependencies": {
+    "@iconify/json": "^1.1.409",
+    "@vitejs/plugin-vue": "^1.9.2",
+    "autoprefixer": "^10.3.6",
+    "js-yaml": "^4.1.0",
+    "md5": "^2.3.0",
+    "node-fetch": "^2.6.1",
+    "postcss": "^8.3.8",
+    "tailwindcss": "^2.2.16",
+    "typescript": "^4.4.3",
+    "unplugin-icons": "^0.12.7",
+    "unplugin-vue-components": "^0.15.6",
+    "vite": "^2.6.0",
+    "vue-tsc": "^0.3.0"
+  }
+}
