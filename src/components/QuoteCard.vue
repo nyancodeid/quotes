@@ -31,7 +31,7 @@ function getGradientByIndex (index: number = 0) {
 
 <template>
   <div class="w-full relative text-white overflow-hidden flex rounded-3xl shadow-lg hover:scale-105 hover:rotate-1 duration-300">
-    <div data-id="test" class="w-full flex flex-col" :class="getGradientByIndex(quote.gradient_id)">
+    <div class="w-full flex flex-col" :class="getGradientByIndex(quote.gradient_id)">
       <div class="sm:max-w-sm sm:flex-none md:w-auto flex flex-col items-start relative p-6 xl:p-8">
         <h2 class="text-xl font-semibold mb-2">
           <i-ri-double-quotes-l />
