@@ -9,7 +9,9 @@
     "generate:quotes": "node quotes/generator.js"
   },
   "dependencies": {
+    "@vue/server-renderer": "^3.2.19",
     "lozad": "^1.16.0",
+    "vite-ssg": "^0.15.4",
     "vue": "^3.2.16"
   },
   "devDependencies": {
@@ -17,6 +19,7 @@
     "@types/lozad": "^1.16.1",
     "@vitejs/plugin-vue": "^1.9.2",
     "autoprefixer": "^10.3.6",
+    "critters": "^0.0.10",
     "js-yaml": "^4.1.0",
     "md5": "^2.3.0",
     "node-fetch": "^2.6.1",
