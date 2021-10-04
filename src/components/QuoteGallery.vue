@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { ref, onMounted, nextTick } from "vue";
+import lozad from "lozad";
 
 const quotes = ref();
 const isShowDialog = ref(false);
@@ -10,14 +11,11 @@ interface Quote {
   id: string
 }
 
-function getIndexQuote(id: string) {
-  const quote = quotes.value.filter((quote: Quote) => quote.id == id);
-  return quotes.value.indexOf(quote);
-}
-
 function displayDialog(quote: Quote) {
   isShowDialog.value = true;
   selectedQuote.value = quote;
+
+  initializeLozad();
 }
 
 function closeDialog(){
@@ -25,9 +23,20 @@ function closeDialog(){
   selectedQuote.value = undefined;
 }
 
+function initializeLozad() {
+  nextTick(function () {
+    const elements = document.querySelectorAll("img.lozad");
+    const observer = lozad(elements);
+
+    observer.observe();
+  });
+}
+
 onMounted(async function () {
   const quotes_data = await loadQuotes();
   quotes.value = quotes_data.default;
+
+  initializeLozad();
 });
 </script>
 
@@ -62,7 +71,7 @@ onMounted(async function () {
           </div>
         </section>
         <section
-          class="flex cursor-pointer"
+          class="quote-card--container flex cursor-pointer"
           v-for="quote in quotes"
           :key="quote.id"
           @click="displayDialog(quote)"
