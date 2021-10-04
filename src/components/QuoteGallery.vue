@@ -1,17 +1,39 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
 
-const quotes = ref({});
+const quotes = ref();
+const isShowDialog = ref(false);
+const selectedQuote = ref<Quote>();
 const loadQuotes = () => import(`../assets/quotes.json`);
 
-onMounted(async function() {
+interface Quote {
+  id: string
+}
+
+function getIndexQuote(id: string) {
+  const quote = quotes.value.filter((quote: Quote) => quote.id == id);
+  return quotes.value.indexOf(quote);
+}
+
+function displayDialog(quote: Quote) {
+  isShowDialog.value = true;
+  selectedQuote.value = quote;
+}
+
+function closeDialog(){
+  isShowDialog.value = false
+  selectedQuote.value = undefined;
+}
+
+onMounted(async function () {
   const quotes_data = await loadQuotes();
   quotes.value = quotes_data.default;
 });
-
 </script>
 
 <template>
+  <Dialog v-if="selectedQuote" :quote="selectedQuote" :show="isShowDialog" @close="closeDialog" />
+
   <div class="flex flex-col items-center justify-center">
     <div class="w-11/12 md:w-3/4 mb-[86px]">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-5 md:gap-6 xl:gap-8">
@@ -23,16 +45,28 @@ onMounted(async function() {
                   <i-ri-chat-quote-line class="text-3xl" />
                 </h1>
                 <p class="font-medium text-2xl text-gray-800 mb-4">
-                  Submit quote milikmu dengan berkontribusi langsung di Repository Github.
+                  Submit quote milikmu dengan berkontribusi langsung di
+                  Repository Github.
                 </p>
               </div>
               <div class="p-6 pt-1 mt-auto">
-                <a class="rounded-xl text-gray-800 bg-gray-300 hover:bg-blue-200 transition-colors py-2 px-4" href="https://github.com/nyancodeid/quotes#contribute">Kontribusi Sekarang <i-ri-arrow-right-line class="inline-block" /></a>
+                <a
+                  class="rounded-xl text-gray-800 bg-gray-300 hover:bg-blue-200 transition-colors py-2 px-4
+                  "
+                  href="https://github.com/nyancodeid/quotes#contribute"
+                  >Kontribusi Sekarang
+                  <i-ri-arrow-right-line class="inline-block"
+                /></a>
               </div>
             </div>
           </div>
         </section>
-        <section class="flex" v-for="quote: any in quotes" :key="quote.id">
+        <section
+          class="flex cursor-pointer"
+          v-for="quote in quotes"
+          :key="quote.id"
+          @click="displayDialog(quote)"
+        >
           <quote-card :quote="quote" />
         </section>
       </div>
@@ -40,5 +74,4 @@ onMounted(async function() {
   </div>
 </template>
 
-<style>
-</style>
+<style></style>

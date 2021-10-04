@@ -8,7 +8,7 @@
 Website sederhana yang menampilkan Kutipan Inspirasional secara acak. Website ini menampilkan kutipan yang submit oleh para kontributor terbuka dan para peserta event Hacktoberfest 2021. Dapatkan kutipan yang membuatmu tetap termotivasi!
 
 ## Contribute
-Kami membuka peluang untuk memeriahkan event Hacktoberfest 2021 dengan cara berkontribusi menambahkan fitur dan memperbaiki bug yang mungkin dilaporkan di-halaman issues repository ini, atau membantu kami dengan menambah quotes milikmu. 
+Kami membuka peluang untuk memeriahkan event Hacktoberfest 2021 dengan cara berkontribusi menambahkan fitur dan memperbaiki bug yang mungkin dilaporkan di halaman issues repository ini, atau membantu kami dengan menambah quotes milikmu. 
 
 Kamu bisa mulai berkontribusi dengan membuat quotes atau menambahkan quotes tokoh yang kamu sukai kedalam file `[your-github-username].yaml` (*nama file ini harus sesuai dengan username github kamu*) pada folder `quotes/`. Pastikan username github kamu ada dan tertulis dengan benar ya.
 
@@ -25,7 +25,7 @@ quotes:
     created_at: '3 Oktober 2021'
 ```
 
-Agar quotes bisa digunakan/dikonsumsi oleh website, kita perlu men-*generate* quotes kita. Caranya dengan menjalankan perintah `npm run generate:quotes`. Perintah ini diperlukan setiap kita mengubah file YAML kita. 
+Agar quotes bisa digunakan atau dikonsumsi oleh website, kita perlu meng-*generate* quotes kita. Caranya dengan menjalankan perintah `npm run generate:quotes`. Perintah ini diperlukan setiap kita mengubah file YAML kita. 
 
 Untuk melihat versi website nya kamu bisa menjalankan perintah `npm run dev` untuk menjalankan web server dalam mode development yang berjalan pada port `localhost:3000`.
 
@@ -36,9 +36,9 @@ Untuk memulai development kita perlu install npm package yang dibutuhkan terlebi
 # install package dependencies
 $ npm install 
 
-# Generate Quotes (Development Only) 
+# generate the quotes (local development only)
 $ npm run generate:quotes 
 
-# Run Development Server
+# run development server
 $ npm run dev
 ```
