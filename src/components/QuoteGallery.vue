@@ -3,13 +3,11 @@ import { ref, onMounted, nextTick } from "vue";
 import lozad from "lozad";
 
 const quotes = ref();
+import { Quote } from "../types";
 const isShowDialog = ref(false);
 const selectedQuote = ref<Quote>();
 const loadQuotes = () => import(`../assets/quotes.json`);
 
-interface Quote {
-  id: string
-}
 
 function displayDialog(quote: Quote) {
   isShowDialog.value = true;

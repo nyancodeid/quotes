@@ -1,21 +1,11 @@
 <script setup lang="ts">
 import { defineProps, toRef } from "vue";
+import { Quote } from "../types";
 import { gradients } from "../utils/gradients"; 
 
-interface GithubProfile {
-  available: boolean
-  name?: string
-  avatar_url?: string
-  followers?: number
-  following?: number
-}
-interface Quote {
-  id: string,
-  gradient_id: number,
-  username: string
-  github?: GithubProfile
-  text: string
-  author: string
+interface Props {
+  quote: Quote;
+  size?: string
 }
 
 const props = defineProps<{
