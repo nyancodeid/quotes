@@ -5,8 +5,8 @@
     <button class="top-3 right-3 fixed p-5 text-white" @click="close">
       <i-ri-close-fill />
     </button>
-    <div class="flex w-auto transform ease-out duration-300" :class="`${show ? 'scale-100' : 'scale-0'}`">
       <quote-card :quote="quote" />
+    <div class="flex w-[92vw] md:w-auto transform ease-out duration-300" :class="`${show ? 'scale-100' : 'scale-0'}`">
     </div>
   </div>
 </template>
