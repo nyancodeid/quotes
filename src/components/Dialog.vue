@@ -3,7 +3,7 @@
     " @click="emit('close')" :class="`${show ? 'scale-100' : 'scale-0'}`"
   >
     <button class="top-3 right-3 fixed p-5 text-white" @click="close">
-      <i-ri-close-fill />
+      <i-ri-close-fill class="text-2xl" />
     </button>
       <quote-card :quote="quote" />
     <div class="flex w-[92vw] md:w-auto transform ease-out duration-300" :class="`${show ? 'scale-100' : 'scale-0'}`">
