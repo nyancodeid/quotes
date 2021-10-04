@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "npm run generate:quotes && vue-tsc --noEmit && vite build",
+    "build": "npm run generate:quotes && vue-tsc --noEmit && vite-ssg build",
     "serve": "vite preview",
     "generate:quotes": "node quotes/generator.js"
   },
