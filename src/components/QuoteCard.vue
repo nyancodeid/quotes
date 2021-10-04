@@ -1,28 +1,19 @@
 <script setup lang="ts">
-import { defineProps, toRef } from "vue";
+import { toRef, withDefaults } from "vue";
+import { Quote } from "../types";
 import { gradients } from "../utils/gradients"; 
 
-interface GithubProfile {
-  available: boolean
-  name?: string
-  avatar_url?: string
-  followers?: number
-  following?: number
-}
-interface Quote {
-  id: string,
-  gradient_id: number,
-  username: string
-  github?: GithubProfile
-  text: string
-  author: string
+interface Props {
+  quote: Quote;
+  size?: string
 }
 
-const props = defineProps<{
-  quote: Quote
-}>();
+const props = withDefaults(defineProps<Props>(), {
+  size: "sm"
+});
 
 const quote = toRef(props, "quote");
+const size = toRef(props, "size");
 
 function getGradientByIndex (index: number = 0) {
   return gradients[index];
@@ -30,13 +21,13 @@ function getGradientByIndex (index: number = 0) {
 </script>
 
 <template>
-  <div class="w-full relative text-white overflow-hidden flex rounded-3xl shadow-lg hover:scale-105 hover:rotate-1 duration-300">
+  <div class="w-full relative text-white overflow-hidden flex rounded-3xl shadow-lg md:hover:rotate-1 duration-300" :class="(size === 'lg') ? 'scale-1 md:scale-150 md:hover:scale-160' : 'md:hover:scale-105'">
     <div class="w-full flex flex-col" :class="getGradientByIndex(quote.gradient_id)">
       <div class="sm:max-w-sm sm:flex-none md:w-auto flex flex-col items-start relative p-6 xl:p-8">
         <h2 class="text-xl font-semibold mb-2">
           <i-ri-double-quotes-l />
         </h2>
-        <p class="font-medium text-lg text-white mb-4">
+        <p class="font-medium text-white mb-4" :class="(size === 'lg') ? 'text-xl md:text-lg' : 'text-lg'">
           {{ quote.text }}
         </p>
         <p class="text-sm text-gray-100">- {{ quote.author }}</p>

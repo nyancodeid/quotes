@@ -11,5 +11,8 @@ export default defineConfig({
     Components({
       resolvers: IconsResolver(),
     }),
-  ]
+  ],
+  ssgOptions: {
+    script: 'async'
+  },
 })

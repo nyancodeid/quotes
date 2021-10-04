@@ -4,6 +4,9 @@ const fetch = require("node-fetch");
 const fs = require("fs");
 const path = require("path");
 
+const dotenv = require("dotenv-flow");
+dotenv.config();
+
 const AVAILABLE_GRADIENT_VARIANTS = 13;
 
 async function fetchAllQuotesYaml() {
@@ -56,7 +59,16 @@ async function generateQuotesFile(quotes) {
 }
 
 async function getGithubProfileByUsername(username) {
-  const res = await fetch(`https://api.github.com/users/${username}`);
+  const headers = {};
+
+  if (process.env.GITHUB_TOKEN) {
+    headers["Authorization"] = "Basic " + process.env.GITHUB_TOKEN;
+  }
+
+  const res = await fetch(`https://api.github.com/users/${username}`, {
+    method: "GET",
+    headers
+  });
 
   if (res.status === 404)
     return {
@@ -88,6 +100,10 @@ function randomGradientIndex() {
 }
 
 (async function () {
+  if (process.env.GITHUB_TOKEN) {
+    console.info(`[GENERATOR]: Github Token Loaded`);
+  }
+
   const quotes_raw = await fetchAllQuotesYaml();
   const quotes = await generateQuotesFile(quotes_raw);
 
@@ -97,6 +113,10 @@ function randomGradientIndex() {
 
   fs.writeFileSync(
     path.join(__dirname, `../src/assets/quotes.json`),
+    file_contents
+  );
+  fs.writeFileSync(
+    path.join(__dirname, `../public/quotes.json`),
     file_contents
   );
 })();

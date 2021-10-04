@@ -1,15 +1,20 @@
 <script setup lang="ts">
-import { ref, onMounted, nextTick } from "vue";
+import { ref, onMounted, onUnmounted, nextTick } from "vue";
 import lozad from "lozad";
 
-const quotes = ref();
+import { Quote } from "../types";
+import { chunk } from "../utils/helpers";
+import quotesRaw from "../assets/quotes.json"
+
+let observer: lozad.Observer;
+const quotesChunked = chunk(quotesRaw, 8);
+
+const quotes = ref<Quote[]>(quotesChunked[0]);
+const quotesIndex = ref(0);
+const galleryElement = ref<HTMLDivElement>();
+
 const isShowDialog = ref(false);
 const selectedQuote = ref<Quote>();
-const loadQuotes = () => import(`../assets/quotes.json`);
-
-interface Quote {
-  id: string
-}
 
 function displayDialog(quote: Quote) {
   isShowDialog.value = true;
@@ -17,7 +22,6 @@ function displayDialog(quote: Quote) {
 
   initializeLozad();
 }
-
 function closeDialog(){
   isShowDialog.value = false
   selectedQuote.value = undefined;
@@ -25,25 +29,54 @@ function closeDialog(){
 
 function initializeLozad() {
   nextTick(function () {
-    const elements = document.querySelectorAll("img.lozad");
-    const observer = lozad(elements);
-
-    observer.observe();
+    observer?.observe();
   });
 }
 
-onMounted(async function () {
-  const quotes_data = await loadQuotes();
-  quotes.value = quotes_data.default;
+function loadQuotes () {
+  if (quotesIndex.value > (quotesChunked.length - 1)) return;
 
+  const quotesLists = quotesChunked[quotesIndex.value];
+
+  if (quotes.value.length > 0) {
+    quotes.value = [
+      ...quotes.value,
+      ...quotesLists
+    ];
+  }
+}
+
+function handleScroll () {
+  if (!galleryElement.value) return;
+
+  if (galleryElement.value.getBoundingClientRect().bottom < (window.innerHeight + 400)) {
+    if (quotesIndex.value < (quotesChunked.length - 1)) {
+      quotesIndex.value = quotesIndex.value + 1;
+
+      loadQuotes();
+      initializeLozad();
+    } else {
+      window.removeEventListener("scroll", handleScroll);
+    }
+  }
+}
+
+onMounted(function () {
+  window.addEventListener("scroll", handleScroll);
+  observer = lozad("img.lozad");
+
+  loadQuotes();
   initializeLozad();
+});
+onUnmounted(function () {
+  window.removeEventListener("scroll", handleScroll);
 });
 </script>
 
 <template>
   <Dialog v-if="selectedQuote" :quote="selectedQuote" :show="isShowDialog" @close="closeDialog" />
 
-  <div class="flex flex-col items-center justify-center">
+  <div ref="galleryElement" class="flex flex-col items-center justify-center">
     <div class="w-11/12 md:w-3/4 mb-[86px]">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-5 md:gap-6 xl:gap-8">
         <section class="flex">
