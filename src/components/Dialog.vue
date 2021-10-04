@@ -16,6 +16,7 @@
       transform
       transition-all
       duration-1000
+      backdrop-filter  backdrop-blur-lg
     "
     @click="close"
     :class="`${show ? 'scale-100' : 'scale-0'}`"
