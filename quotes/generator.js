@@ -59,7 +59,16 @@ async function generateQuotesFile(quotes) {
 }
 
 async function getGithubProfileByUsername(username) {
-  const res = await fetch(`https://api.github.com/users/${username}`);
+  const headers = {};
+
+  if (process.env.GITHUB_TOKEN) {
+    headers["Authorization"] = "Basic " + process.env.GITHUB_TOKEN;
+  }
+
+  const res = await fetch(`https://api.github.com/users/${username}`, {
+    method: "GET",
+    headers
+  });
 
   if (res.status === 404)
     return {
