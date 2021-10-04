@@ -14,6 +14,8 @@ interface Quote {
 function displayDialog(quote: Quote) {
   isShowDialog.value = true;
   selectedQuote.value = quote;
+
+  initializeLozad();
 }
 
 function closeDialog(){
@@ -21,16 +23,20 @@ function closeDialog(){
   selectedQuote.value = undefined;
 }
 
+function initializeLozad() {
+  nextTick(function () {
+    const elements = document.querySelectorAll("img.lozad");
+    const observer = lozad(elements);
+
+    observer.observe();
+  });
+}
+
 onMounted(async function () {
   const quotes_data = await loadQuotes();
   quotes.value = quotes_data.default;
 
-  nextTick(function () {
-    const elements = document.querySelectorAll(".quote-card--container img");
-    const observer = lozad(elements);
-    console.log(elements)
-    observer.observe();
-  });
+  initializeLozad();
 });
 </script>
 
