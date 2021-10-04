@@ -67,7 +67,7 @@ async function getGithubProfileByUsername(username) {
 
   return {
     available: true,
-    name: data.name,
+    name: data.name ?? username,
     avatar_url: data.avatar_url,
     followers: data.followers,
   };
