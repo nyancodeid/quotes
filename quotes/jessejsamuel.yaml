@@ -1,0 +1,10 @@
+```yaml
+username: jessej-samuel
+quotes:
+  - text: 'Jaga wajah anda selalu ke arah sinar matahari - dan bayangan akan tertinggal di belakang anda.'
+    author: 'Walt Whitman'
+    created_at: '4 Oktober 2021'
+  - text: 'Pilih untuk bersikap optimis, rasanya lebih baik.'
+    author: 'Dalai Lama'
+    created_at: '4 Oktober 2021'
+```
