@@ -20,6 +20,7 @@
     "@vitejs/plugin-vue": "^1.9.2",
     "autoprefixer": "^10.3.6",
     "critters": "^0.0.10",
+    "dotenv-flow": "^3.2.0",
     "js-yaml": "^4.1.0",
     "md5": "^2.3.0",
     "node-fetch": "^2.6.1",

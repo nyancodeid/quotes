@@ -4,6 +4,9 @@ const fetch = require("node-fetch");
 const fs = require("fs");
 const path = require("path");
 
+const dotenv = require("dotenv-flow");
+dotenv.config();
+
 const AVAILABLE_GRADIENT_VARIANTS = 13;
 
 async function fetchAllQuotesYaml() {
@@ -88,6 +91,10 @@ function randomGradientIndex() {
 }
 
 (async function () {
+  if (process.env.GITHUB_TOKEN) {
+    console.info(`[GENERATOR]: Github Token Loaded`);
+  }
+
   const quotes_raw = await fetchAllQuotesYaml();
   const quotes = await generateQuotesFile(quotes_raw);
 
