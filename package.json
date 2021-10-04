@@ -9,10 +9,12 @@
     "generate:quotes": "node quotes/generator.js"
   },
   "dependencies": {
+    "lozad": "^1.16.0",
     "vue": "^3.2.16"
   },
   "devDependencies": {
     "@iconify/json": "^1.1.409",
+    "@types/lozad": "^1.16.1",
     "@vitejs/plugin-vue": "^1.9.2",
     "autoprefixer": "^10.3.6",
     "js-yaml": "^4.1.0",
