@@ -115,4 +115,8 @@ function randomGradientIndex() {
     path.join(__dirname, `../src/assets/quotes.json`),
     file_contents
   );
+  fs.writeFileSync(
+    path.join(__dirname, `../public/quotes.json`),
+    file_contents
+  );
 })();
