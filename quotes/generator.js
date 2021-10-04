@@ -1,25 +1,29 @@
-const yaml = require('js-yaml');
-const md5 = require('md5');
-const fetch = require('node-fetch');
-const fs = require('fs');
-const path = require('path');
+const yaml = require("js-yaml");
+const md5 = require("md5");
+const fetch = require("node-fetch");
+const fs = require("fs");
+const path = require("path");
 
 const AVAILABLE_GRADIENT_VARIANTS = 13;
 
-async function fetchAllQuotesYaml () {
-  const quotes_path = path.join(__dirname, '../quotes');
-  const quotes_file_paths = fs.readdirSync(quotes_path)
-    .filter(file => file.endsWith('.yaml'));
-  
-  const quotes_files = await Promise.all([
-    ...quotes_file_paths.map(file => parseYamlFile(quotes_path, file)),
-  ])
+async function fetchAllQuotesYaml() {
+  const quotes_path = path.join(__dirname, "../quotes");
+  const quotes_file_paths = fs
+    .readdirSync(quotes_path)
+    .filter((file) => file.endsWith(".yaml") || file.endsWith(".yml"));
 
-  return quotes_files.filter(quote => !!quote);
+  const quotes_files = await Promise.all([
+    ...quotes_file_paths.map((file) => parseYamlFile(quotes_path, file)),
+  ]);
+
+  return quotes_files.filter((quote) => !!quote);
 }
 
-async function parseYamlFile (quotes_path, file) {
-  const contains = await fs.promises.readFile(path.join(quotes_path, file), 'utf8');
+async function parseYamlFile(quotes_path, file) {
+  const contains = await fs.promises.readFile(
+    path.join(quotes_path, file),
+    "utf8"
+  );
 
   try {
     const parsed = yaml.load(contains);
@@ -29,34 +33,35 @@ async function parseYamlFile (quotes_path, file) {
   }
 }
 
-async function generateQuotesFile (quotes) {
+async function generateQuotesFile(quotes) {
   const quotes_valid = [];
-  
+
   for (const user of quotes) {
-    if (user.quotes.length === 0) continue; 
+    if (user.quotes.length === 0) continue;
 
     const github = await getGithubProfileByUsername(user.username);
-    
+
     for (const quote of user.quotes) {
       quotes_valid.push({
         id: md5(`${user.username}:${quote.text}`),
         username: user.username,
         github,
         gradient_id: randomGradientIndex(),
-        ...quote
-      })
+        ...quote,
+      });
     }
   }
 
   return quotes_valid;
 }
 
-async function getGithubProfileByUsername (username) {
+async function getGithubProfileByUsername(username) {
   const res = await fetch(`https://api.github.com/users/${username}`);
 
-  if (res.status === 404) return {
-    available: false
-  };
+  if (res.status === 404)
+    return {
+      available: false,
+    };
 
   const data = await res.json();
 
@@ -64,21 +69,21 @@ async function getGithubProfileByUsername (username) {
     available: true,
     name: data.name,
     avatar_url: data.avatar_url,
-    followers: data.followers
-  }
+    followers: data.followers,
+  };
 }
 
 function shuffleQuotes(quotes) {
   for (let i = quotes.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    
+
     [quotes[i], quotes[j]] = [quotes[j], quotes[i]];
   }
 
   return quotes;
 }
 
-function randomGradientIndex () {
+function randomGradientIndex() {
   return Math.floor(Math.random() * (AVAILABLE_GRADIENT_VARIANTS - 0) + 0);
 }
 
@@ -86,10 +91,12 @@ function randomGradientIndex () {
   const quotes_raw = await fetchAllQuotesYaml();
   const quotes = await generateQuotesFile(quotes_raw);
 
-  console.info(`[GENERATOR]: ${quotes.length} quotes has been generated.`)
+  console.info(`[GENERATOR]: ${quotes.length} quotes has been generated.`);
 
   const file_contents = JSON.stringify(shuffleQuotes(quotes));
 
-  fs.writeFileSync(path.join(__dirname, `../src/assets/quotes.json`), file_contents);
+  fs.writeFileSync(
+    path.join(__dirname, `../src/assets/quotes.json`),
+    file_contents
+  );
 })();
-
