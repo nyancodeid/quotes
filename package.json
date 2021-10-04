@@ -1,6 +1,7 @@
 {
   "name": "quotes",
-  "version": "0.0.0",
+  "description": "Every Day Inspirasional Quotes",
+  "version": "1.0.0",
   "scripts": {
     "dev": "vite",
     "build": "npm run generate:quotes && vue-tsc --noEmit && vite build",
