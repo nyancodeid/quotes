@@ -81,9 +81,9 @@ onMounted(function () {
         :title="titleTheme"
         @click="toggleTheme"
       >
-        <i-bi-circle-half v-if="theme === 'system'" />
+        <i-mdi-circle-half-full v-if="theme === 'system'" />
         <i-ri-sun-line v-else-if="theme === 'light'" />
-        <i-bi-moon-stars-fill v-else />
+        <i-ri-moon-clear-line v-else />
       </button>
     </div>
 
