@@ -7,7 +7,7 @@ const path = require("path");
 const dotenv = require("dotenv-flow");
 dotenv.config();
 
-const AVAILABLE_GRADIENT_VARIANTS = 13;
+const AVAILABLE_GRADIENT_VARIANTS = 14;
 
 async function fetchAllQuotesYaml() {
   const quotes_path = path.join(__dirname, "../quotes");
