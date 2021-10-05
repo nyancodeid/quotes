@@ -13,3 +13,8 @@ export interface Quote {
   text: string
   author: string
 }
+export enum Theme {
+  System = "system",
+  Light = "light",
+  Dark = "dark",
+}

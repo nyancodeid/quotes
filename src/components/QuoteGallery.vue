@@ -2,7 +2,7 @@
 import { ref, onMounted, onUnmounted, nextTick } from "vue";
 import lozad from "lozad";
 
-import { Quote } from "../types";
+import { Quote } from "../types.d";
 import { chunk } from "../utils/helpers";
 import quotesRaw from "../assets/quotes.json"
 

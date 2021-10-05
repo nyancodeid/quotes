@@ -1,21 +1,22 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
+import { Theme } from '../types.d';
 
-const theme = ref();
-const titleTheme = ref();
+const theme = ref<Theme | string>();
+const titleTheme = ref<string>();
 
 function toggleTheme () {
   switch (theme.value) {
-    case "system":
-      localStorage.theme = "light";
+    case Theme.System:
+      localStorage.theme = Theme.Light;
       break;
 
-    case "light":
-      localStorage.theme = "dark";
+    case Theme.Light:
+      localStorage.theme = Theme.Dark;
       break;
   
     default:
-      localStorage.theme = "system";
+      localStorage.theme = Theme.System;
       break;
   }
 
@@ -24,13 +25,13 @@ function toggleTheme () {
 
 function updateTheme () {
   if (!("theme" in localStorage)) {
-    localStorage.theme = "system";
+    localStorage.theme = Theme.System;
   }
 
   const element = document.querySelector("#app");
 
   switch (localStorage.theme) {
-    case "system":
+    case Theme.System:
       if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
         element?.classList.add("dark");
       } else {
@@ -38,11 +39,11 @@ function updateTheme () {
       }
       break;
 
-    case "dark":
+    case Theme.Dark:
       element?.classList.add("dark");
       break;
 
-    case "light":
+    case Theme.Light:
       element?.classList.remove("dark");
       break;
   }
@@ -53,16 +54,16 @@ function updateTheme () {
 
 function parseThemeTitle () {
   switch (theme.value) {
-    case 'system':
-      titleTheme.value = 'Ubah ke mode terang';
+    case Theme.System:
+      titleTheme.value = 'Ubah ke Mode Terang';
       break;
 
-    case 'light':
-      titleTheme.value = 'Ubah ke mode gelap';
+    case Theme.Light:
+      titleTheme.value = 'Ubah ke Mode Gelap';
       break;
   
     default:
-      titleTheme.value = 'Ubah ke tema sistem';
+      titleTheme.value = 'Ubah ke Tema Sistem';
       break;
   }
 }
@@ -73,7 +74,7 @@ onMounted(function () {
 
   window.matchMedia('(prefers-color-scheme: dark)')
     .addEventListener("change", () => {
-      if (theme.value !== "system") return false;
+      if (theme.value !== Theme.System) return false;
 
       updateTheme();
     });
