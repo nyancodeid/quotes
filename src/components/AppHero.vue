@@ -70,6 +70,13 @@ function parseThemeTitle () {
 onMounted(function () {
   theme.value = localStorage.getItem("theme") || "system";
   updateTheme();
+
+  window.matchMedia('(prefers-color-scheme: dark)')
+    .addEventListener("change", () => {
+      if (theme.value !== "system") return false;
+
+      updateTheme();
+    });
 });
 </script>
 
