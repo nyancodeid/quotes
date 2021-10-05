@@ -83,9 +83,9 @@ onMounted(function () {
 
 <template>
   <div class="relative py-12 flex flex-col items-center">
-    <div class="absolute right-4 top-4">
+    <div class="absolute right-4 top-4 md:right-8 md:top-8">
       <button 
-        class="p-2 border rounded-full text-gray-900 dark:text-gray-100" 
+        class="button-toggle-theme p-2 border rounded-full text-gray-900 dark:text-gray-100" 
         :title="titleTheme"
         @click="toggleTheme"
       >
@@ -116,4 +116,7 @@ onMounted(function () {
 </template>
 
 <style>
+.button-toggle-theme {
+  -webkit-tap-highlight-color: transparent;
+}
 </style>
