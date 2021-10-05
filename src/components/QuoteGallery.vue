@@ -65,7 +65,6 @@ onMounted(function () {
   window.addEventListener("scroll", handleScroll);
   observer = lozad("img.lozad");
 
-  loadQuotes();
   initializeLozad();
 });
 onUnmounted(function () {
