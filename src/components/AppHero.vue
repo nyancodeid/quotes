@@ -1,29 +1,89 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
 
-const isDark = ref(false);
+const theme = ref();
+const titleTheme = ref();
 
-function toggleDarkMode () {
+function toggleTheme () {
+  switch (theme.value) {
+    case "system":
+      localStorage.theme = "light";
+      break;
+
+    case "light":
+      localStorage.theme = "dark";
+      break;
+  
+    default:
+      localStorage.theme = "system";
+      break;
+  }
+
+  updateTheme();
+}
+
+function updateTheme () {
+  if (!("theme" in localStorage)) {
+    localStorage.theme = "system";
+  }
+
   const element = document.querySelector("#app");
 
-  element?.classList.toggle("dark");
+  switch (localStorage.theme) {
+    case "system":
+      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        element?.classList.add("dark");
+      } else {
+        element?.classList.remove("dark");
+      }
+      break;
 
-  localStorage.setItem("theme", (isDark.value) ? "light" : "dark");
-  isDark.value = !isDark.value;
+    case "dark":
+      element?.classList.add("dark");
+      break;
+
+    case "light":
+      element?.classList.remove("dark");
+      break;
+  }
+
+  theme.value = localStorage.theme;
+  parseThemeTitle();
+}
+
+function parseThemeTitle () {
+  switch (theme.value) {
+    case 'system':
+      titleTheme.value = 'Ubah ke mode terang';
+      break;
+
+    case 'light':
+      titleTheme.value = 'Ubah ke mode gelap';
+      break;
+  
+    default:
+      titleTheme.value = 'Ubah ke tema sistem';
+      break;
+  }
 }
 
 onMounted(function () {
-  const theme = localStorage.getItem("theme");
-  isDark.value = (theme == "dark");
+  theme.value = localStorage.getItem("theme") || "system";
+  updateTheme();
 });
 </script>
 
 <template>
   <div class="relative py-12 flex flex-col items-center">
     <div class="absolute right-4 top-4">
-      <button class="p-2 border rounded-full text-gray-900 dark:text-gray-100" @click="toggleDarkMode">
-        <i-ri-sun-line v-show="isDark" />
-        <i-ri-moon-line v-show="!isDark" />
+      <button 
+        class="p-2 border rounded-full text-gray-900 dark:text-gray-100" 
+        :title="titleTheme"
+        @click="toggleTheme"
+      >
+        <i-bi-circle-half v-if="theme === 'system'" />
+        <i-ri-sun-line v-else-if="theme === 'light'" />
+        <i-bi-moon-stars-fill v-else />
       </button>
     </div>
 

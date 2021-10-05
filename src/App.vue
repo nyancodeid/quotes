@@ -1,23 +1,3 @@
-<script setup lang="ts">
-import { onMounted } from 'vue';
-
-onMounted(function() {
-  const element = document.querySelector("#app");
-
-  if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-    element?.classList.add('dark');
-  } else {
-    element?.classList.remove('dark');
-  }
-
-  if (!('theme' in localStorage) && element?.classList.contains('dark')) {
-    localStorage.setItem('theme', 'dark');
-  } else {
-    localStorage.setItem('theme', 'light');
-  }
-});
-</script>
-
 <template>
   <div class="app-container dark:bg-gray-800 transition-colors">
     <app-hero />
