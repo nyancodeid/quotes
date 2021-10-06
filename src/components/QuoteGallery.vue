@@ -80,7 +80,7 @@ onUnmounted(function () {
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-5 md:gap-6 xl:gap-8">
         <section class="flex">
           <div class="w-full relative text-white overflow-hidden rounded-3xl flex shadow-lg p-2 bg-gradient-to-br from-red-100 to-blue-100">
-            <div class="w-full flex flex-col dark:bg-gray-800 dark:rounded-3xl">
+            <div class="w-full flex flex-col dark:bg-gray-800 dark:rounded-2.2xl">
               <div class="sm:max-w-sm sm:flex-none md:w-auto flex flex-col items-start relative p-6 xl:p-8">
                 <h1 class="mb-2 text-gray-800 dark:text-red-100">
                   <i-ri-chat-quote-line class="text-3xl" />
