@@ -1,25 +1,32 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, computed } from 'vue';
 import { Theme } from '../types.d';
 
 const theme = ref<Theme | string>();
 const titleTheme = ref<string>();
 
+const systemTheme = computed(() => {
+  return window.matchMedia('(prefers-color-scheme: dark)').matches
+    ? Theme.Dark
+    : Theme.Light;
+});
+
+const themeSteps = computed(() => {
+  return systemTheme.value === Theme.Dark
+    ? [Theme.System, Theme.Light, Theme.Dark]
+    : [Theme.System, Theme.Dark, Theme.Light];
+});
+
+function getNextTheme() {
+  const themeIndex = themeSteps.value.findIndex(t => t === theme.value);
+  const nextThemeIndex = (themeIndex + 1) % themeSteps.value.length;
+
+  return themeSteps.value[nextThemeIndex];
+}
+
 function toggleTheme () {
-  switch (theme.value) {
-    case Theme.System:
-      localStorage.theme = Theme.Light;
-      break;
-
-    case Theme.Light:
-      localStorage.theme = Theme.Dark;
-      break;
+  localStorage.theme = getNextTheme();
   
-    default:
-      localStorage.theme = Theme.System;
-      break;
-  }
-
   updateTheme();
 }
 
@@ -32,7 +39,7 @@ function updateTheme () {
 
   switch (localStorage.theme) {
     case Theme.System:
-      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      if (systemTheme.value === Theme.Dark) {
         element?.classList.add("dark");
       } else {
         element?.classList.remove("dark");
@@ -53,13 +60,13 @@ function updateTheme () {
 }
 
 function parseThemeTitle () {
-  switch (theme.value) {
-    case Theme.System:
-      titleTheme.value = 'Ubah ke Mode Terang';
+  switch (getNextTheme()) {
+    case Theme.Dark:
+      titleTheme.value = 'Ubah ke Mode Gelap';
       break;
 
     case Theme.Light:
-      titleTheme.value = 'Ubah ke Mode Gelap';
+      titleTheme.value = 'Ubah ke Mode Terang';
       break;
   
     default:
