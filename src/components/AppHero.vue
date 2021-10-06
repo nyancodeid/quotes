@@ -1,32 +1,50 @@
 <script setup lang="ts">
-import { onMounted, ref, computed } from 'vue';
+import { onMounted, ref, computed, watch } from 'vue';
+import { usePreferredDark } from '@vueuse/core';
 import { Theme } from '../types.d';
 
 const theme = ref<Theme | string>();
-const titleTheme = ref<string>();
+const isSystemDark = usePreferredDark();
 
-const systemTheme = computed(() => {
-  return window.matchMedia('(prefers-color-scheme: dark)').matches
-    ? Theme.Dark
-    : Theme.Light;
+watch(isSystemDark, _ => {
+  if (theme.value === Theme.System) {
+    updateTheme();
+  }
 });
 
-const themeSteps = computed(() => {
-  return systemTheme.value === Theme.Dark
+const themeSteps = computed<Array<string>>(() => {
+  return isSystemDark.value
     ? [Theme.System, Theme.Light, Theme.Dark]
     : [Theme.System, Theme.Dark, Theme.Light];
 });
 
-function getNextTheme() {
+function getNextTheme () {
   const themeIndex = themeSteps.value.findIndex(t => t === theme.value);
   const nextThemeIndex = (themeIndex + 1) % themeSteps.value.length;
 
   return themeSteps.value[nextThemeIndex];
 }
 
+const titleTheme = computed<string>(() => {
+  let title;
+  switch (getNextTheme()) {
+    case Theme.Dark:
+      title = 'Ubah ke Mode Gelap';
+      break;
+
+    case Theme.Light:
+      title = 'Ubah ke Mode Terang';
+      break;
+  
+    default:
+      title = 'Ubah ke Tema Sistem';
+      break;
+  }
+  return title;
+});
+
 function toggleTheme () {
   localStorage.theme = getNextTheme();
-  
   updateTheme();
 }
 
@@ -39,7 +57,7 @@ function updateTheme () {
 
   switch (localStorage.theme) {
     case Theme.System:
-      if (systemTheme.value === Theme.Dark) {
+      if (isSystemDark.value) {
         element?.classList.add("dark");
       } else {
         element?.classList.remove("dark");
@@ -56,35 +74,11 @@ function updateTheme () {
   }
 
   theme.value = localStorage.theme;
-  parseThemeTitle();
-}
-
-function parseThemeTitle () {
-  switch (getNextTheme()) {
-    case Theme.Dark:
-      titleTheme.value = 'Ubah ke Mode Gelap';
-      break;
-
-    case Theme.Light:
-      titleTheme.value = 'Ubah ke Mode Terang';
-      break;
-  
-    default:
-      titleTheme.value = 'Ubah ke Tema Sistem';
-      break;
-  }
 }
 
 onMounted(function () {
   theme.value = localStorage.getItem("theme") || "system";
   updateTheme();
-
-  window.matchMedia('(prefers-color-scheme: dark)')
-    .addEventListener("change", () => {
-      if (theme.value !== Theme.System) return false;
-
-      updateTheme();
-    });
 });
 </script>
 

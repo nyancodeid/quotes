@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@vue/server-renderer": "^3.2.19",
+    "@vueuse/core": "^6.5.3",
     "@vueuse/head": "^0.5.1",
     "lozad": "^1.16.0",
     "vite-ssg": "^0.15.4",
