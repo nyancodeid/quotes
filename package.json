@@ -13,11 +13,15 @@
     "@vueuse/head": "^0.5.1",
     "lozad": "^1.16.0",
     "vite-ssg": "^0.15.4",
+    "dom-to-image": "^2.6.0",
+    "file-saver": "^2.0.5",
     "vue": "^3.2.16"
   },
   "devDependencies": {
     "@iconify/json": "^1.1.409",
     "@types/lozad": "^1.16.1",
+    "@types/dom-to-image": "^2.6.3",
+    "@types/file-saver": "^2.0.3",
     "@vitejs/plugin-vue": "^1.9.2",
     "autoprefixer": "^10.3.6",
     "critters": "^0.0.10",
