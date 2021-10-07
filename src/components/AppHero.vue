@@ -18,15 +18,17 @@ const themeSteps = computed<Array<string>>(() => {
     : [Theme.System, Theme.Dark, Theme.Light];
 });
 
-function getNextTheme () {
-  const themeIndex = themeSteps.value.findIndex(t => t === theme.value);
-  const nextThemeIndex = (themeIndex + 1) % themeSteps.value.length;
+const themeIndex = computed<number>(() => {
+  return themeSteps.value.findIndex(t => t === theme.value);
+});
 
+const nextTheme = computed<Theme | string>(() => {
+  const nextThemeIndex = (themeIndex.value + 1) % themeSteps.value.length;
   return themeSteps.value[nextThemeIndex];
-}
+});
 
 const titleTheme = computed<string>(() => {
-  switch (getNextTheme()) {
+  switch (nextTheme.value) {
     case Theme.Dark:
       return 'Ubah ke Mode Gelap';
 
@@ -39,7 +41,7 @@ const titleTheme = computed<string>(() => {
 });
 
 function toggleTheme () {
-  localStorage.theme = getNextTheme();
+  localStorage.theme = nextTheme.value;
   updateTheme();
 }
 
