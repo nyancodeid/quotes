@@ -42,6 +42,7 @@ watch(search, (newValue) => {
   quotesChunked = chunk(arr, 8)
   quotes.value = quotesChunked[0]
   quotesIndex.value = 0
+  window.addEventListener("scroll", handleScroll);
 })
 
 watch(chooseFilter, (newValue) => {
@@ -49,6 +50,7 @@ watch(chooseFilter, (newValue) => {
   quotesChunked = chunk(arr, 8)
   quotes.value = quotesChunked[0]
   quotesIndex.value = 0
+  window.addEventListener("scroll", handleScroll);
 })
 
 function displayDialog(quote: Quote) {
@@ -87,7 +89,7 @@ function handleScroll () {
   if (galleryElement.value.getBoundingClientRect().bottom < (window.innerHeight + 400)) {
     if (quotesIndex.value < (quotesChunked.length - 1)) {
       quotesIndex.value = quotesIndex.value + 1;
-
+      
       loadQuotes();
       initializeLozad();
     } else {
