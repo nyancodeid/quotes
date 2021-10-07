@@ -24,7 +24,7 @@ function onSearchChanged (event: Event) {
 
         <i-heroicons-solid-search class="absolute text-gray-600 dark:text-gray-100 top-3 left-[118px]" />
 
-        <input type="text" @input="onSearchChanged" placeholder="Search" class="pl-9 pr-4 py-2 border border-l-0 border-gray-300 text-sm rounded-r-md w-full transition appearance-none outline-none dark:bg-gray-900 dark:text-gray-100 dark:border-gray-600">
+        <input type="text" @input="onSearchChanged" placeholder="Search" class="pl-9 pr-4 py-2 border border-l-0 border-gray-300 text-sm rounded-r-md w-full transition appearance-none outline-none dark:bg-gray-900 dark:text-gray-100 dark:border-gray-500">
       </div>
     </div>
   </div>
