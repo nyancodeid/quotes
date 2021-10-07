@@ -2,12 +2,16 @@
 import { ref, onMounted, onUnmounted, nextTick } from "vue";
 import lozad from "lozad";
 
-import { Quote } from "../types.d";
+import { Quote, Search } from "../types.d";
 import { chunk } from "../utils/helpers";
 import quotesRaw from "../assets/quotes.json"
+import QuoteSearch from "./QuoteSearch.vue";
+
+const CHUNKED_SIZE = 8;
 
 let observer: lozad.Observer;
-const quotesChunked = chunk(quotesRaw, 8);
+let allQuotes = ref(quotesRaw)
+let quotesChunked = chunk(allQuotes.value, CHUNKED_SIZE);
 
 const quotes = ref<Quote[]>(quotesChunked[0]);
 const quotesIndex = ref(0);
@@ -46,6 +50,32 @@ function loadQuotes () {
   }
 }
 
+function onSearchChanged (search: Search) {
+  const filtered = allQuotes.value.filter(quote => {
+    if (search.keyword.length === 0) return true;
+    
+    switch (search.filter) {
+      case "quotes":
+        return (quote.text.toLowerCase().includes(search.keyword.toLowerCase()));
+      case "from":
+        return (quote.author.toLowerCase().includes(search.keyword.toLowerCase()));
+      case "user":
+        if (!quote.github?.available) {
+          return (quote.username.toLowerCase().includes(search.keyword.toLowerCase()));
+        } 
+        return (quote.github.name.toLowerCase().includes(search.keyword.toLowerCase()));
+      default:
+        return true;
+    }
+  })
+
+  quotesChunked = chunk(filtered, CHUNKED_SIZE);
+  quotesIndex.value = 0;
+  quotes.value = quotesChunked[0];
+
+  initializeLozad();
+}
+
 function handleScroll () {
   if (!galleryElement.value) return;
 
@@ -74,6 +104,8 @@ onUnmounted(function () {
 
 <template>
   <Dialog v-if="selectedQuote" :quote="selectedQuote" :show="isShowDialog" @close="closeDialog" />
+  
+  <QuoteSearch @searchChanged="onSearchChanged" />
 
   <div ref="galleryElement" class="flex flex-col items-center justify-center">
     <div class="w-11/12 md:w-3/4 mb-[86px]">
