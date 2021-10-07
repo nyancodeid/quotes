@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, nextTick, watch } from "vue";
+import { ref, onMounted, onUnmounted, nextTick } from "vue";
 import lozad from "lozad";
 
 import { Quote, Search } from "../types.d";
