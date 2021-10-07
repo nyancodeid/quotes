@@ -13,6 +13,10 @@ export interface Quote {
   text: string
   author: string
 }
+export interface Search {
+  keyword: string,
+  filter: string
+}
 export enum Theme {
   System = "system",
   Light = "light",
