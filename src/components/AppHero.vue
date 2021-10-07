@@ -26,21 +26,16 @@ function getNextTheme () {
 }
 
 const titleTheme = computed<string>(() => {
-  let title;
   switch (getNextTheme()) {
     case Theme.Dark:
-      title = 'Ubah ke Mode Gelap';
-      break;
+      return 'Ubah ke Mode Gelap';
 
     case Theme.Light:
-      title = 'Ubah ke Mode Terang';
-      break;
+      return 'Ubah ke Mode Terang';
   
     default:
-      title = 'Ubah ke Tema Sistem';
-      break;
+      return 'Ubah ke Tema Sistem';
   }
-  return title;
 });
 
 function toggleTheme () {
