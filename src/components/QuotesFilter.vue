@@ -1,15 +1,20 @@
 <script setup lang="ts">
 import { ref, toRef } from "vue";
-
-const filterOpen = ref(false);
-const filterOptions = ref(["quotes", "from", "user"]);
+import { onClickOutside } from "@vueuse/core";
 
 const props = defineProps<{
   filter: string
 }>();
 const emit = defineEmits([ "filterChanged" ]);
 
+const filterOpen = ref(false);
 const selectedFilter = toRef(props, "filter");
+const filterPopupElement = ref<HTMLDivElement>(); 
+const filterOptions = ref(["quotes", "from", "user"]);
+
+onClickOutside(filterPopupElement, () => {
+  if (filterOpen.value) filterOpen.value = false;
+});
 
 function changeFilterHandler (option: string) {
   emit('filterChanged', option);
@@ -35,7 +40,7 @@ function changeFilterHandler (option: string) {
       leave-from-class="transform opacity-100 scale-100"
       leave-to-class="transform opacity-0 scale-95"
     >
-      <div class="origin-top-left absolute z-10 left-0 mt-2 w-56 rounded-md shadow-lg bg-white dark:bg-gray-900 ring-1 ring-black dark:ring-gray-500 ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1" v-if="filterOpen">
+      <div ref="filterPopupElement" class="origin-top-left absolute z-10 left-0 mt-2 w-56 rounded-md shadow-lg bg-white dark:bg-gray-900 ring-1 ring-black dark:ring-gray-500 ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1" v-if="filterOpen">
         <div class="py-1" role="none">
           <button class="block w-full text-left px-4 py-2 text-sm capitalize" role="menuitem" tabindex="-1" v-for="option in filterOptions" :key="option" :class="(option === selectedFilter) ? `bg-gray-100 text-gray-900 dark:bg-gray-800 dark:text-gray-200` : `text-gray-700 dark:text-gray-300`" @click="changeFilterHandler(option)">{{ option }}</button>
         </div>
