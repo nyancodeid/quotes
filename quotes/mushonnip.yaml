@@ -2,7 +2,9 @@ username: mushonnip
 quotes:
   - text: 'If dreams do come true, I wanna hug a girl before I die'
     author: 'Denji'
+    author_detail_url: 'https://chainsaw-man.fandom.com/wiki/Denji'
     created_at: '5 Oktober 2021'
   - text: 'Dibutuhkan keberanian untuk berlayar di lautan yang tak dikenal!'
     author: 'Kaori Miyazono'
+    author_detail_url: 'https://shigatsu-wa-kimi-no-uso.fandom.com/wiki/Kaori_Miyazono'
     created_at: '5 Oktober 2021'
