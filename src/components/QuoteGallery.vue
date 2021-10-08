@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, nextTick } from "vue";
-import { useDebounceFn } from '@vueuse/core'
+import { useThrottleFn } from '@vueuse/core'
 import lozad from "lozad";
 
 import { Quote, Search } from "../types.d";
@@ -77,7 +77,7 @@ function onSearchChanged (search: Search) {
   initializeLozad();
 }
 
-const handleScroll = useDebounceFn(() => {
+const handleScroll = useThrottleFn(() => {
   if (!galleryElement.value) return;
 
   if (galleryElement.value.getBoundingClientRect().bottom < (window.innerHeight + 800)) {
