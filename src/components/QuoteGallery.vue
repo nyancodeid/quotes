@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, nextTick } from "vue";
-import { useBreakpoints, breakpointsTailwind } from "@vueuse/core";
 import lozad from "lozad";
 
 import { Quote, Search } from "../types.d";
@@ -20,9 +19,6 @@ const galleryElement = ref<HTMLDivElement>();
 
 const isShowDialog = ref(false);
 const selectedQuote = ref<Quote>();
-
-const breakpoints = useBreakpoints(breakpointsTailwind);
-const isBreakpointMdAndLarger = breakpoints.greater("md");
 
 function displayDialog(quote: Quote) {
   isShowDialog.value = true;
@@ -140,7 +136,7 @@ onUnmounted(function () {
         </section>
         <section
           class="quote-card--container flex cursor-pointer"
-          :class="{'col-span-2': isBreakpointMdAndLarger && quote.text.length > 120}"
+          :class="{'md:col-span-2': quote.text.length > 120}"
           v-for="quote in quotes"
           :key="quote.id"
           @click="displayDialog(quote)"
