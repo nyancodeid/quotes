@@ -2,4 +2,5 @@ username: hanifnml
 quotes:
   - text: "All the world is my school and all humanity is my teacher"
     author: "George Whitman"
+    author_detail_url: "https://en.wikipedia.org/wiki/George_Whitman"
     created: "7 Oktober 2021"

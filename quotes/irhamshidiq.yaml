@@ -2,10 +2,13 @@ username: irhamshidiq
 quotes:
   - text: 'Selain mencoba dan menang, hal terbaik adalah mencoba dan gagal.'
     author: 'LM Montgomery'
+    author_detail_url: 'https://id.wikipedia.org/wiki/Lucy_Maud_Montgomery'
     created_at: '4 Oktober 2021'
   - text: 'Hambatan tidak harus menghentikanmu. Jika kamu menabrak tembok, jangan berbalik dan menyerah. Cari tahu cara memanjat, melewatinya, atau mengatasinya.'
     author: 'Michael Jordan'
+    author_detail_url: 'https://en.wikipedia.org/wiki/Michael_Jordan'
     created_at: '4 Oktober 2021'
   - text: 'Bersabarlah dan tangguh; suatu hari nanti rasa sakit ini akan berguna untukmu.'
     author: 'Ovid'
+    author_detail_url: 'https://en.wikipedia.org/wiki/Ovid'
     created_at: '4 Oktober 2021'

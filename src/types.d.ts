@@ -12,6 +12,7 @@ export interface Quote {
   github?: GithubProfile
   text: string
   author: string
+  author_detail_url?: string
 }
 export interface Search {
   keyword: string,

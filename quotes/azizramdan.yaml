@@ -2,10 +2,13 @@ username: azizramdan
 quotes:
   - text: 'Tidak perlu menjelaskan tentang dirimu kepada siapa pun, karena yang menyukaimu tidak butuh itu. Dan yang membencimu tidak akan percaya itu.'
     author: 'Ali bin Abi Thalib'
+    author_detail_url: 'https://en.wikipedia.org/wiki/Ali_bin_Abi_Thalib'
     created_at: '3 Oktober 2021'
   - text: 'Orang yang tidak mengetahui nilai nikmat tatkala mendatanginya akan sadar tatkala sudah lepas dari dirinya.'
     author: "Ibnu Atha'illah al-Iskandari"
+    author_detail_url: 'https://id.wikipedia.org/wiki/Ibnu_Atha%27illah_as-Sakandari'
     created_at: '3 Oktober 2021'
   - text: 'Jika kamu tidak sanggup menahan lelahnya belajar maka kamu harus sanggup menahan perihnya kebodohan.'
     author: "Imam Syafi'i"
+    author_detail_url: 'https://id.wikipedia.org/wiki/Abu_Abdullah_Muhammad_asy-Syafi%27i'
     created_at: '3 Oktober 2021'
