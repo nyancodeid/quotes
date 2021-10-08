@@ -26,7 +26,7 @@ function changeFilterHandler (option: string) {
 <template>
   <div class="relative inline-block text-left">
     <div class="w-[106px]">
-      <button type="button" class="inline-flex justify-between w-full rounded-l-md border border-gray-300 dark:border-gray-500 shadow-sm px-4 py-2 bg-white dark:bg-gray-700 text-sm font-medium capitalize text-gray-700 dark:text-white hover:bg-gray-50 dark:hover:border-gray-200 transition-colors duration-300 focus:outline-none" id="menu-button" aria-expanded="true" aria-haspopup="true" @click="filterOpen = !filterOpen">
+      <button type="button" class="inline-flex justify-between w-full rounded-l-md border border-gray-300 dark:border-gray-500 shadow-sm px-4 py-2 bg-gray-100 dark:bg-gray-700 text-sm font-medium capitalize text-gray-700 dark:text-white hover:bg-gray-50 dark:hover:border-gray-200 transition-colors duration-300 focus:outline-none" id="menu-button" aria-expanded="true" aria-haspopup="true" @click="filterOpen = !filterOpen">
         {{ (selectedFilter === "") ? "Filter" : selectedFilter }}
         <i-heroicons-solid-chevron-down class="-mr-1 ml-2 h-5 w-5" />
       </button>
