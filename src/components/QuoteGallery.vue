@@ -85,8 +85,6 @@ function handleScroll () {
 
       loadQuotes();
       initializeLozad();
-    } else {
-      window.removeEventListener("scroll", handleScroll);
     }
   }
 }
