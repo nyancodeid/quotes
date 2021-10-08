@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, nextTick } from "vue";
+import { useDebounceFn } from '@vueuse/core'
 import lozad from "lozad";
 
 import { Quote, Search } from "../types.d";
@@ -76,10 +77,10 @@ function onSearchChanged (search: Search) {
   initializeLozad();
 }
 
-function handleScroll () {
+const handleScroll = useDebounceFn(() => {
   if (!galleryElement.value) return;
 
-  if (galleryElement.value.getBoundingClientRect().bottom < (window.innerHeight + 400)) {
+  if (galleryElement.value.getBoundingClientRect().bottom < (window.innerHeight + 800)) {
     if (quotesIndex.value < (quotesChunked.length - 1)) {
       quotesIndex.value = quotesIndex.value + 1;
 
@@ -87,7 +88,7 @@ function handleScroll () {
       initializeLozad();
     }
   }
-}
+}, 100);
 
 onMounted(function () {
   window.addEventListener("scroll", handleScroll);
@@ -134,7 +135,7 @@ onUnmounted(function () {
         </section>
         <section
           class="quote-card--container flex cursor-pointer"
-          :class="{'md:col-span-2': quote.text.length > 120}"
+          :class="{'md:col-span-2': quote.text.length > 150}"
           v-for="quote in quotes"
           :key="quote.id"
           @click="displayDialog(quote)"
