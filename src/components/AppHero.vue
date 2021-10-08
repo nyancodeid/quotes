@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { onMounted, ref, computed, watch } from 'vue';
-import { usePreferredDark } from '@vueuse/core';
+import { onMounted, computed, watch } from 'vue';
+import { usePreferredDark, useStorage } from '@vueuse/core';
 import { Theme } from '../types.d';
 
-const theme = ref<Theme | string>();
+const theme = useStorage('theme', Theme.System);
 const isSystemDark = usePreferredDark();
 
 watch(isSystemDark, _ => {
@@ -41,18 +41,15 @@ const titleTheme = computed<string>(() => {
 });
 
 function toggleTheme () {
-  localStorage.theme = nextTheme.value;
+  theme.value = nextTheme.value;
+
   updateTheme();
 }
 
 function updateTheme () {
-  if (!("theme" in localStorage)) {
-    localStorage.theme = Theme.System;
-  }
-
   const element = document.querySelector("#app");
 
-  switch (localStorage.theme) {
+  switch (theme.value) {
     case Theme.System:
       if (isSystemDark.value) {
         element?.classList.add("dark");
@@ -69,12 +66,9 @@ function updateTheme () {
       element?.classList.remove("dark");
       break;
   }
-
-  theme.value = localStorage.theme;
 }
 
 onMounted(function () {
-  theme.value = localStorage.getItem("theme") || "system";
   updateTheme();
 });
 </script>
