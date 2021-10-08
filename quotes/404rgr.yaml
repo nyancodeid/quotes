@@ -2,6 +2,7 @@ username: 404rgr
 quotes:
   - text: 'Tindakan menyalahkan hanya akan membuang waktu. Sebesar apapun kesalahan yang Anda timpakan ke orang lain, dan sebesar apapun Anda menyalahkannya, hal tersebut tidak akan mengubah Anda.'
     author: 'Wayne Dyer'
+    author_detail_url: 'https://en.wikipedia.org/wiki/Wayne_Dyer'
     created_at: '4 Oktober 2021'
   - text: 'Berusahalah selalu untuk unggul dalam kebajikan dan kebenaran.'
     author: 'Nabi Muhammad SAW'

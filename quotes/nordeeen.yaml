@@ -2,7 +2,9 @@ username: nordeeen
 quotes:
   - text: 'Ingat, bahwa keadaan kita saat ini adalah hasil pilihan-pilihan yang kita buat pada masa lalu. Apabila kita menginginkan keadaan kita berubah, maka konsekuensinya adalah segera mengganti pilihan-pilihan hidup kita.'
     author: 'Ustad Felix Siauw'
+    author_detail_url: 'https://id.wikipedia.org/wiki/Felix_Siauw'
     created_at: '5 Oktober 2021'
   - text: 'Ibadah yang kita lakukan belum tentu berpahala sedangkan maksiat yang kita buat sudah pasti menghasilkan dosa.'
     author: 'Ustad Felix Siauw'
+    author_detail_url: 'https://id.wikipedia.org/wiki/Felix_Siauw'
     created_at: '5 Oktober 2021'

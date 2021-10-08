@@ -4,9 +4,11 @@ quotes:
     author: 'Raja'
     created_at: '4 Oktober 2021'
   - text: 'Jangan berkerja untuk uang namun berkerjalah untuk belajar maka uang akan mendatangimu.'
-    author: 'Rober Kiyosaki'
+    author: 'Robert Kiyosaki'
+    author_detail_url: 'https://id.wikipedia.org/wiki/Robert_Kiyosaki'
     created_at: '4 Oktober 2021'
   - text: 'Hidup lah seperti larry karena larry seorang yang mampu menolong orang ketika sedang tenggelam dalam kesedihan.'
     author: 'Larry'
+    author_detail_url: 'https://spongebob.fandom.com/id/wiki/Larry_Lobster'
     created_at: '4 Oktober 2021'
  
