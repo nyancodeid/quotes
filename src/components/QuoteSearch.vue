@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import { useDebounceFn } from "@vueuse/core";
 
 const filter = ref("quotes");
 
@@ -8,12 +9,12 @@ const emit = defineEmits([ "searchChanged" ]);
 function onFilterChanged (selected: string) {
   filter.value = selected;
 }
-function onSearchChanged (event: Event) {
+const onSearchChanged = useDebounceFn((event: Event) => {
   emit('searchChanged', {
     keyword: (event.target as HTMLInputElement).value,
     filter: filter.value,
   });
-}
+}, 100);
 </script>
 
 <template>
