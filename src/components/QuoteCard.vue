@@ -21,7 +21,7 @@ function getGradientByIndex (index: number = 0) {
 </script>
 
 <template>
-  <div class="w-full relative text-white overflow-hidden flex rounded-3xl shadow-lg md:hover:rotate-1 duration-300 p-2" :class="((size === 'lg') ? 'scale-1 md:scale-150 md:hover:scale-160' : 'md:hover:scale-105') + ' ' + getGradientByIndex(quote.gradient_id)">
+  <div class="mx-auto w-full relative text-white overflow-hidden flex rounded-3xl shadow-lg md:hover:rotate-1 duration-300 p-2" :class="((size === 'lg') ? 'scale-1 md:scale-150 md:hover:scale-160' : 'md:hover:scale-105') + ' ' + getGradientByIndex(quote.gradient_id)">
     <div class="w-full flex flex-col dark:bg-gray-800 dark:rounded-2.2xl">
       <div class="flex flex-col items-start relative p-6 xl:p-8">
         <h2 class="text-xl font-semibold mb-2">

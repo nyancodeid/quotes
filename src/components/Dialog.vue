@@ -6,7 +6,7 @@
       <i-ri-close-fill class="text-2xl" />
     </button>
     <div class="flex w-[92vw] md:w-auto transform ease-out duration-300" :class="`${show ? 'scale-100' : 'scale-0'}`">
-      <quote-card :quote="quote" size="lg" />
+      <quote-card :quote="quote" size="lg" class="sm:max-w-sm sm:flex-none md:w-auto" />
     </div>
   </div>
 </template>
