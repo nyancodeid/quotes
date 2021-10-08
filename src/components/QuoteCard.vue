@@ -18,8 +18,11 @@ const size = toRef(props, "size");
 function getGradientByIndex (index: number = 0) {
   return gradients[index];
 }
-function isValidLink (link?: string) {
-  return (link);
+function isValidLink (link?: string): boolean {
+  if (typeof link !== 'string') return false;
+  if (!link.startsWith('https://') && !link.startsWith('http://')) return false;
+
+  return true;
 }
 </script>
 
@@ -33,7 +36,7 @@ function isValidLink (link?: string) {
         <p class="font-medium text-white mb-4" :class="(size === 'lg') ? 'text-xl md:text-lg' : 'text-lg'">
           {{ quote.text }}
         </p>
-        <p class="text-sm text-gray-100" v-if="isValidLink(quote.author_detail_url)">- <a :href="quote.author_detail_url" target="_blank" :title="`Read more about ${quote.author}`" class="hover:underline">{{ quote.author }}</a></p>
+        <p class="text-sm text-gray-100" v-if="isValidLink(quote.author_detail_url)">- <a :href="quote.author_detail_url" target="_blank" :title="`Read more about ${quote.author}`" rel="noreferrer nofollow" class="pb-1 hover:border-b-2 hover:border-gray-200">{{ quote.author }}</a></p>
         <p class="text-sm text-gray-100" v-else>- {{ quote.author }}</p>
       </div>
       <div class="mt-auto p-6 pt-1">
