@@ -37,12 +37,28 @@ async function parseYamlFile(quotes_path, file) {
 }
 
 async function generateQuotesFile(quotes) {
-  const quotes_valid = [];
+  let quotes_valid = [];
+  let github_users = [];
+
+  if (process.env.GITHUB_TOKEN) {
+    const users = quotes.filter(user => {
+      return (user.quotes.length > 0);
+    }).map(quote => ({
+      id: getHashUsername(quote.username), 
+      username: quote.username
+    }));
+    
+    github_users = await getGithubProfiles(users);
+  }
 
   for (const user of quotes) {
     if (user.quotes.length === 0) continue;
 
-    const github = await getGithubProfileByUsername(user.username);
+    let github = getGithubProfileByHash(github_users, user.username);
+
+    if (!github.available) {
+      github = await getGithubProfileByUsername(user.username);
+    }
 
     for (const quote of user.quotes) {
       quotes_valid.push({
@@ -56,6 +72,23 @@ async function generateQuotesFile(quotes) {
   }
 
   return quotes_valid;
+}
+
+function getHashUsername (username) {
+  return `u${md5(username).slice(0, 8)}`;
+}
+
+function getGithubProfileByHash (users, username) {
+  const user = users.find(([ hash ]) => (hash === getHashUsername(username)));
+
+  if (!user) return { available: false };
+
+  return {
+    available: true,
+    name: user[1].name || username,
+    avatar_url: user[1].avatarUrl,
+    followers: user[1].followers.totalCount,
+  };
 }
 
 async function getGithubProfileByUsername(username) {
@@ -85,6 +118,44 @@ async function getGithubProfileByUsername(username) {
   };
 }
 
+/**
+ * @param {string[]} users 
+ */
+async function getGithubProfiles (users) {
+  const query_users = users.map(({ id, username }) => `
+      ${id}: user(login: "${username}") {
+        ...UserFragment
+      }`).join("");
+
+  const query = `query {
+    ${query_users}
+  }
+  
+  fragment UserFragment on User {
+    login
+    name
+    avatarUrl(size: 36)
+    followers {
+      totalCount
+    }
+  }`;
+
+  const res = await fetch(`https://api.github.com/graphql`, {
+    method: "POST",
+    headers: {
+      "authorization": "Basic " + process.env.GITHUB_TOKEN,
+      "content-type": "application/json"
+    },
+    body: JSON.stringify({
+      query: query
+    })
+  });
+
+  const data = await res.json();
+
+  return Object.entries(data.data);
+}
+
 function shuffleQuotes(quotes) {
   for (let i = quotes.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -100,6 +171,8 @@ function randomGradientIndex() {
 }
 
 (async function () {
+  console.time(`[GENERATOR]: Time Execution`);
+
   if (process.env.GITHUB_TOKEN) {
     console.info(`[GENERATOR]: Github Token Loaded`);
   }
@@ -119,4 +192,6 @@ function randomGradientIndex() {
     path.join(__dirname, `../public/quotes.json`),
     file_contents
   );
+
+  console.timeEnd(`[GENERATOR]: Time Execution`);
 })();
