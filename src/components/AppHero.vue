@@ -1,38 +1,57 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { onMounted, computed, watch } from 'vue';
+import { usePreferredDark, useStorage } from '@vueuse/core';
 import { Theme } from '../types.d';
 
-const theme = ref<Theme | string>();
-const titleTheme = ref<string>();
+const theme = useStorage('theme', Theme.System);
+const isSystemDark = usePreferredDark();
 
-function toggleTheme () {
-  switch (theme.value) {
-    case Theme.System:
-      localStorage.theme = Theme.Light;
-      break;
+watch(isSystemDark, _ => {
+  if (theme.value === Theme.System) {
+    updateTheme();
+  }
+});
+
+const themeSteps = computed<Array<string>>(() => {
+  return isSystemDark.value
+    ? [Theme.System, Theme.Light, Theme.Dark]
+    : [Theme.System, Theme.Dark, Theme.Light];
+});
+
+const themeIndex = computed<number>(() => {
+  return themeSteps.value.findIndex(t => t === theme.value);
+});
+
+const nextTheme = computed<Theme | string>(() => {
+  const nextThemeIndex = (themeIndex.value + 1) % themeSteps.value.length;
+  return themeSteps.value[nextThemeIndex];
+});
+
+const titleTheme = computed<string>(() => {
+  switch (nextTheme.value) {
+    case Theme.Dark:
+      return 'Ubah ke Mode Gelap';
 
     case Theme.Light:
-      localStorage.theme = Theme.Dark;
-      break;
+      return 'Ubah ke Mode Terang';
   
     default:
-      localStorage.theme = Theme.System;
-      break;
+      return 'Ubah ke Tema Sistem';
   }
+});
+
+function toggleTheme () {
+  theme.value = nextTheme.value;
 
   updateTheme();
 }
 
 function updateTheme () {
-  if (!("theme" in localStorage)) {
-    localStorage.theme = Theme.System;
-  }
-
   const element = document.querySelector("#app");
 
-  switch (localStorage.theme) {
+  switch (theme.value) {
     case Theme.System:
-      if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      if (isSystemDark.value) {
         element?.classList.add("dark");
       } else {
         element?.classList.remove("dark");
@@ -47,37 +66,10 @@ function updateTheme () {
       element?.classList.remove("dark");
       break;
   }
-
-  theme.value = localStorage.theme;
-  parseThemeTitle();
-}
-
-function parseThemeTitle () {
-  switch (theme.value) {
-    case Theme.System:
-      titleTheme.value = 'Ubah ke Mode Terang';
-      break;
-
-    case Theme.Light:
-      titleTheme.value = 'Ubah ke Mode Gelap';
-      break;
-  
-    default:
-      titleTheme.value = 'Ubah ke Tema Sistem';
-      break;
-  }
 }
 
 onMounted(function () {
-  theme.value = localStorage.getItem("theme") || "system";
   updateTheme();
-
-  window.matchMedia('(prefers-color-scheme: dark)')
-    .addEventListener("change", () => {
-      if (theme.value !== Theme.System) return false;
-
-      updateTheme();
-    });
 });
 </script>
 

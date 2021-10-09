@@ -18,19 +18,26 @@ const size = toRef(props, "size");
 function getGradientByIndex (index: number = 0) {
   return gradients[index];
 }
+function isValidLink (link?: string): boolean {
+  if (typeof link !== 'string') return false;
+  if (!link.startsWith('https://') && !link.startsWith('http://')) return false;
+
+  return true;
+}
 </script>
 
 <template>
-  <div class="w-full relative text-white overflow-hidden flex rounded-3xl shadow-lg md:hover:rotate-1 duration-300 p-2" :class="((size === 'lg') ? 'scale-1 md:scale-150 md:hover:scale-160' : 'md:hover:scale-105') + ' ' + getGradientByIndex(quote.gradient_id)">
+  <div class="mx-auto w-full relative text-white overflow-hidden flex rounded-3xl shadow-lg md:hover:rotate-1 duration-300 p-2" :class="((size === 'lg') ? 'scale-1 md:scale-150 md:hover:scale-160' : 'md:hover:scale-105') + ' ' + getGradientByIndex(quote.gradient_id)">
     <div class="w-full flex flex-col dark:bg-gray-800 dark:rounded-2.2xl">
-      <div class="sm:max-w-sm sm:flex-none md:w-auto flex flex-col items-start relative p-6 xl:p-8">
+      <div class="flex flex-col items-start relative p-6 xl:p-8">
         <h2 class="text-xl font-semibold mb-2">
           <i-ri-double-quotes-l />
         </h2>
         <p class="font-medium text-white mb-4" :class="(size === 'lg') ? 'text-xl md:text-lg' : 'text-lg'">
           {{ quote.text }}
         </p>
-        <p class="text-sm text-gray-100">- {{ quote.author }}</p>
+        <p class="text-sm text-gray-100" v-if="isValidLink(quote.author_detail_url)">- <a :href="quote.author_detail_url" target="_blank" :title="`Read more about ${quote.author}`" rel="noreferrer nofollow" class="pb-1 hover:border-b-2 hover:border-gray-200">{{ quote.author }}</a></p>
+        <p class="text-sm text-gray-100" v-else>- {{ quote.author }}</p>
       </div>
       <div class="mt-auto p-6 pt-1">
         <div class="flex items-start" v-if="quote.github?.available">

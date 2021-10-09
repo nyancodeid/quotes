@@ -1,13 +1,18 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, nextTick } from "vue";
+import { useThrottleFn } from '@vueuse/core'
 import lozad from "lozad";
 
-import { Quote } from "../types.d";
+import { Quote, Search } from "../types.d";
 import { chunk } from "../utils/helpers";
 import quotesRaw from "../assets/quotes.json"
+import QuoteSearch from "./QuoteSearch.vue";
+
+const CHUNKED_SIZE = 8;
 
 let observer: lozad.Observer;
-const quotesChunked = chunk(quotesRaw, 8);
+let allQuotes = ref(quotesRaw)
+let quotesChunked = chunk(allQuotes.value, CHUNKED_SIZE);
 
 const quotes = ref<Quote[]>(quotesChunked[0]);
 const quotesIndex = ref(0);
@@ -46,20 +51,44 @@ function loadQuotes () {
   }
 }
 
-function handleScroll () {
+function onSearchChanged (search: Search) {
+  const filtered = allQuotes.value.filter(quote => {
+    if (search.keyword.length === 0) return true;
+    
+    switch (search.filter) {
+      case "quotes":
+        return (quote.text.toLowerCase().includes(search.keyword.toLowerCase()));
+      case "from":
+        return (quote.author.toLowerCase().includes(search.keyword.toLowerCase()));
+      case "user":
+        if (!quote.github?.available) {
+          return (quote.username.toLowerCase().includes(search.keyword.toLowerCase()));
+        } 
+        return (quote.github.name.toLowerCase().includes(search.keyword.toLowerCase()));
+      default:
+        return true;
+    }
+  })
+
+  quotesChunked = chunk(filtered, CHUNKED_SIZE);
+  quotesIndex.value = 0;
+  quotes.value = quotesChunked[0];
+
+  initializeLozad();
+}
+
+const handleScroll = useThrottleFn(() => {
   if (!galleryElement.value) return;
 
-  if (galleryElement.value.getBoundingClientRect().bottom < (window.innerHeight + 400)) {
+  if (galleryElement.value.getBoundingClientRect().bottom < (window.innerHeight + 800)) {
     if (quotesIndex.value < (quotesChunked.length - 1)) {
       quotesIndex.value = quotesIndex.value + 1;
 
       loadQuotes();
       initializeLozad();
-    } else {
-      window.removeEventListener("scroll", handleScroll);
     }
   }
-}
+}, 100);
 
 onMounted(function () {
   window.addEventListener("scroll", handleScroll);
@@ -74,14 +103,16 @@ onUnmounted(function () {
 
 <template>
   <Dialog v-if="selectedQuote" :quote="selectedQuote" :show="isShowDialog" @close="closeDialog" />
+  
+  <QuoteSearch @searchChanged="onSearchChanged" />
 
   <div ref="galleryElement" class="flex flex-col items-center justify-center">
     <div class="w-11/12 md:w-3/4 mb-[86px]">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-5 md:gap-6 xl:gap-8">
+      <div class="grid grid-flow-row-dense grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-5 md:gap-6 xl:gap-8">
         <section class="flex">
           <div class="w-full relative text-white overflow-hidden rounded-3xl flex shadow-lg p-2 bg-gradient-to-br from-red-100 to-blue-100">
             <div class="w-full flex flex-col dark:bg-gray-800 dark:rounded-2.2xl">
-              <div class="sm:max-w-sm sm:flex-none md:w-auto flex flex-col items-start relative p-6 xl:p-8">
+              <div class="flex flex-col items-start relative p-6 xl:p-8">
                 <h1 class="mb-2 text-gray-800 dark:text-red-100">
                   <i-ri-chat-quote-line class="text-3xl" />
                 </h1>
@@ -104,6 +135,7 @@ onUnmounted(function () {
         </section>
         <section
           class="quote-card--container flex cursor-pointer"
+          :class="{'md:col-span-2': quote.text.length > 150}"
           v-for="quote in quotes"
           :key="quote.id"
           @click="displayDialog(quote)"

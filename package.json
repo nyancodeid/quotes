@@ -1,15 +1,20 @@
 {
   "name": "quotes",
   "description": "Every Day Inspirasional Quotes",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "scripts": {
     "dev": "vite",
     "build": "npm run generate:quotes && vue-tsc --noEmit && vite-ssg build",
     "serve": "vite preview",
     "generate:quotes": "node quotes/generator.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nyancodeid/quotes.git"
+  },
   "dependencies": {
     "@vue/server-renderer": "^3.2.19",
+    "@vueuse/core": "^6.5.3",
     "@vueuse/head": "^0.5.1",
     "lozad": "^1.16.0",
     "vite-ssg": "^0.15.4",

@@ -2,4 +2,5 @@ username: kudaliar032
 quotes:
   - text: 'Everything fails, all the time.'
     author: 'Werner Vogels'
+    author_detail_url: 'https://en.wikipedia.org/wiki/Werner_Vogels'
     created_at: '5 Oktober 2021'

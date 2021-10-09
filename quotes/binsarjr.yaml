@@ -2,10 +2,12 @@ username: binsarjr
 quotes:
   - text: 'Keberhasilan bukanlah milik orang yang pintar. Keberhasilan adalah kepunyaan mereka yang senantiasa berusaha.'
     author: 'B.J. Habibie'
+    author_detail_url: 'https://id.wikipedia.org/wiki/B._J._Habibie'
     created_at: '4 Oktober 2021'
   - text: 'Jangan terjebak dengan masa lalu dan jangan menghalukan masa depan.Pikirkan masa ini dan ambil aksi.'
     author: 'Binsar Dwi Jasuma'
     created_at: '4 Oktober 2021'
   - text: 'Koding aja dulu nanti juga bisa.'
     author: 'Didiet Noor'
+    author_detail_url: 'https://www.linkedin.com/in/didiet'
     created_at: '5 Oktober 2021'
