@@ -109,7 +109,7 @@ onUnmounted(function () {
 </script>
 
 <template>
-  <Dialog v-if="selectedQuote" :quote="selectedQuote" :show="isShowDialog" @close="closeDialog" />
+  <Dialog :quote="selectedQuote" :show="isShowDialog" @close="closeDialog" />
   
   <QuoteSearch @searchChanged="onSearchChanged" />
 
@@ -145,7 +145,7 @@ onUnmounted(function () {
           :class="{'md:col-span-2': quote.text.length > 150}"
           v-for="quote in quotes"
           :key="quote.id"
-          @click="displayDialog(quote)"
+          @click="displayDialog(quote, $event)"
         >
           <quote-card :quote="quote" />
         </section>
