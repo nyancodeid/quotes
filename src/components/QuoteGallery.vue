@@ -21,13 +21,20 @@ const galleryElement = ref<HTMLDivElement>();
 const isShowDialog = ref(false);
 const selectedQuote = ref<Quote>();
 
-function displayDialog(quote: Quote) {
+function displayDialog(quote: Quote, event: Event) {
+  const element = (event.target as HTMLElement);
+
+  if (element.classList.contains('button-save')) return false;
+
   isShowDialog.value = true;
   selectedQuote.value = quote;
 
   initializeLozad();
 }
-function closeDialog(){
+function closeDialog(event: Event) {
+  const element = (event.target as HTMLElement);
+  if (element.classList.contains('button-save')) return false;
+
   isShowDialog.value = false
   selectedQuote.value = undefined;
 }
