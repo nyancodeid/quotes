@@ -1,5 +1,8 @@
 <script setup lang="ts">
-import { toRef, withDefaults } from "vue";
+import { ref, toRef, withDefaults } from "vue";
+import domtoimage from 'dom-to-image-improved';
+import { saveAs } from 'file-saver';
+
 import { Quote } from "../types";
 import { gradients } from "../utils/gradients"; 
 
@@ -14,9 +17,30 @@ const props = withDefaults(defineProps<Props>(), {
 
 const quote = toRef(props, "quote");
 const size = toRef(props, "size");
+const card = ref<HTMLDivElement>();
 
 function getGradientByIndex (index: number = 0) {
   return gradients[index];
+}
+function saveQuoteCardAsImage () {
+  const element = card.value;
+
+  if (!element) return false;
+
+  const saveIcon = element.querySelector("div.button-save");
+  const classLists = [ "md:scale-150" ];
+
+  element.classList.remove(...classLists);
+  saveIcon?.classList.add("invisible");
+
+  domtoimage.toBlob(element, {
+    scale: 1.5
+  }).then((blob: Blob) => {
+    element.classList.add(...classLists);
+    saveIcon?.classList.remove("invisible");
+
+    saveAs(blob, `quotes-nyandev-id-${Date.now()}.png`);
+  });
 }
 function isValidLink (link?: string): boolean {
   if (typeof link !== 'string') return false;
@@ -27,7 +51,7 @@ function isValidLink (link?: string): boolean {
 </script>
 
 <template>
-  <div class="mx-auto w-full relative text-white overflow-hidden flex rounded-3xl shadow-lg md:hover:rotate-1 duration-300 p-2" :class="((size === 'lg') ? 'scale-1 md:scale-150 md:hover:scale-160' : 'md:hover:scale-105') + ' ' + getGradientByIndex(quote.gradient_id)">
+  <div ref="card" class="w-full relative text-white overflow-hidden flex rounded-3xl shadow-lg p-2" :class="((size === 'lg') ? 'md:scale-150 md:hover:scale-160' : 'md:hover:rotate-1 md:hover:scale-105 duration-300') + ' ' + getGradientByIndex(quote.gradient_id)">
     <div class="w-full flex flex-col dark:bg-gray-800 dark:rounded-2.2xl">
       <div class="flex flex-col items-start relative p-6 xl:p-8">
         <h2 class="text-xl font-semibold mb-2">
@@ -40,17 +64,23 @@ function isValidLink (link?: string): boolean {
         <p class="text-sm text-gray-100" v-else>- {{ quote.author }}</p>
       </div>
       <div class="mt-auto p-6 pt-1">
-        <div class="flex items-start" v-if="quote.github?.available">
-          <img :data-src="`${quote.github?.avatar_url}&s=36`" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="lozad rounded-full bg-gray-800 w-[24px] h-[24px] mr-2 mt-[2px]" alt="Github Profile Pic" />
+        <div class="flex items-center" v-if="quote.github?.available">
+          <img :data-src="`${quote.github?.avatar_url}&s=36`" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="lozad rounded-full bg-gray-800 w-[24px] h-[24px] mr-2 mt-[2px] mb-1" alt="Github Profile Pic" />
 
-          <div class="flex flex-col">
-            <a class="text-xs" :href="`https://github.com/${quote.username}`" nofollow="true" target="_blank">{{ quote.github?.name }}</a>
+          <div class="flex flex-col flex-1">
+            <div>
+              <a class="text-xs" :href="`https://github.com/${quote.username}`" nofollow="true" target="_blank">{{ quote.github?.name }}</a>
+            </div>
 
             <div class="flex items-center">
               <span class="text-xs mr-2 text-white text-opacity-80">
                 <span class="font-bold text-white">{{ quote.github?.followers }}</span> followers
               </span>
             </div>
+          </div>
+
+          <div v-if="(size === 'lg')" class="p-2 rounded-full hover:bg-black hover:bg-opacity-25 dark:hover:bg-gray-600 transition-colors button-save cursor-pointer" title="Simpan quote menjadi gambar" @click.stop="saveQuoteCardAsImage">
+            <i-ri-save-line class="button-save cursor-pointer" /> 
           </div>
         </div>
       </div>

@@ -21,13 +21,20 @@ const galleryElement = ref<HTMLDivElement>();
 const isShowDialog = ref(false);
 const selectedQuote = ref<Quote>();
 
-function displayDialog(quote: Quote) {
+function displayDialog(quote: Quote, event: Event) {
+  const element = (event.target as HTMLElement);
+
+  if (element.classList.contains('button-save')) return false;
+
   isShowDialog.value = true;
   selectedQuote.value = quote;
 
   initializeLozad();
 }
-function closeDialog(){
+function closeDialog(event: Event) {
+  const element = (event.target as HTMLElement);
+  if (element.classList.contains('button-save')) return false;
+
   isShowDialog.value = false
   selectedQuote.value = undefined;
 }
@@ -102,7 +109,7 @@ onUnmounted(function () {
 </script>
 
 <template>
-  <Dialog v-if="selectedQuote" :quote="selectedQuote" :show="isShowDialog" @close="closeDialog" />
+  <Dialog :quote="selectedQuote" :show="isShowDialog" @close="closeDialog" />
   
   <QuoteSearch @searchChanged="onSearchChanged" />
 
@@ -138,7 +145,7 @@ onUnmounted(function () {
           :class="{'md:col-span-2': quote.text.length > 150}"
           v-for="quote in quotes"
           :key="quote.id"
-          @click="displayDialog(quote)"
+          @click="displayDialog(quote, $event)"
         >
           <quote-card :quote="quote" />
         </section>

@@ -16,12 +16,16 @@
     "@vue/server-renderer": "^3.2.19",
     "@vueuse/core": "^6.5.3",
     "@vueuse/head": "^0.5.1",
+    "dom-to-image-improved": "^2.8.0",
+    "file-saver": "^2.0.5",
     "lozad": "^1.16.0",
     "vite-ssg": "^0.15.4",
     "vue": "^3.2.16"
   },
   "devDependencies": {
     "@iconify/json": "^1.1.409",
+    "@types/file-saver": "^2.0.3",
+    "@types/html2canvas": "^1.0.0",
     "@types/lozad": "^1.16.1",
     "@vitejs/plugin-vue": "^1.9.2",
     "autoprefixer": "^10.3.6",
