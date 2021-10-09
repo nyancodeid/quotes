@@ -8,3 +8,7 @@ quotes:
     author: "Doris Day"
     author_detail_url: "https://en.wikipedia.org/wiki/Doris_Day"
     created_at: "9 October 2021"
+  - text: "The past is something that we cannot change, but the future is still in our own hands"
+    author: "William Tanuwijaya"
+    author_detail_url: "https://en.wikipedia.org/wiki/William_Tanuwijaya"
+    created_at: "9 October 2021"
