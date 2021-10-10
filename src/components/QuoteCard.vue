@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import { ref, toRef, withDefaults } from "vue";
-import domtoimage from 'dom-to-image-improved';
-import { saveAs } from 'file-saver';
 
 import { Quote } from "../types";
+import { useSaveQuoteCard } from "../utils/save-card";
 import { gradients } from "../utils/gradients"; 
 
 interface Props {
@@ -17,30 +16,11 @@ const props = withDefaults(defineProps<Props>(), {
 
 const quote = toRef(props, "quote");
 const size = toRef(props, "size");
-const card = ref<HTMLDivElement>();
+
+const { card, exportCard } = useSaveQuoteCard();
 
 function getGradientByIndex (index: number = 0) {
   return gradients[index];
-}
-function saveQuoteCardAsImage () {
-  const element = card.value;
-
-  if (!element) return false;
-
-  const saveIcon = element.querySelector("div.button-save");
-  const classLists = [ "md:scale-150" ];
-
-  element.classList.remove(...classLists);
-  saveIcon?.classList.add("invisible");
-
-  domtoimage.toBlob(element, {
-    scale: 1.5
-  }).then((blob: Blob) => {
-    element.classList.add(...classLists);
-    saveIcon?.classList.remove("invisible");
-
-    saveAs(blob, `quotes-nyandev-id-${Date.now()}.png`);
-  });
 }
 function isValidLink (link?: string): boolean {
   if (typeof link !== 'string') return false;
@@ -79,7 +59,7 @@ function isValidLink (link?: string): boolean {
             </div>
           </div>
 
-          <div v-if="(size === 'lg')" class="p-2 rounded-full hover:bg-black hover:bg-opacity-25 dark:hover:bg-gray-600 transition-colors button-save cursor-pointer" title="Simpan quote menjadi gambar" @click.stop="saveQuoteCardAsImage">
+          <div v-if="(size === 'lg')" class="p-2 rounded-full hover:bg-black hover:bg-opacity-25 dark:hover:bg-gray-600 transition-colors button-save cursor-pointer" title="Simpan quote menjadi gambar" @click.stop="exportCard">
             <i-ri-save-line class="button-save cursor-pointer" /> 
           </div>
         </div>
