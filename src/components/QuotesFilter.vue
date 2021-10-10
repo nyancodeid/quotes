@@ -5,7 +5,9 @@ import { onClickOutside } from "@vueuse/core";
 const props = defineProps<{
   filter: string
 }>();
-const emit = defineEmits([ "filterChanged" ]);
+const emit = defineEmits<{
+  (e: "filterChanged", filter: string): void
+}>();
 
 const filterOpen = ref(false);
 const selectedFilter = toRef(props, "filter");

@@ -21,19 +21,19 @@ const galleryElement = ref<HTMLDivElement>();
 const isShowDialog = ref(false);
 const selectedQuote = ref<Quote>();
 
-function displayDialog(quote: Quote, event: Event) {
+function displayDialog(quote: Quote, event: Event): void {
   const element = (event.target as HTMLElement);
 
-  if (element.classList.contains('button-save')) return false;
+  if (element.classList.contains('button-save')) return;
 
   isShowDialog.value = true;
   selectedQuote.value = quote;
 
   initializeLozad();
 }
-function closeDialog(event: Event) {
+function closeDialog(event: Event): void {
   const element = (event.target as HTMLElement);
-  if (element.classList.contains('button-save')) return false;
+  if (element.classList.contains('button-save')) return;
 
   isShowDialog.value = false
   selectedQuote.value = undefined;
@@ -109,9 +109,9 @@ onUnmounted(function () {
 </script>
 
 <template>
-  <Dialog :quote="selectedQuote" :show="isShowDialog" @close="closeDialog" />
+  <quote-dialog :quote="selectedQuote" :show="isShowDialog" @close="closeDialog" />
   
-  <QuoteSearch @searchChanged="onSearchChanged" />
+  <quote-search @searchChanged="onSearchChanged" />
 
   <div ref="galleryElement" class="flex flex-col items-center justify-center">
     <div class="w-11/12 md:w-3/4 mb-[86px]">

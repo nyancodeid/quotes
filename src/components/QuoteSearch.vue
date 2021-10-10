@@ -2,9 +2,13 @@
 import { ref } from "vue";
 import { useDebounceFn } from "@vueuse/core";
 
+import { Search } from "../types";
+
 const filter = ref("quotes");
 
-const emit = defineEmits([ "searchChanged" ]);
+const emit = defineEmits<{
+  (e: "searchChanged", search: Search): void
+}>();
 
 function onFilterChanged (selected: string) {
   filter.value = selected;
