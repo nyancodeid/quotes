@@ -20,7 +20,7 @@ onClickOutside(card, (event) => emit("close", event));
 </script>
 
 <template>
-  <div class="fixed flex h-screen w-full z-10 inset-0 mx-auto overflow-auto justify-center items-center bg-black bg-opacity-50 transform backdrop-filter backdrop-blur-lg" :class="show ? 'scale-100' : 'scale-0'"
+  <div class="fixed flex h-screen w-full z-20 inset-0 mx-auto overflow-auto justify-center items-center bg-black bg-opacity-50 transform backdrop-filter backdrop-blur-lg" :class="show ? 'scale-100' : 'scale-0'"
   >
     <button class="top-3 right-3 fixed p-5 text-white" @click="emit('close', $event)">
       <i-ri-close-fill class="text-2xl" />
