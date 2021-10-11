@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, onUnmounted, nextTick } from "vue";
+import { ref, computed, onMounted, onUnmounted, nextTick } from "vue";
 import { useThrottleFn } from '@vueuse/core'
 import lozad from "lozad";
 
@@ -20,6 +20,8 @@ const galleryElement = ref<HTMLDivElement>();
 
 const isShowDialog = ref(false);
 const selectedQuote = ref<Quote>();
+
+const isEmpty = computed(() => (quotes.value.length === 0 && quotesIndex.value === 0));
 
 function displayDialog(quote: Quote, event: Event): void {
   const element = (event.target as HTMLElement);
@@ -79,7 +81,7 @@ function onSearchChanged (search: Search) {
 
   quotesChunked = chunk(filtered, CHUNKED_SIZE);
   quotesIndex.value = 0;
-  quotes.value = quotesChunked[0];
+  quotes.value = quotesChunked[0] || [];
 
   initializeLozad();
 }
@@ -116,7 +118,7 @@ onUnmounted(function () {
   <div ref="galleryElement" class="flex flex-col items-center justify-center">
     <div class="w-11/12 md:w-3/4 mb-[86px]">
       <div class="grid grid-flow-row-dense grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-5 md:gap-6 xl:gap-8">
-        <section class="flex">
+        <section class="flex" :class="{'md:col-span-2 lg:col-span-3 2xl:col-span-4': isEmpty }">
           <div class="w-full relative text-white overflow-hidden rounded-3xl flex shadow-lg p-2 bg-gradient-to-br from-red-100 to-blue-100">
             <div class="w-full flex flex-col dark:bg-gray-800 dark:rounded-2.2xl">
               <div class="flex flex-col items-start relative p-6 xl:p-8">
@@ -124,8 +126,9 @@ onUnmounted(function () {
                   <i-ri-chat-quote-line class="text-3xl" />
                 </h1>
                 <p class="font-medium text-2xl text-gray-800 dark:text-red-100 mb-4">
-                  Submit quote milikmu dengan berkontribusi langsung di
-                  Repository Github.
+                  <span v-if="!isEmpty">Submit quote milikmu dengan berkontribusi langsung di
+                  Repository Github.</span>
+                  <span v-else>Quote yang kamu cari tidak ditemukan? <br /><span class="text-lg">bantu kami dengan berkontribusi langsung di Repository Github kami.</span></span>
                 </p>
               </div>
               <div class="p-6 pt-1 mt-auto">
