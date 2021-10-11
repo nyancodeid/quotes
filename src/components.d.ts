@@ -8,6 +8,7 @@ declare module 'vue' {
     IHeroiconsSolidChevronDown: typeof import('~icons/heroicons-solid/chevron-down')['default']
     IHeroiconsSolidSearch: typeof import('~icons/heroicons-solid/search')['default']
     IMdiCircleHalfFull: typeof import('~icons/mdi/circle-half-full')['default']
+    IMdiCloseCircleOutline: typeof import('~icons/mdi/close-circle-outline')['default']
     IRiArrowRightLine: typeof import('~icons/ri/arrow-right-line')['default']
     IRiChatQuoteLine: typeof import('~icons/ri/chat-quote-line')['default']
     IRiCloseFill: typeof import('~icons/ri/close-fill')['default']
