@@ -5,6 +5,7 @@
 declare module 'vue' {
   export interface GlobalComponents {
     AppHero: typeof import('./components/AppHero.vue')['default']
+    IHeroiconsOutlineFilter: typeof import('~icons/heroicons-outline/filter')['default']
     IHeroiconsSolidChevronDown: typeof import('~icons/heroicons-solid/chevron-down')['default']
     IHeroiconsSolidSearch: typeof import('~icons/heroicons-solid/search')['default']
     IMdiCircleHalfFull: typeof import('~icons/mdi/circle-half-full')['default']
