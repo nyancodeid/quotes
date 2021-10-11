@@ -15,6 +15,7 @@ let allQuotes = ref(quotesRaw)
 let quotesChunked = chunk(allQuotes.value, CHUNKED_SIZE);
 
 const quotes = ref<Quote[]>(quotesChunked[0]);
+const quotesCount = ref(allQuotes.value.length);
 const quotesIndex = ref(0);
 const galleryElement = ref<HTMLDivElement>();
 
@@ -81,6 +82,7 @@ function onSearchChanged (search: Search) {
 
   quotesChunked = chunk(filtered, CHUNKED_SIZE);
   quotesIndex.value = 0;
+  quotesCount.value = filtered.length;
   quotes.value = quotesChunked[0] || [];
 
   initializeLozad();
@@ -113,7 +115,7 @@ onUnmounted(function () {
 <template>
   <quote-dialog :quote="selectedQuote" :show="isShowDialog" @close="closeDialog" />
   
-  <quote-search @searchChanged="onSearchChanged" />
+  <quote-search :count="quotesCount" @searchChanged="onSearchChanged" />
 
   <div ref="galleryElement" class="flex flex-col items-center justify-center">
     <div class="w-11/12 md:w-3/4 mb-[86px]">
