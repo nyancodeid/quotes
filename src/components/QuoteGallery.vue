@@ -104,7 +104,7 @@ function onSearchChanged (search: Search) {
 const handleScroll = useThrottleFn(() => {
   if (!galleryElement.value) return;
 
-  if (galleryElement.value.getBoundingClientRect().bottom < (window.innerHeight + 800 && !isShowLike.value)) {
+  if (galleryElement.value.getBoundingClientRect().bottom < (window.innerHeight + 800) && !isShowLike.value) {
     if (quotesIndex.value < (quotesChunked.length - 1)) {
       quotesIndex.value = quotesIndex.value + 1;
 
