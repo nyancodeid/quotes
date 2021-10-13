@@ -17,9 +17,9 @@ let quotesChunked = chunk(allQuotes.value, CHUNKED_SIZE);
 
 watch(isShowLike, (_) => {
   if(isShowLike.value){
-    showQuotes.value = quotes.value.filter(quote => isQuoteLike(quote.id))
+    quotes.value = quotes.value.filter(quote => isQuoteLike(quote.id))
   }else{
-    showQuotes.value = quotes.value
+    quotes.value = quotesChunked[0]
   }
 })
 
@@ -104,7 +104,7 @@ function onSearchChanged (search: Search) {
 const handleScroll = useThrottleFn(() => {
   if (!galleryElement.value) return;
 
-  if (galleryElement.value.getBoundingClientRect().bottom < (window.innerHeight + 800)) {
+  if (galleryElement.value.getBoundingClientRect().bottom < (window.innerHeight + 800 && !isShowLike.value)) {
     if (quotesIndex.value < (quotesChunked.length - 1)) {
       quotesIndex.value = quotesIndex.value + 1;
 
@@ -161,7 +161,7 @@ onUnmounted(function () {
         <section
           class="quote-card--container flex cursor-pointer"
           :class="{'md:col-span-2': quote.text.length > 150}"
-          v-for="quote in showQuotes"
+          v-for="quote in quotes"
           :key="quote.id"
           @click="displayDialog(quote, $event)"
         >
