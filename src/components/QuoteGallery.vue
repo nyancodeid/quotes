@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted, nextTick } from "vue";
+import { ref, computed, onMounted, onUnmounted, nextTick, watch } from "vue";
 import { useThrottleFn } from '@vueuse/core'
 import lozad from "lozad";
 
@@ -7,6 +7,7 @@ import { Quote, Search } from "../types.d";
 import { chunk } from "../utils/helpers";
 import quotesRaw from "../assets/quotes.json"
 import QuoteSearch from "./QuoteSearch.vue";
+import {isQuoteLike, isShowLike, showLikeToggle} from "../utils/likeQuote"
 
 const CHUNKED_SIZE = 8;
 
@@ -14,10 +15,19 @@ let observer: lozad.Observer;
 let allQuotes = ref(quotesRaw)
 let quotesChunked = chunk(allQuotes.value, CHUNKED_SIZE);
 
+watch(isShowLike, (_) => {
+  if(isShowLike.value){
+    showQuotes.value = quotes.value.filter(quote => isQuoteLike(quote.id))
+  }else{
+    showQuotes.value = quotes.value
+  }
+})
+
 const quotes = ref<Quote[]>(quotesChunked[0]);
 const quotesCount = ref(allQuotes.value.length);
 const quotesIndex = ref(0);
 const galleryElement = ref<HTMLDivElement>();
+const showQuotes = ref<Quote[]>(quotes.value)
 
 const isShowDialog = ref(false);
 const selectedQuote = ref<Quote>();
@@ -61,6 +71,7 @@ function loadQuotes () {
   }
 }
 
+
 function onSearchChanged (search: Search) {
   const filtered = allQuotes.value.filter(quote => {
     if (search.keyword.length === 0) return true;
@@ -79,6 +90,8 @@ function onSearchChanged (search: Search) {
         return true;
     }
   })
+
+
 
   quotesChunked = chunk(filtered, CHUNKED_SIZE);
   quotesIndex.value = 0;
@@ -148,7 +161,7 @@ onUnmounted(function () {
         <section
           class="quote-card--container flex cursor-pointer"
           :class="{'md:col-span-2': quote.text.length > 150}"
-          v-for="quote in quotes"
+          v-for="quote in showQuotes"
           :key="quote.id"
           @click="displayDialog(quote, $event)"
         >
