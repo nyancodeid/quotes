@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, toRef, withDefaults } from "vue";
+import { toRef, withDefaults } from "vue";
 
 import { Quote } from "../types";
 import { useSaveQuoteCard } from "../utils/save-card";
@@ -45,7 +45,7 @@ function isValidLink (link?: string): boolean {
       </div>
       <div class="mt-auto p-6 pt-1">
         <div class="flex items-center" v-if="quote.github?.available">
-          <img :data-src="`${quote.github?.avatar_url}&s=36`" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="lozad rounded-full bg-gray-800 w-[24px] h-[24px] mr-2 mt-[2px] mb-1" alt="Github Profile Pic" />
+          <img :data-src="`${quote.github?.avatar_url}&s=${size === 'lg' ? '48' : '24'}`" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="lozad rounded-full bg-gray-800 w-[24px] h-[24px] mr-2 mt-[2px] mb-1" alt="Github Profile Pic" />
 
           <div class="flex flex-col flex-1">
             <div>
