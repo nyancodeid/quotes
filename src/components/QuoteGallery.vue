@@ -8,6 +8,7 @@ import { chunk, NotEmpty } from "../utils/helpers";
 import quotesRaw from "../assets/quotes.json";
 
 import { isFavoriteShow, favoriteLists } from "../composables/useFavorite";
+import { useDialog } from "../composables/useDialog";
 
 const CHUNKED_SIZE = 8;
 
@@ -19,30 +20,9 @@ const quotes = ref<Quote[]>(quotesChunked[0]);
 const quotesCount = ref(allQuotes.value.length);
 const quotesIndex = ref(0);
 const galleryElement = ref<HTMLDivElement>();
-const showQuotes = ref<Quote[]>(quotes.value)
-
-const isShowDialog = ref(false);
-const selectedQuote = ref<Quote>();
+const { isShowDialog, selectedQuote, showDialog, closeDialog } = useDialog();
 
 const isEmpty = computed(() => (quotes.value.length === 0 && quotesIndex.value === 0));
-
-function displayDialog(quote: Quote, event: Event): void {
-  const element = (event.target as HTMLElement);
-
-  if (element.classList.contains('button-save')) return;
-
-  isShowDialog.value = true;
-  selectedQuote.value = quote;
-
-  initializeLozad();
-}
-function closeDialog(event: Event): void {
-  const element = (event.target as HTMLElement);
-  if (element.classList.contains('button-save')) return;
-
-  isShowDialog.value = false
-  selectedQuote.value = undefined;
-}
 
 function initializeLozad() {
   nextTick(function () {
@@ -170,7 +150,7 @@ onUnmounted(function () {
           :class="{'md:col-span-2': quote.text.length > 150}"
           v-for="quote in quotes"
           :key="quote.id"
-          @click="displayDialog(quote, $event)"
+          @click.stop="showDialog(quote, $event)"
         >
           <quote-card :quote="quote" />
         </section>
