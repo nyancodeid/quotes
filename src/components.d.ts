@@ -14,6 +14,8 @@ declare module 'vue' {
     IRiChatQuoteLine: typeof import('~icons/ri/chat-quote-line')['default']
     IRiCloseFill: typeof import('~icons/ri/close-fill')['default']
     IRiDoubleQuotesL: typeof import('~icons/ri/double-quotes-l')['default']
+    IRiHeart2Fill: typeof import('~icons/ri/heart2-fill')['default']
+    IRiHeart2Line: typeof import('~icons/ri/heart2-line')['default']
     IRiHeartFill: typeof import('~icons/ri/heart-fill')['default']
     IRiMoonClearLine: typeof import('~icons/ri/moon-clear-line')['default']
     IRiSaveLine: typeof import('~icons/ri/save-line')['default']
