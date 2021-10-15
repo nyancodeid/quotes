@@ -1,27 +1,19 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted, nextTick, watch } from "vue";
-import { useThrottleFn } from '@vueuse/core'
+import { useThrottleFn } from "@vueuse/core";
 import lozad from "lozad";
 
 import { Quote, Search } from "../types.d";
-import { chunk } from "../utils/helpers";
-import quotesRaw from "../assets/quotes.json"
-import QuoteSearch from "./QuoteSearch.vue";
-import {isQuoteLike, isShowLike, showLikeToggle} from "../utils/likeQuote"
+import { chunk, NotEmpty } from "../utils/helpers";
+import quotesRaw from "../assets/quotes.json";
+
+import { isFavoriteShow, favoriteLists } from "../composables/useFavorite";
 
 const CHUNKED_SIZE = 8;
 
 let observer: lozad.Observer;
 let allQuotes = ref<Quote[]>(quotesRaw)
 let quotesChunked = chunk(allQuotes.value, CHUNKED_SIZE);
-
-watch(isShowLike, (_) => {
-  if(isShowLike.value){
-    quotes.value = quotes.value.filter(quote => isQuoteLike(quote.id))
-  }else{
-    quotes.value = quotesChunked[0]
-  }
-})
 
 const quotes = ref<Quote[]>(quotesChunked[0]);
 const quotesCount = ref(allQuotes.value.length);
@@ -71,7 +63,6 @@ function loadQuotes () {
   }
 }
 
-
 function onSearchChanged (search: Search) {
   const filtered = allQuotes.value.filter(quote => {
     if (search.keyword.length === 0) return true;
@@ -106,7 +97,7 @@ function applyfilteredQuotes (filtered: Quote[]) {
 const handleScroll = useThrottleFn(() => {
   if (!galleryElement.value) return;
 
-  if (galleryElement.value.getBoundingClientRect().bottom < (window.innerHeight + 800) && !isShowLike.value) {
+  if (galleryElement.value.getBoundingClientRect().bottom < (window.innerHeight + 800)) {
     if (quotesIndex.value < (quotesChunked.length - 1)) {
       quotesIndex.value = quotesIndex.value + 1;
 
@@ -115,6 +106,20 @@ const handleScroll = useThrottleFn(() => {
     }
   }
 }, 100);
+
+watch([ isFavoriteShow, favoriteLists ], () => {
+  if (isFavoriteShow.value) {
+    const filtered: Quote[] = favoriteLists.value.map(quoteId => {
+      const item = allQuotes.value.find(quote => quote.id === quoteId);
+
+      return !!item ? item : null;
+    }).filter(NotEmpty);
+
+    applyfilteredQuotes(filtered);
+  } else {
+    applyfilteredQuotes(allQuotes.value);
+  }
+});
 
 onMounted(function () {
   window.addEventListener("scroll", handleScroll);
