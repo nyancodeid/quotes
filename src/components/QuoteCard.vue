@@ -2,11 +2,12 @@
 import { ref, toRef, computed, withDefaults } from "vue";
 
 import { Quote } from "../types";
-import { useSaveQuoteCard } from "../utils/save-card";
 import { isValidLink } from "../utils/helpers";
 import { gradients } from "../utils/gradients"; 
 
+import { useSaveCard } from "../composables/useSaveCard";
 import { isFavorite, toggleIsFavorite } from "../composables/useFavorite";
+
 const props = withDefaults(defineProps<{
   quote: Quote;
   size?: string
@@ -17,8 +18,8 @@ const props = withDefaults(defineProps<{
 const quote = toRef(props, "quote");
 const size = toRef(props, "size");
 
+const { card, saveCard } = useSaveCard();
 
-const { card, exportCard } = useSaveQuoteCard();
 const isFavorited = computed(() => isFavorite(quote.value.id));
 
 function getGradientByIndex(index: number = 0) {
