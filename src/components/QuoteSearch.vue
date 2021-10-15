@@ -17,6 +17,11 @@ const search = ref("");
 
 function onFilterChanged (selected: string) {
   filter.value = selected;
+
+  emit('searchChanged', {
+    keyword: search.value,
+    filter: filter.value,
+  });
 }
 const clearSearch = () => {
   search.value = "";
