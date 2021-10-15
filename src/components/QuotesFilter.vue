@@ -26,7 +26,7 @@ function changeFilterHandler (option: string) {
 </script>
 
 <template>
-  <div class="filter-container">
+  <div ref="filterPopupElement" class="filter-container">
     <div class="filter-button--container">
       <button type="button" class="filter-button" id="menu-button" aria-expanded="true" aria-haspopup="true" @click="filterOpen = !filterOpen">
         <span class="hidden md:inline-block">{{ selectedFilter }}</span>
@@ -44,7 +44,7 @@ function changeFilterHandler (option: string) {
       leave-from-class="transform opacity-100 scale-100"
       leave-to-class="transform opacity-0 scale-95"
     >
-      <div ref="filterPopupElement" class="filter-popup--container" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1" v-if="filterOpen">
+      <div class="filter-popup--container" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1" v-if="filterOpen">
         <div class="py-1" role="none">
           <button 
             class="filter-popup--menu-item" 
