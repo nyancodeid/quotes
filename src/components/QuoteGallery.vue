@@ -11,7 +11,7 @@ import QuoteSearch from "./QuoteSearch.vue";
 const CHUNKED_SIZE = 8;
 
 let observer: lozad.Observer;
-let allQuotes = ref(quotesRaw)
+let allQuotes = ref<Quote[]>(quotesRaw)
 let quotesChunked = chunk(allQuotes.value, CHUNKED_SIZE);
 
 const quotes = ref<Quote[]>(quotesChunked[0]);
@@ -74,12 +74,15 @@ function onSearchChanged (search: Search) {
         if (!quote.github?.available) {
           return (quote.username.toLowerCase().includes(search.keyword.toLowerCase()));
         } 
-        return (quote.github.name.toLowerCase().includes(search.keyword.toLowerCase()));
+        return (quote.github?.name.toLowerCase().includes(search.keyword.toLowerCase()));
       default:
         return true;
     }
   })
 
+  applyfilteredQuotes(filtered);
+}
+function applyfilteredQuotes (filtered: Quote[]) {
   quotesChunked = chunk(filtered, CHUNKED_SIZE);
   quotesIndex.value = 0;
   quotesCount.value = filtered.length;
