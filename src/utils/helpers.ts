@@ -7,3 +7,10 @@ export const chunk = <T>(arr: T[], size: number) => {
 }
 
 export const scale = (value: number, factor: number): number => (value * factor);
+
+export const isValidLink = (link?: string): boolean => {
+  if (typeof link !== 'string') return false;
+  if (!link.startsWith('https://') && !link.startsWith('http://')) return false;
+
+  return true;
+}
