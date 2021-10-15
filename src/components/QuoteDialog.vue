@@ -14,9 +14,9 @@ const emit = defineEmits<{
 
 const quote = toRef(props, "quote");
 const show = toRef(props, "show");
-const card = ref<HTMLDivElement>()
+const card = ref<HTMLDivElement>();
 
-onClickOutside(card, (event) => emit("close", event));
+onClickOutside(card, (event) => emit("close", event), { event: "click" });
 </script>
 
 <template>

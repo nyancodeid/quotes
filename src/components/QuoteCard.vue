@@ -1,10 +1,12 @@
 <script setup lang="ts">
-import { toRef, withDefaults } from "vue";
+import { ref, toRef, computed, withDefaults } from "vue";
 
 import { Quote } from "../types";
-import { useSaveQuoteCard } from "../utils/save-card";
 import { isValidLink } from "../utils/helpers";
 import { gradients } from "../utils/gradients"; 
+
+import { useSaveCard } from "../composables/useSaveCard";
+import { isFavorite, toggleIsFavorite } from "../composables/useFavorite";
 
 const props = withDefaults(defineProps<{
   quote: Quote;
@@ -16,9 +18,11 @@ const props = withDefaults(defineProps<{
 const quote = toRef(props, "quote");
 const size = toRef(props, "size");
 
-const { card, exportCard } = useSaveQuoteCard();
+const { card, saveCard } = useSaveCard();
 
-function getGradientByIndex (index: number = 0) {
+const isFavorited = computed(() => isFavorite(quote.value.id));
+
+function getGradientByIndex(index: number = 0) {
   return gradients[index];
 }
 </script>
@@ -38,7 +42,8 @@ function getGradientByIndex (index: number = 0) {
       </div>
       <div class="mt-auto p-6 pt-1">
         <div class="flex items-center" v-if="quote.github?.available">
-          <img v-if="quote.github?.avatar_url" :data-src="`${quote.github?.avatar_url}&s=${size === 'lg' ? '48' : '24'}`" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="lozad rounded-full bg-gray-800 w-[24px] h-[24px] mr-2 mt-[2px] mb-1" alt="Github Profile Pic" />
+          <img v-if="(size !== 'lg')" :data-src="`${quote.github?.avatar_url}&s=24`" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="lozad rounded-full bg-gray-800 w-[24px] h-[24px] mr-2 mt-[2px] mb-1" alt="Github Profile Pic" />
+          <img v-else :src="`${quote.github?.avatar_url}&s=48`" class="rounded-full bg-gray-800 w-[24px] h-[24px] mr-2 mt-[2px] mb-1" alt="Github Profile Pic" />
 
           <div class="flex flex-col flex-1">
             <div>
@@ -52,8 +57,15 @@ function getGradientByIndex (index: number = 0) {
             </div>
           </div>
 
-          <div v-if="(size === 'lg')" class="p-2 rounded-full hover:bg-black hover:bg-opacity-25 dark:hover:bg-gray-600 transition-colors button-save cursor-pointer" title="Simpan quote menjadi gambar" @click.stop="exportCard">
-            <i-ri-save-line class="button-save cursor-pointer" /> 
+          <div class="flex">
+            <div class="p-2 rounded-full hover:bg-black hover:bg-opacity-25 transition-colors hide-on-save button-favorite cursor-pointer" :class="{ 'dark:text-red-500 dark:hover:bg-red-500 dark:hover:bg-opacity-20': isFavorited }" title="Jadikan sebagai yang di favoritkan" @click.stop="toggleIsFavorite(quote.id)">
+              <i-ri-heart-2-fill v-if="isFavorited" />
+              <i-ri-heart-2-line v-else />
+            </div>
+
+            <div v-if="(size === 'lg')" class="p-2 rounded-full hover:bg-black hover:bg-opacity-25 dark:hover:bg-gray-600 transition-colors hide-on-save button-save cursor-pointer" title="Simpan quote menjadi gambar" @click.stop="saveCard">
+              <i-ri-save-line /> 
+            </div>
           </div>
         </div>
       </div>
@@ -61,5 +73,4 @@ function getGradientByIndex (index: number = 0) {
   </div>
 </template>
 
-<style>
-</style>
+<style></style>

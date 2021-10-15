@@ -1,13 +1,13 @@
-import { ref } from 'vue';
-import { toBlob } from 'html-to-image';
-import { changeDpiBlob } from 'changedpi';
-import { saveAs } from 'file-saver';
-import { scale } from './helpers';
+import { ref } from "vue";
+import { toBlob } from "html-to-image";
+import { changeDpiBlob } from "changedpi";
+import { saveAs } from "file-saver";
+import { scale } from "../utils/helpers";
 
-export const useSaveQuoteCard = () => {
+export const useSaveCard = () => {
   const card = ref<HTMLDivElement>();
 
-  const exportCard = async () => {
+  const saveCard = async () => {
     const element = card.value;
 
     if (!element) return;
@@ -20,11 +20,11 @@ export const useSaveQuoteCard = () => {
       height: scale(element.offsetHeight, SCALE_FACTOR),
       style: {
         transform: `scale(${SCALE_FACTOR})`,
-        transformOrigin: 'top left',
-        width: element.offsetWidth + 'px',
-        height: element.offsetHeight + 'px'
+        transformOrigin: "top left",
+        width: element.offsetWidth + "px",
+        height: element.offsetHeight + "px"
       },
-      filter: (node) => !node.classList?.contains('button-save')
+      filter: (node) => !node.classList?.contains("hide-on-save")
     });
 
     if (image) image = await changeDpiBlob(image, BASE_DPI * SCALE_FACTOR);
@@ -35,6 +35,6 @@ export const useSaveQuoteCard = () => {
 
   return {
     card,
-    exportCard
+    saveCard
   }
 }

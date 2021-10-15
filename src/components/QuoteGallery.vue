@@ -1,46 +1,28 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted, nextTick } from "vue";
-import { useThrottleFn } from '@vueuse/core'
+import { ref, computed, onMounted, onUnmounted, nextTick, watch } from "vue";
+import { useThrottleFn } from "@vueuse/core";
 import lozad from "lozad";
 
 import { Quote, Search } from "../types.d";
-import { chunk } from "../utils/helpers";
-import quotesRaw from "../assets/quotes.json"
-import QuoteSearch from "./QuoteSearch.vue";
+import { chunk, NotEmpty } from "../utils/helpers";
+import quotesRaw from "../assets/quotes.json";
+
+import { isFavoriteShow, favoriteLists } from "../composables/useFavorite";
+import { useDialog } from "../composables/useDialog";
 
 const CHUNKED_SIZE = 8;
 
 let observer: lozad.Observer;
-let allQuotes = ref(quotesRaw)
+let allQuotes = ref<Quote[]>(quotesRaw)
 let quotesChunked = chunk(allQuotes.value, CHUNKED_SIZE);
 
 const quotes = ref<Quote[]>(quotesChunked[0]);
 const quotesCount = ref(allQuotes.value.length);
 const quotesIndex = ref(0);
 const galleryElement = ref<HTMLDivElement>();
-
-const isShowDialog = ref(false);
-const selectedQuote = ref<Quote>();
+const { isShowDialog, selectedQuote, showDialog, closeDialog } = useDialog();
 
 const isEmpty = computed(() => (quotes.value.length === 0 && quotesIndex.value === 0));
-
-function displayDialog(quote: Quote, event: Event): void {
-  const element = (event.target as HTMLElement);
-
-  if (element.classList.contains('button-save')) return;
-
-  isShowDialog.value = true;
-  selectedQuote.value = quote;
-
-  initializeLozad();
-}
-function closeDialog(event: Event): void {
-  const element = (event.target as HTMLElement);
-  if (element.classList.contains('button-save')) return;
-
-  isShowDialog.value = false
-  selectedQuote.value = undefined;
-}
 
 function initializeLozad() {
   nextTick(function () {
@@ -74,12 +56,16 @@ function onSearchChanged (search: Search) {
         if (!quote.github?.available) {
           return (quote.username.toLowerCase().includes(search.keyword.toLowerCase()));
         } 
-        return (quote.github.name.toLowerCase().includes(search.keyword.toLowerCase()));
+        return (quote.github?.name.toLowerCase().includes(search.keyword.toLowerCase()));
       default:
         return true;
     }
   })
+  
+  applyfilteredQuotes(filtered);
+}
 
+function applyfilteredQuotes (filtered: Quote[]) {
   quotesChunked = chunk(filtered, CHUNKED_SIZE);
   quotesIndex.value = 0;
   quotesCount.value = filtered.length;
@@ -100,6 +86,20 @@ const handleScroll = useThrottleFn(() => {
     }
   }
 }, 100);
+
+watch([ isFavoriteShow, favoriteLists ], () => {
+  if (isFavoriteShow.value) {
+    const filtered: Quote[] = favoriteLists.value.map(quoteId => {
+      const item = allQuotes.value.find(quote => quote.id === quoteId);
+
+      return !!item ? item : null;
+    }).filter(NotEmpty);
+
+    applyfilteredQuotes(filtered);
+  } else {
+    applyfilteredQuotes(allQuotes.value);
+  }
+});
 
 onMounted(function () {
   window.addEventListener("scroll", handleScroll);
@@ -150,7 +150,7 @@ onUnmounted(function () {
           :class="{'md:col-span-2': quote.text.length > 150}"
           v-for="quote in quotes"
           :key="quote.id"
-          @click="displayDialog(quote, $event)"
+          @click.stop="showDialog(quote, $event)"
         >
           <quote-card :quote="quote" />
         </section>

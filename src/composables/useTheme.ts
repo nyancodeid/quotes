@@ -1,9 +1,9 @@
-import { computed, watch } from 'vue';
-import { usePreferredDark, useStorage } from '@vueuse/core';
-import { Theme } from '../types.d';
+import { computed, watch } from "vue";
+import { usePreferredDark, useStorage } from "@vueuse/core";
+import { Theme } from "../types.d";
 
 export function useTheme () {
-  const theme = useStorage('theme', Theme.System);
+  const theme = useStorage("theme", Theme.System);
   const isSystemDark = usePreferredDark();
 
   watch(isSystemDark, _ => {
@@ -30,13 +30,13 @@ export function useTheme () {
   const titleTheme = computed<string>(() => {
     switch (nextTheme.value) {
       case Theme.Dark:
-        return 'Ubah ke Mode Gelap';
+        return "Ubah ke Mode Gelap";
 
       case Theme.Light:
-        return 'Ubah ke Mode Terang';
+        return "Ubah ke Mode Terang";
     
       default:
-        return 'Ubah ke Tema Sistem';
+        return "Ubah ke Tema Sistem";
     }
   });
 

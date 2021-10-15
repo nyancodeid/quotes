@@ -14,3 +14,7 @@ export const isValidLink = (link?: string): boolean => {
 
   return true;
 }
+
+export const NotEmpty = <T>(value: T | null | undefined): value is T => {
+  return value !== null && value !== undefined;
+}
