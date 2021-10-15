@@ -1,77 +1,8 @@
 <script setup lang="ts">
-import { onMounted, computed, watch } from "vue";
-import { usePreferredDark, useStorage } from "@vueuse/core";
-import { Theme } from "../types.d";
-import { showLikeToggle, isShowLike } from "../utils/likeQuote";
+import { onMounted } from 'vue';
+import { useTheme } from '../utils/theme';
 
-const theme = useStorage("theme", Theme.System);
-const isSystemDark = usePreferredDark();
-
-watch(isSystemDark, (_) => {
-  if (theme.value === Theme.System) {
-    updateTheme();
-  }
-});
-
-const themeSteps = computed<Array<string>>(() => {
-  return isSystemDark.value
-    ? [Theme.System, Theme.Light, Theme.Dark]
-    : [Theme.System, Theme.Dark, Theme.Light];
-});
-
-const themeIndex = computed<number>(() => {
-  return themeSteps.value.findIndex((t) => t === theme.value);
-});
-
-const nextTheme = computed<Theme | string>(() => {
-  const nextThemeIndex = (themeIndex.value + 1) % themeSteps.value.length;
-  return themeSteps.value[nextThemeIndex];
-});
-
-function toggle() {
-  showLikeToggle();
-}
-
-const titleTheme = computed<string>(() => {
-  switch (nextTheme.value) {
-    case Theme.Dark:
-      return "Ubah ke Mode Gelap";
-
-    case Theme.Light:
-      return "Ubah ke Mode Terang";
-
-    default:
-      return "Ubah ke Tema Sistem";
-  }
-});
-
-function toggleTheme() {
-  theme.value = nextTheme.value;
-
-  updateTheme();
-}
-
-function updateTheme() {
-  const element = document.querySelector("#app");
-
-  switch (theme.value) {
-    case Theme.System:
-      if (isSystemDark.value) {
-        element?.classList.add("dark");
-      } else {
-        element?.classList.remove("dark");
-      }
-      break;
-
-    case Theme.Dark:
-      element?.classList.add("dark");
-      break;
-
-    case Theme.Light:
-      element?.classList.remove("dark");
-      break;
-  }
-}
+const { theme, titleTheme, toggleTheme, updateTheme } = useTheme();
 
 onMounted(function () {
   updateTheme();

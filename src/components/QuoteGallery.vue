@@ -12,7 +12,7 @@ import {isQuoteLike, isShowLike, showLikeToggle} from "../utils/likeQuote"
 const CHUNKED_SIZE = 8;
 
 let observer: lozad.Observer;
-let allQuotes = ref(quotesRaw)
+let allQuotes = ref<Quote[]>(quotesRaw)
 let quotesChunked = chunk(allQuotes.value, CHUNKED_SIZE);
 
 watch(isShowLike, (_) => {
@@ -85,14 +85,16 @@ function onSearchChanged (search: Search) {
         if (!quote.github?.available) {
           return (quote.username.toLowerCase().includes(search.keyword.toLowerCase()));
         } 
-        return (quote.github.name.toLowerCase().includes(search.keyword.toLowerCase()));
+        return (quote.github?.name.toLowerCase().includes(search.keyword.toLowerCase()));
       default:
         return true;
     }
   })
+  
+  applyfilteredQuotes(filtered);
+}
 
-
-
+function applyfilteredQuotes (filtered: Quote[]) {
   quotesChunked = chunk(filtered, CHUNKED_SIZE);
   quotesIndex.value = 0;
   quotesCount.value = filtered.length;
@@ -133,7 +135,7 @@ onUnmounted(function () {
   <div ref="galleryElement" class="flex flex-col items-center justify-center">
     <div class="w-11/12 md:w-3/4 mb-[86px]">
       <div class="grid grid-flow-row-dense grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-5 md:gap-6 xl:gap-8">
-        <section class="flex" :class="{'md:col-span-2 lg:col-span-3 2xl:col-span-4': isEmpty }">
+        <section class="flex" :class="{'col-span-full': isEmpty }">
           <div class="w-full relative text-white overflow-hidden rounded-3xl flex shadow-lg p-2 bg-gradient-to-br from-red-100 to-blue-100">
             <div class="w-full flex flex-col dark:bg-gray-800 dark:rounded-2.2xl">
               <div class="flex flex-col items-start relative p-6 xl:p-8">
