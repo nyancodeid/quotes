@@ -32,6 +32,7 @@ async function parseYamlFile(quotes_path, file) {
     const parsed = yaml.load(contains);
     return parsed;
   } catch (err) {
+    console.info(`[GENERATOR]: Error parsed file [${file}]`);
     return null;
   }
 }
