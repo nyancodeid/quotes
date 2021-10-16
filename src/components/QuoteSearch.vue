@@ -85,6 +85,6 @@ debouncedWatch(search, () => {
   @apply text-[11px] leading-[20px] py-0 px-[7px] inline-flex items-center mr-2 md:mr-3 rounded-xl ring-1 text-purple-800 dark:text-purple-400 ring-purple-300 bg-[#e0daf8] dark:bg-[#1c2332];
 }
 .search-main--input {
-  @apply pl-9 pr-4 py-2 border border-l-0 bg-gray-100 focus:bg-gray-50 border-gray-300 text-sm rounded-r-md w-full transition appearance-none outline-none dark:bg-gray-900 dark:text-gray-100 dark:border-gray-500;
+  @apply pl-9 pr-4 py-2 border border-l-0 bg-gray-100 focus:bg-gray-50 border-gray-300 text-sm rounded-l-none rounded-r-md w-full transition appearance-none outline-none dark:bg-gray-900 dark:text-gray-100 dark:border-gray-500;
 }
 </style>
