@@ -126,17 +126,17 @@ onUnmounted(() => {
             <div class="w-full flex flex-col dark:bg-gray-800 dark:rounded-2.2xl">
               <div class="flex flex-col items-start relative p-6 xl:p-8">
                 <h1 class="mb-2 text-gray-800 dark:text-red-100">
-                  <i-ri-chat-quote-line class="text-3xl" />
+                  <i-ri-chat-quote-line class="text-xl md:text-3xl" />
                 </h1>
-                <p class="font-medium text-2xl text-gray-800 dark:text-red-100 mb-4">
+                <p class="font-medium text-lg md:text-2xl text-gray-800 dark:text-red-100 mb-4">
                   <span v-if="!isEmpty">Submit quote milikmu dengan berkontribusi langsung di
                     Repository Github.</span>
-                  <span v-else>Quote yang kamu cari tidak ditemukan? <br /><span class="text-lg">bantu kami dengan berkontribusi langsung di Repository Github kami.</span></span>
+                  <span v-else>Quote yang kamu cari tidak ditemukan? <br /><span class="text-base md:text-lg">bantu kami dengan berkontribusi langsung di Repository Github kami.</span></span>
                 </p>
               </div>
               <div class="p-6 pt-1 mt-auto">
                 <a
-                  class="rounded-xl text-gray-800 bg-gray-300 hover:bg-blue-200 dark:text-red-100 dark:bg-gray-700 dark:hover:bg-gray-900 transition-colors py-2 px-4"
+                  class="rounded-xl text-sm text-gray-800 bg-gray-300 hover:bg-blue-200 dark:text-red-100 dark:bg-gray-700 dark:hover:bg-gray-900 transition-colors py-2 px-4"
                   href="https://github.com/nyancodeid/quotes#contribute"
                 >Kontribusi Sekarang
                   <i-ri-arrow-right-line
