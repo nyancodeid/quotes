@@ -56,7 +56,7 @@ debouncedWatch(search, () => {
           <button v-if="search.length > 0" class="action-badge" @click="clearSearch">
             <i-mdi-close-circle-outline class="inline-block" />
             <span class="ml-1">clear</span>
-          </button>  
+          </button>
         </div>
 
         <input v-model="search" class="search-main--input" type="text" placeholder="Search">
