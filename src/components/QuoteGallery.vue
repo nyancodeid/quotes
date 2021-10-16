@@ -1,120 +1,121 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted, nextTick, watch } from "vue";
-import { useThrottleFn } from "@vueuse/core";
-import lozad from "lozad";
+import { ref, computed, onMounted, onUnmounted, nextTick, watch } from 'vue'
+import { useThrottleFn } from '@vueuse/core'
+import lozad from 'lozad'
 
-import { Quote, Search } from "../types.d";
-import { chunk, NotEmpty } from "../utils/helpers";
-import quotesRaw from "../assets/quotes.json";
+import { Quote, Search } from '../types.d'
+import { chunk, NotEmpty } from '../utils/helpers'
+import quotesRaw from '../assets/quotes.json'
 
-import { isFavoriteShow, favoriteLists } from "../composables/useFavorite";
-import { useDialog } from "../composables/useDialog";
+import { isFavoriteShow, favoriteLists } from '../composables/useFavorite'
+import { useDialog } from '../composables/useDialog'
 
-const CHUNKED_SIZE = 8;
+const CHUNKED_SIZE = 8
 
-let observer: lozad.Observer;
-let allQuotes = ref<Quote[]>(quotesRaw)
-let quotesChunked = chunk(allQuotes.value, CHUNKED_SIZE);
+let observer: lozad.Observer
+const allQuotes = ref<Quote[]>(quotesRaw)
+let quotesChunked = chunk(allQuotes.value, CHUNKED_SIZE)
 
-const quotes = ref<Quote[]>(quotesChunked[0]);
-const quotesCount = ref(allQuotes.value.length);
-const quotesIndex = ref(0);
-const galleryElement = ref<HTMLDivElement>();
-const { isShowDialog, selectedQuote, showDialog, closeDialog } = useDialog();
+const quotes = ref<Quote[]>(quotesChunked[0])
+const quotesCount = ref(allQuotes.value.length)
+const quotesIndex = ref(0)
+const galleryElement = ref<HTMLDivElement>()
+const { isShowDialog, selectedQuote, showDialog, closeDialog } = useDialog()
 
-const isEmpty = computed(() => (quotes.value.length === 0 && quotesIndex.value === 0));
+const isEmpty = computed(() => (quotes.value.length === 0 && quotesIndex.value === 0))
 
 function initializeLozad() {
-  nextTick(function () {
-    observer?.observe();
-  });
+  nextTick(() => {
+    observer?.observe()
+  })
 }
 
-function loadQuotes () {
-  if (quotesIndex.value > (quotesChunked.length - 1)) return;
+function loadQuotes() {
+  if (quotesIndex.value > (quotesChunked.length - 1)) return
 
-  const quotesLists = quotesChunked[quotesIndex.value];
+  const quotesLists = quotesChunked[quotesIndex.value]
 
   if (quotes.value.length > 0) {
     quotes.value = [
       ...quotes.value,
-      ...quotesLists
-    ];
+      ...quotesLists,
+    ]
   }
 }
 
-function onSearchChanged (search: Search) {
-  const filtered = allQuotes.value.filter(quote => {
-    if (search.keyword.length === 0) return true;
-    
+function onSearchChanged(search: Search) {
+  const filtered = allQuotes.value.filter((quote) => {
+    if (search.keyword.length === 0) return true
+
     switch (search.filter) {
-      case "quotes":
-        return (quote.text.toLowerCase().includes(search.keyword.toLowerCase()));
-      case "from":
-        return (quote.author.toLowerCase().includes(search.keyword.toLowerCase()));
-      case "user":
-        if (!quote.github?.available) {
-          return (quote.username.toLowerCase().includes(search.keyword.toLowerCase()));
-        } 
-        return (quote.github?.name.toLowerCase().includes(search.keyword.toLowerCase()));
+      case 'quotes':
+        return (quote.text.toLowerCase().includes(search.keyword.toLowerCase()))
+      case 'from':
+        return (quote.author.toLowerCase().includes(search.keyword.toLowerCase()))
+      case 'user':
+        if (!quote.github?.available)
+          return (quote.username.toLowerCase().includes(search.keyword.toLowerCase()))
+
+        return (quote.github?.name.toLowerCase().includes(search.keyword.toLowerCase()))
       default:
-        return true;
+        return true
     }
   })
-  
-  applyfilteredQuotes(filtered);
+
+  applyfilteredQuotes(filtered)
 }
 
-function applyfilteredQuotes (filtered: Quote[]) {
-  quotesChunked = chunk(filtered, CHUNKED_SIZE);
-  quotesIndex.value = 0;
-  quotesCount.value = filtered.length;
-  quotes.value = quotesChunked[0] || [];
+function applyfilteredQuotes(filtered: Quote[]) {
+  quotesChunked = chunk(filtered, CHUNKED_SIZE)
+  quotesIndex.value = 0
+  quotesCount.value = filtered.length
+  quotes.value = quotesChunked[0] || []
 
-  initializeLozad();
+  initializeLozad()
 }
 
 const handleScroll = useThrottleFn(() => {
-  if (!galleryElement.value) return;
+  if (!galleryElement.value) return
 
   if (galleryElement.value.getBoundingClientRect().bottom < (window.innerHeight + 800)) {
     if (quotesIndex.value < (quotesChunked.length - 1)) {
-      quotesIndex.value = quotesIndex.value + 1;
+      quotesIndex.value = quotesIndex.value + 1
 
-      loadQuotes();
-      initializeLozad();
+      loadQuotes()
+      initializeLozad()
     }
   }
-}, 100);
+}, 100)
 
-watch([ isFavoriteShow, favoriteLists ], () => {
+watch([isFavoriteShow, favoriteLists], () => {
   if (isFavoriteShow.value) {
-    const filtered: Quote[] = favoriteLists.value.map(quoteId => {
-      const item = allQuotes.value.find(quote => quote.id === quoteId);
+    const filtered: Quote[] = favoriteLists.value.map((quoteId) => {
+      const item = allQuotes.value.find(quote => quote.id === quoteId)
 
-      return !!item ? item : null;
-    }).filter(NotEmpty);
+      return item || null
+    }).filter(NotEmpty)
 
-    applyfilteredQuotes(filtered);
-  } else {
-    applyfilteredQuotes(allQuotes.value);
+    applyfilteredQuotes(filtered)
   }
-});
+  else {
+    applyfilteredQuotes(allQuotes.value)
+  }
+})
 
-onMounted(function () {
-  window.addEventListener("scroll", handleScroll);
-  observer = lozad("img.lozad");
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll)
+  observer = lozad('img.lozad')
 
-  initializeLozad();
-});
-onUnmounted(function () {
-  window.removeEventListener("scroll", handleScroll);
-});
+  initializeLozad()
+})
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll)
+})
 </script>
 
 <template>
   <quote-dialog :quote="selectedQuote" :show="isShowDialog" @close="closeDialog" />
-  
+
   <quote-search :count="quotesCount" @searchChanged="onSearchChanged" />
 
   <div ref="galleryElement" class="flex flex-col items-center justify-center">
@@ -129,27 +130,27 @@ onUnmounted(function () {
                 </h1>
                 <p class="font-medium text-2xl text-gray-800 dark:text-red-100 mb-4">
                   <span v-if="!isEmpty">Submit quote milikmu dengan berkontribusi langsung di
-                  Repository Github.</span>
+                    Repository Github.</span>
                   <span v-else>Quote yang kamu cari tidak ditemukan? <br /><span class="text-lg">bantu kami dengan berkontribusi langsung di Repository Github kami.</span></span>
                 </p>
               </div>
               <div class="p-6 pt-1 mt-auto">
                 <a
-                  class="rounded-xl text-gray-800 bg-gray-300 hover:bg-blue-200 dark:text-red-100 dark:bg-gray-700 dark:hover:bg-gray-900 transition-colors py-2 px-4
-                  "
+                  class="rounded-xl text-gray-800 bg-gray-300 hover:bg-blue-200 dark:text-red-100 dark:bg-gray-700 dark:hover:bg-gray-900 transition-colors py-2 px-4"
                   href="https://github.com/nyancodeid/quotes#contribute"
-                  >Kontribusi Sekarang
-                  <i-ri-arrow-right-line class="inline-block"
-                /></a>
+                >Kontribusi Sekarang
+                  <i-ri-arrow-right-line
+                    class="inline-block"
+                  /></a>
               </div>
             </div>
           </div>
         </section>
         <section
-          class="quote-card--container flex cursor-pointer"
-          :class="{'md:col-span-2': quote.text.length > 150}"
           v-for="quote in quotes"
           :key="quote.id"
+          class="quote-card--container flex cursor-pointer"
+          :class="{'md:col-span-2': quote.text.length > 150}"
           @click.stop="showDialog(quote, $event)"
         >
           <quote-card :quote="quote" />

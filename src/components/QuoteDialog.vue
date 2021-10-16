@@ -1,26 +1,28 @@
 <script setup lang="ts">
-import { ref, toRef } from "vue";
-import { onClickOutside } from "@vueuse/core";
-import { Quote } from "../types";
+import { ref, toRef } from 'vue'
+import { onClickOutside } from '@vueuse/core'
+import { Quote } from '../types'
 
 const props = defineProps<{
-  quote?: Quote,
+  quote?: Quote
   show: boolean
-}>();
+}>()
 
 const emit = defineEmits<{
   (e: 'close', event: Event): void
-}>();
+}>()
 
-const quote = toRef(props, "quote");
-const show = toRef(props, "show");
-const card = ref<HTMLDivElement>();
+const quote = toRef(props, 'quote')
+const show = toRef(props, 'show')
+const card = ref<HTMLDivElement>()
 
-onClickOutside(card, (event) => emit("close", event), { event: "click" });
+onClickOutside(card, event => emit('close', event), { event: 'click' })
 </script>
 
 <template>
-  <div class="fixed flex h-screen w-full z-20 inset-0 mx-auto overflow-auto justify-center items-center bg-black bg-opacity-50 transform backdrop-filter backdrop-blur-lg" :class="show ? 'scale-100' : 'scale-0'"
+  <div
+    class="fixed flex h-screen w-full z-20 inset-0 mx-auto overflow-auto justify-center items-center bg-black bg-opacity-50 transform backdrop-filter backdrop-blur-lg"
+    :class="show ? 'scale-100' : 'scale-0'"
   >
     <button class="top-3 right-3 fixed p-5 text-white" @click="emit('close', $event)">
       <i-ri-close-fill class="text-2xl" />

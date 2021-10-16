@@ -1,23 +1,23 @@
-import { ref } from "vue";
-import { useStorage } from "@vueuse/core";
+import { ref } from 'vue'
+import { useStorage } from '@vueuse/core'
 
-export const isFavoriteShow = ref(false);
-export const favoriteLists = useStorage<string[]>("favorite-lists", []);
+export const isFavoriteShow = ref(false)
+export const favoriteLists = useStorage<string[]>('favorite-lists', [])
 
-export function toggleFavoriteShow (){
+export function toggleFavoriteShow() {
   isFavoriteShow.value = !isFavoriteShow.value
 }
 
-export function isFavorite (id: string): boolean {
-  const found = favoriteLists.value.find(quoteId => quoteId === id);
+export function isFavorite(id: string): boolean {
+  const found = favoriteLists.value.find(quoteId => quoteId === id)
 
-  return (!!found);
+  return (!!found)
 }
 
-export function toggleIsFavorite (id: string): void {
-  if (isFavorite(id)) {
-    favoriteLists.value = favoriteLists.value.filter(quoteId => quoteId !== id);
-  } else {
-    favoriteLists.value.push(id);
-  }
+export function toggleIsFavorite(id: string): void {
+  if (isFavorite(id))
+    favoriteLists.value = favoriteLists.value.filter(quoteId => quoteId !== id)
+
+  else
+    favoriteLists.value.push(id)
 }

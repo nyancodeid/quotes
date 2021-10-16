@@ -1,74 +1,74 @@
-import { computed, watch } from "vue";
-import { usePreferredDark, useStorage } from "@vueuse/core";
-import { Theme } from "../types.d";
+import { computed, watch } from 'vue'
+import { usePreferredDark, useStorage } from '@vueuse/core'
+import { Theme } from '../types.d'
 
-export function useTheme () {
-  const theme = useStorage("theme", Theme.System);
-  const isSystemDark = usePreferredDark();
-
-  watch(isSystemDark, _ => {
-    if (theme.value === Theme.System) {
-      updateTheme();
-    }
-  });
+export function useTheme() {
+  const theme = useStorage('theme', Theme.System)
+  const isSystemDark = usePreferredDark()
 
   const themeSteps = computed<Array<string>>(() => {
     return isSystemDark.value
       ? [Theme.System, Theme.Light, Theme.Dark]
-      : [Theme.System, Theme.Dark, Theme.Light];
-  });
+      : [Theme.System, Theme.Dark, Theme.Light]
+  })
 
   const themeIndex = computed<number>(() => {
-    return themeSteps.value.findIndex(t => t === theme.value);
-  });
+    return themeSteps.value.findIndex(t => t === theme.value)
+  })
 
   const nextTheme = computed<Theme | string>(() => {
-    const nextThemeIndex = (themeIndex.value + 1) % themeSteps.value.length;
-    return themeSteps.value[nextThemeIndex];
-  });
+    const nextThemeIndex = (themeIndex.value + 1) % themeSteps.value.length
+    return themeSteps.value[nextThemeIndex]
+  })
 
   const titleTheme = computed<string>(() => {
     switch (nextTheme.value) {
       case Theme.Dark:
-        return "Ubah ke Mode Gelap";
+        return 'Ubah ke Mode Gelap'
 
       case Theme.Light:
-        return "Ubah ke Mode Terang";
-    
+        return 'Ubah ke Mode Terang'
+
       default:
-        return "Ubah ke Tema Sistem";
+        return 'Ubah ke Tema Sistem'
     }
-  });
-
-  const toggleTheme = () => {
-    theme.value = nextTheme.value;
-
-    updateTheme();
-  }
+  })
 
   const updateTheme = () => {
-    const element = document.documentElement;
+    const element = document.documentElement
 
     switch (theme.value) {
       case Theme.System:
-        if (isSystemDark.value) {
-          element?.classList.add("dark");
-        } else {
-          element?.classList.remove("dark");
-        }
-        break;
+        if (isSystemDark.value)
+          element?.classList.add('dark')
+
+        else
+          element?.classList.remove('dark')
+
+        break
 
       case Theme.Dark:
-        element?.classList.add("dark");
-        break;
+        element?.classList.add('dark')
+        break
 
       case Theme.Light:
-        element?.classList.remove("dark");
-        break;
+        element?.classList.remove('dark')
+        break
     }
   }
 
+  const toggleTheme = () => {
+    theme.value = nextTheme.value
+
+    updateTheme()
+  }
+
+  watch(isSystemDark, () => {
+    if (theme.value === Theme.System)
+      updateTheme()
+  })
+
   return {
-    theme, titleTheme, toggleTheme, updateTheme
+    theme, titleTheme, toggleTheme, updateTheme,
   }
 }
