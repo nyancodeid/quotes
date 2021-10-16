@@ -8,3 +8,7 @@ quotes:
     author: "Abdurrahman Wahid"
     author_detail_url: "https://en.wikipedia.org/wiki/Abdurrahman_Wahid"
     created_at: "14 Oktober 2021"
+  - text: "Try not to become a man of success, but rather try to become a man of value"
+    author: "Albert Einstein"
+    author_detail_url: "https://en.wikipedia.org/wiki/Albert_Einstein"
+    created_at: "16 Oktober 2021"
