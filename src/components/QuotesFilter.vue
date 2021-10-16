@@ -32,6 +32,7 @@ function changeFilterHandler(option: string) {
         id="menu-button"
         type="button"
         class="filter-button"
+        aria-label="Search Filter"
         aria-expanded="true"
         aria-haspopup="true"
         @click="filterOpen = !filterOpen"

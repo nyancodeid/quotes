@@ -24,7 +24,7 @@ onClickOutside(card, event => emit('close', event), { event: 'click' })
     class="fixed flex h-screen w-full z-20 inset-0 mx-auto overflow-auto justify-center items-center bg-black bg-opacity-50 transform backdrop-filter backdrop-blur-lg"
     :class="show ? 'scale-100' : 'scale-0'"
   >
-    <button class="top-3 right-3 fixed p-5 text-white" @click="emit('close', $event)">
+    <button class="top-3 right-3 fixed p-5 text-white" aria-label="Close Quote Modal" @click="emit('close', $event)">
       <i-ri-close-fill class="text-2xl" />
     </button>
     <transition

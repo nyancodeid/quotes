@@ -14,6 +14,7 @@ onMounted(() => {
   <div class="relative pt-12 pb-4 md:py-12 flex flex-col items-center">
     <div class="absolute right-4 top-4 md:right-8 md:top-8 space-x-3">
       <button
+        aria-label="Show Favorite Quotes"
         class="button-toggle-fav p-2 border rounded-full"
         :class="`${isFavoriteShow ? 'text-red-500' : 'text-gray-900 dark:text-gray-100'}`"
         @click="toggleFavoriteShow"
@@ -22,6 +23,7 @@ onMounted(() => {
         <i-ri-heart-2-line v-else />
       </button>
       <button
+        aria-label="Toggle Theme"
         class="button-toggle-theme p-2 border rounded-full text-gray-900 dark:text-gray-100"
         :title="titleTheme"
         @click="toggleTheme"
@@ -41,16 +43,16 @@ onMounted(() => {
 
     <div class="w-11/12 md:w-1/2 flex justify-center mb-4">
       <a class="mr-1" href="https://github.com/nyancodeid/quotes">
-        <img src="https://img.shields.io/badge/github-quotes-brightgreen?logo=github&style=flat" alt="Repository">
+        <img src="https://img.shields.io/badge/github-quotes-brightgreen?logo=github&style=flat" width="109" height="20" alt="Repository">
       </a>
       <a class="mr-1" href="https://github.com/nyancodeid/quotes/pulls">
-        <img src="https://img.shields.io/badge/PRs-welcome-brightgreen" alt="Repository">
+        <img src="https://img.shields.io/badge/PRs-welcome-brightgreen" width="90" height="20" alt="Repository">
       </a>
       <a class="mr-1" href="https://github.com/nyancodeid/quotes/issues">
-        <img src="https://img.shields.io/github/issues/nyancodeid/quotes" alt="Repository">
+        <img src="https://img.shields.io/github/issues/nyancodeid/quotes" width="90" height="20" alt="Repository">
       </a>
       <a href="https://github.com/nyancodeid/quotes/pulls">
-        <img src="https://img.shields.io/github/issues-pr/nyancodeid/quotes" alt="Repository">
+        <img src="https://img.shields.io/github/issues-pr/nyancodeid/quotes" width="128" height="20" alt="Repository">
       </a>
     </div>
   </div>
