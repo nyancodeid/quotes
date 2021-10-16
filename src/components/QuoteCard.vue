@@ -47,7 +47,7 @@ function getGradientByIndex(index = 0) {
       <div class="mt-auto p-6 pt-1">
         <div v-if="quote.github?.available" class="flex items-center">
           <img v-if="(size !== 'lg')" :data-src="`${quote.github?.avatar_url}&s=24`" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="lozad rounded-full bg-gray-800 w-[24px] h-[24px] mr-2 mt-[2px] mb-1" alt="Github Profile Pic" />
-          <img v-else :src="`${quote.github?.avatar_url}&s=48`" class="rounded-full bg-gray-800 w-[24px] h-[24px] mr-2 mt-[2px] mb-1" alt="Github Profile Pic" />
+          <img v-else :src="`${quote.github?.avatar_url}&s=72`" class="rounded-full bg-gray-800 w-[24px] h-[24px] mr-2 mt-[2px] mb-1" alt="Github Profile Pic" />
 
           <div class="flex flex-col flex-1">
             <div>

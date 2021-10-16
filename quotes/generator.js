@@ -137,7 +137,7 @@ async function getGithubProfiles(users) {
   fragment UserFragment on User {
     login
     name
-    avatarUrl(size: 36)
+    avatarUrl
     followers {
       totalCount
     }
