@@ -1,36 +1,45 @@
 <script setup lang="ts">
-import { ref, toRef } from "vue";
-import { onClickOutside } from "@vueuse/core";
+import { ref, toRef } from 'vue'
+import { onClickOutside } from '@vueuse/core'
 
 const props = defineProps<{
   filter: string
-}>();
+}>()
 const emit = defineEmits<{
-  (e: "filterChanged", filter: string): void
-}>();
+  (e: 'filterChanged', filter: string): void
+}>()
 
-const filterOpen = ref(false);
-const selectedFilter = toRef(props, "filter");
-const filterPopupElement = ref<HTMLDivElement>(); 
-const filterOptions = ref(["quotes", "from", "user"]);
+const filterOpen = ref(false)
+const selectedFilter = toRef(props, 'filter')
+const filterPopupElement = ref<HTMLDivElement>()
+const filterOptions = ref(['quotes', 'from', 'user'])
 
 onClickOutside(filterPopupElement, () => {
-  if (filterOpen.value) filterOpen.value = false;
-});
+  if (filterOpen.value) filterOpen.value = false
+})
 
-function changeFilterHandler (option: string) {
-  emit('filterChanged', option);
+function changeFilterHandler(option: string) {
+  emit('filterChanged', option)
 
-  filterOpen.value = false;
+  filterOpen.value = false
 }
 </script>
 
 <template>
-  <div class="filter-container">
+  <div ref="filterPopupElement" class="filter-container">
     <div class="filter-button--container">
-      <button type="button" class="filter-button" id="menu-button" aria-expanded="true" aria-haspopup="true" @click="filterOpen = !filterOpen">
-        {{ selectedFilter }}
-        <i-heroicons-solid-chevron-down class="-mr-1 ml-2 h-5 w-5" />
+      <button
+        id="menu-button"
+        type="button"
+        class="filter-button"
+        aria-expanded="true"
+        aria-haspopup="true"
+        @click="filterOpen = !filterOpen"
+      >
+        <span class="hidden md:inline-block">{{ selectedFilter }}</span>
+        <i-heroicons-outline-filter class="h-5 w-5 md:hidden" />
+
+        <i-heroicons-solid-chevron-down class="hidden md:inline-block -mr-1 ml-2 h-5 w-5" />
       </button>
     </div>
 
@@ -42,17 +51,26 @@ function changeFilterHandler (option: string) {
       leave-from-class="transform opacity-100 scale-100"
       leave-to-class="transform opacity-0 scale-95"
     >
-      <div ref="filterPopupElement" class="filter-popup--container" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1" v-if="filterOpen">
+      <div
+        v-if="filterOpen"
+        class="filter-popup--container"
+        role="menu"
+        aria-orientation="vertical"
+        aria-labelledby="menu-button"
+        tabindex="-1"
+      >
         <div class="py-1" role="none">
-          <button 
-            class="filter-popup--menu-item" 
+          <button
+            v-for="option in filterOptions"
+            :key="option"
+            class="filter-popup--menu-item"
             role="menuitem"
             tabindex="-1"
-            v-for="option in filterOptions" 
-            :key="option" 
             :class="{ active: (option === selectedFilter) }"
             @click="changeFilterHandler(option)"
-          >{{ option }}</button>
+          >
+            {{ option }}
+          </button>
         </div>
       </div>
     </transition>
@@ -64,10 +82,10 @@ function changeFilterHandler (option: string) {
   @apply relative inline-block text-left;
 }
 .filter-button--container {
-  @apply w-[106px];
+  @apply w-[48px] md:w-[106px];
 }
 .filter-button--container button.filter-button {
-  @apply inline-flex justify-between w-full rounded-l-md border border-gray-300 dark:border-gray-500 shadow-sm px-4 py-2 bg-gray-100 dark:bg-gray-700 text-sm font-medium capitalize text-gray-700 dark:text-white hover:bg-gray-50 dark:hover:border-gray-200 transition-colors duration-300 focus:outline-none;
+  @apply inline-flex justify-between w-full rounded-l-md border border-gray-300 dark:border-gray-500 shadow-sm px-3 md:px-4 py-2 bg-gray-100 dark:bg-gray-700 text-sm font-medium capitalize text-gray-700 dark:text-white hover:bg-gray-50 dark:hover:border-gray-200 transition-colors duration-300 focus:outline-none;
 }
 .filter-popup--container {
   @apply origin-top-left absolute z-10 left-0 mt-2 w-56 rounded-md shadow-lg bg-white dark:bg-gray-900 ring-1 ring-black dark:ring-gray-500 ring-opacity-5 focus:outline-none;
