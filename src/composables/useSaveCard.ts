@@ -4,7 +4,7 @@ import { changeDpiBlob } from 'changedpi'
 import { saveAs } from 'file-saver'
 import { scale } from '../utils/helpers'
 
-export const useSaveCard = () => {
+const useSaveCard = () => {
   const card = ref<HTMLDivElement>()
 
   const saveCard = async() => {
@@ -38,3 +38,5 @@ export const useSaveCard = () => {
     saveCard,
   }
 }
+
+export default useSaveCard

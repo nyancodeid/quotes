@@ -2,7 +2,7 @@ import { computed, watch } from 'vue'
 import { usePreferredDark, useStorage } from '@vueuse/core'
 import { Theme } from '../types.d'
 
-export function useTheme() {
+const useTheme = () => {
   const theme = useStorage('theme', Theme.System)
   const isSystemDark = usePreferredDark()
 
@@ -72,3 +72,5 @@ export function useTheme() {
     theme, titleTheme, toggleTheme, updateTheme,
   }
 }
+
+export default useTheme

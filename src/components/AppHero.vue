@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
-import { useTheme } from '../composables/useTheme'
+import useTheme from '../composables/useTheme'
 import { isFavoriteShow, toggleFavoriteShow } from '../composables/useFavorite'
 
 const { theme, titleTheme, toggleTheme, updateTheme } = useTheme()

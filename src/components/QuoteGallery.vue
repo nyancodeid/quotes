@@ -8,7 +8,7 @@ import { chunk, NotEmpty } from '../utils/helpers'
 import quotesRaw from '../assets/quotes.json'
 
 import { isFavoriteShow, favoriteLists } from '../composables/useFavorite'
-import { useDialog } from '../composables/useDialog'
+import useDialog from '../composables/useDialog'
 
 const CHUNKED_SIZE = 8
 

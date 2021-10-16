@@ -2,7 +2,7 @@ import { ref } from 'vue'
 
 import { Quote } from '../types.d'
 
-export const useDialog = () => {
+const useDialog = () => {
   const isShowDialog = ref(false)
   const selectedQuote = ref<Quote>()
 
@@ -28,3 +28,5 @@ export const useDialog = () => {
     closeDialog,
   }
 }
+
+export default useDialog
