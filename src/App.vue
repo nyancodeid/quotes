@@ -1,5 +1,5 @@
 <template>
-  <div class="app-container dark:bg-gray-800 transition-colors">
+  <div class="app-container transition-colors">
     <app-hero />
     <quote-gallery />
 

@@ -1,11 +1,13 @@
 {
   "name": "quotes",
-  "description": "Every Day Inspirasional Quotes",
-  "version": "1.2.0",
+  "description": "Every Day Inspirasional Quotes build with Vite, Vue 3, Typescript, and TailwindCSS",
+  "version": "1.3.0",
   "scripts": {
     "dev": "vite",
     "build": "npm run generate:quotes && vue-tsc --noEmit && vite-ssg build",
     "serve": "vite preview",
+    "lint": "eslint \"**/*.{vue,ts,js}\"",
+    "lint:fix": "eslint \"**/*.{vue,ts,js}\" --fix",
     "generate:quotes": "node quotes/generator.js"
   },
   "repository": {
@@ -16,13 +18,15 @@
     "@vue/server-renderer": "^3.2.19",
     "@vueuse/core": "^6.5.3",
     "@vueuse/head": "^0.5.1",
-    "dom-to-image-improved": "^2.8.0",
+    "changedpi": "^1.0.4",
     "file-saver": "^2.0.5",
+    "html-to-image": "^1.9.0",
     "lozad": "^1.16.0",
     "vite-ssg": "^0.15.4",
     "vue": "^3.2.16"
   },
   "devDependencies": {
+    "@antfu/eslint-config": "^0.9.0",
     "@iconify/json": "^1.1.409",
     "@types/file-saver": "^2.0.3",
     "@types/html2canvas": "^1.0.0",
@@ -31,6 +35,7 @@
     "autoprefixer": "^10.3.6",
     "critters": "^0.0.10",
     "dotenv-flow": "^3.2.0",
+    "eslint": "^7.32.0",
     "js-yaml": "^4.1.0",
     "md5": "^2.3.0",
     "node-fetch": "^2.6.1",

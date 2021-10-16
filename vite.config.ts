@@ -12,13 +12,13 @@ export default defineConfig({
       extensions: ['vue'],
       include: [/\.vue$/, /\.vue\?vue/],
       resolvers: [
-        IconsResolver()
+        IconsResolver(),
       ],
-      dts: "src/components.d.ts"
+      dts: 'src/components.d.ts',
     }),
   ],
   ssgOptions: {
     script: 'async',
-    formatting: 'minify'
-  }
+    formatting: 'minify',
+  },
 })
