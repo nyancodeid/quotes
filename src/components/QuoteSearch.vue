@@ -1,43 +1,43 @@
 <script setup lang="ts">
-import { ref, toRef } from "vue";
-import { debouncedWatch } from "@vueuse/core";
+import { ref, toRef } from 'vue'
+import { debouncedWatch } from '@vueuse/core'
 
-import { Search } from "../types";
+import { Search } from '../types'
 
 const props = defineProps<{
   count: number
-}>();
+}>()
 const emit = defineEmits<{
-  (e: "searchChanged", search: Search): void
-}>();
+  (e: 'searchChanged', search: Search): void
+}>()
 
-const count = toRef(props, "count");
-const filter = ref("quotes");
-const search = ref("");
+const count = toRef(props, 'count')
+const filter = ref('quotes')
+const search = ref('')
 
-function onFilterChanged (selected: string) {
-  filter.value = selected;
+function onFilterChanged(selected: string) {
+  filter.value = selected
 
   emit('searchChanged', {
     keyword: search.value,
     filter: filter.value,
-  });
+  })
 }
 const clearSearch = () => {
-  search.value = "";
+  search.value = ''
 
   emit('searchChanged', {
-    keyword: "",
+    keyword: '',
     filter: filter.value,
-  });
+  })
 }
 
 debouncedWatch(search, () => {
   emit('searchChanged', {
     keyword: search.value,
     filter: filter.value,
-  });
-}, { debounce: 100 });
+  })
+}, { debounce: 100 })
 </script>
 
 <template>
@@ -50,10 +50,12 @@ debouncedWatch(search, () => {
 
         <div class="search-main--action">
           <span class="action-badge"><b>{{ count }}</b> quotes</span>
-          <button v-if="search.length > 0" class="action-badge" @click="clearSearch"><i-mdi-close-circle-outline class="inline-block" /> clear</button>  
+          <button v-if="search.length > 0" class="action-badge" @click="clearSearch">
+            <i-mdi-close-circle-outline class="inline-block" /> clear
+          </button>
         </div>
 
-        <input class="search-main--input" type="text" v-model="search" placeholder="Search">
+        <input v-model="search" class="search-main--input" type="text" placeholder="Search">
       </div>
     </div>
   </div>

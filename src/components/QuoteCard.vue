@@ -1,29 +1,29 @@
 <script setup lang="ts">
-import { ref, toRef, computed, withDefaults } from "vue";
+import { ref, toRef, computed, withDefaults } from 'vue'
 
-import { Quote } from "../types";
-import { isValidLink } from "../utils/helpers";
-import { gradients } from "../utils/gradients"; 
+import { Quote } from '../types'
+import { isValidLink } from '../utils/helpers'
+import { gradients } from '../utils/gradients'
 
-import { useSaveCard } from "../composables/useSaveCard";
-import { isFavorite, toggleIsFavorite } from "../composables/useFavorite";
+import { useSaveCard } from '../composables/useSaveCard'
+import { isFavorite, toggleIsFavorite } from '../composables/useFavorite'
 
 const props = withDefaults(defineProps<{
-  quote: Quote;
+  quote: Quote
   size?: string
 }>(), {
-  size: "sm"
-});
+  size: 'sm',
+})
 
-const quote = toRef(props, "quote");
-const size = toRef(props, "size");
+const quote = toRef(props, 'quote')
+const size = toRef(props, 'size')
 
-const { card, saveCard } = useSaveCard();
+const { card, saveCard } = useSaveCard()
 
-const isFavorited = computed(() => isFavorite(quote.value.id));
+const isFavorited = computed(() => isFavorite(quote.value.id))
 
-function getGradientByIndex(index: number = 0) {
-  return gradients[index];
+function getGradientByIndex(index = 0) {
+  return gradients[index]
 }
 </script>
 
@@ -37,11 +37,15 @@ function getGradientByIndex(index: number = 0) {
         <p class="font-medium text-white mb-4" :class="(size === 'lg') ? 'text-xl md:text-lg' : 'text-lg'">
           {{ quote.text }}
         </p>
-        <p class="text-sm text-gray-100" v-if="isValidLink(quote.author_detail_url)">- <a :href="quote.author_detail_url" target="_blank" :title="`Read more about ${quote.author}`" rel="noreferrer nofollow" class="pb-1 hover:border-b-2 hover:border-gray-200">{{ quote.author }}</a></p>
-        <p class="text-sm text-gray-100" v-else>- {{ quote.author }}</p>
+        <p v-if="isValidLink(quote.author_detail_url)" class="text-sm text-gray-100">
+          - <a :href="quote.author_detail_url" target="_blank" :title="`Read more about ${quote.author}`" rel="noreferrer nofollow" class="pb-1 hover:border-b-2 hover:border-gray-200">{{ quote.author }}</a>
+        </p>
+        <p v-else class="text-sm text-gray-100">
+          - {{ quote.author }}
+        </p>
       </div>
       <div class="mt-auto p-6 pt-1">
-        <div class="flex items-center" v-if="quote.github?.available">
+        <div v-if="quote.github?.available" class="flex items-center">
           <img v-if="(size !== 'lg')" :data-src="`${quote.github?.avatar_url}&s=24`" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" class="lozad rounded-full bg-gray-800 w-[24px] h-[24px] mr-2 mt-[2px] mb-1" alt="Github Profile Pic" />
           <img v-else :src="`${quote.github?.avatar_url}&s=48`" class="rounded-full bg-gray-800 w-[24px] h-[24px] mr-2 mt-[2px] mb-1" alt="Github Profile Pic" />
 
@@ -64,7 +68,7 @@ function getGradientByIndex(index: number = 0) {
             </div>
 
             <div v-if="(size === 'lg')" class="p-2 rounded-full hover:bg-black hover:bg-opacity-25 dark:hover:bg-gray-600 transition-colors hide-on-save button-save cursor-pointer" title="Simpan quote menjadi gambar" @click.stop="saveCard">
-              <i-ri-save-line /> 
+              <i-ri-save-line />
             </div>
           </div>
         </div>
