@@ -38,7 +38,7 @@ function getGradientByIndex(index = 0) {
           {{ quote.text }}
         </p>
         <p v-if="isValidLink(quote.author_detail_url)" class="text-sm text-gray-100">
-          - <a :href="quote.author_detail_url" target="_blank" :title="`Read more about ${quote.author}`" rel="noreferrer nofollow" class="pb-1 hover:border-b-2 hover:border-gray-200">{{ quote.author }}</a>
+          - <a :href="quote.author_detail_url" target="_blank" :title="`Read more about ${quote.author}`" rel="noreferrer noopener" class="pb-1 hover:border-b-2 hover:border-gray-200">{{ quote.author }}</a>
         </p>
         <p v-else class="text-sm text-gray-100">
           - {{ quote.author }}
@@ -66,7 +66,7 @@ function getGradientByIndex(index = 0) {
 
           <div class="flex flex-col flex-1">
             <div>
-              <a class="text-xs" :href="`https://github.com/${quote.username}`" nofollow="true" target="_blank">{{ quote.github?.name }}</a>
+              <a class="text-xs" :href="`https://github.com/${quote.username}`" nofollow="true" target="_blank" rel="noopener">{{ quote.github?.name }}</a>
             </div>
 
             <div class="flex items-center">
