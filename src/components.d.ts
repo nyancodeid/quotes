@@ -4,7 +4,7 @@
 
 declare module 'vue' {
   export interface GlobalComponents {
-    AppHero: typeof import('./components/AppHero.vue')['default']
+    AppHero: typeof import('C:/Users/Usuario/OneDrive/Área de Trabalho/HacktoberFest2021/quotes/src/components/AppHero.vue')['default']
     IHeroiconsOutlineFilter: typeof import('~icons/heroicons-outline/filter')['default']
     IHeroiconsSolidChevronDown: typeof import('~icons/heroicons-solid/chevron-down')['default']
     IHeroiconsSolidSearch: typeof import('~icons/heroicons-solid/search')['default']
@@ -20,11 +20,11 @@ declare module 'vue' {
     IRiMoonClearLine: typeof import('~icons/ri/moon-clear-line')['default']
     IRiSaveLine: typeof import('~icons/ri/save-line')['default']
     IRiSunLine: typeof import('~icons/ri/sun-line')['default']
-    QuoteCard: typeof import('./components/QuoteCard.vue')['default']
-    QuoteDialog: typeof import('./components/QuoteDialog.vue')['default']
-    QuoteGallery: typeof import('./components/QuoteGallery.vue')['default']
-    QuoteSearch: typeof import('./components/QuoteSearch.vue')['default']
-    QuotesFilter: typeof import('./components/QuotesFilter.vue')['default']
+    QuoteCard: typeof import('C:/Users/Usuario/OneDrive/Área de Trabalho/HacktoberFest2021/quotes/src/components/QuoteCard.vue')['default']
+    QuoteDialog: typeof import('C:/Users/Usuario/OneDrive/Área de Trabalho/HacktoberFest2021/quotes/src/components/QuoteDialog.vue')['default']
+    QuoteGallery: typeof import('C:/Users/Usuario/OneDrive/Área de Trabalho/HacktoberFest2021/quotes/src/components/QuoteGallery.vue')['default']
+    QuoteSearch: typeof import('C:/Users/Usuario/OneDrive/Área de Trabalho/HacktoberFest2021/quotes/src/components/QuoteSearch.vue')['default']
+    QuotesFilter: typeof import('C:/Users/Usuario/OneDrive/Área de Trabalho/HacktoberFest2021/quotes/src/components/QuotesFilter.vue')['default']
   }
 }
 
