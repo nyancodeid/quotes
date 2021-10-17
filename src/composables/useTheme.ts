@@ -5,7 +5,7 @@ import { Theme } from '../types.d'
 const useTheme = () => {
   const theme = useStorage('theme', Theme.System)
   const isSystemDark = usePreferredDark()
-  const isThemeMounted = ref<Boolean>(false)
+  const isThemeMounted = ref<boolean>(false)
 
   const themeSteps = computed<Array<string>>(() => {
     return isSystemDark.value
