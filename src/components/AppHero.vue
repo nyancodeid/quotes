@@ -29,7 +29,7 @@ onMounted(() => {
         :title="titleTheme"
         @click="toggleTheme"
       >
-        <span :class="`${isThemeMounted ? 'visible' : 'invisible'}`">
+        <span :class="{ 'invisible': !isThemeMounted }">
           <i-mdi-circle-half-full v-if="theme === 'system'" />
           <i-ri-sun-line v-else-if="theme === 'light'" />
           <i-ri-moon-clear-line v-else />
