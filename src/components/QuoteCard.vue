@@ -58,9 +58,7 @@ function getGradientByIndex(index = 0) {
           <img
             v-else
             :src="`${quote.github?.avatar_url}&s=72`"
-            class="rounded-full bg-gray-800 mr-2 mt-[2px] mb-1"
-            width="24"
-            height="24"
+            class="rounded-full bg-gray-800 w-[24px] h-[24px] mr-2 mt-[2px] mb-1"
             alt="Github Profile Pic"
           />
 
