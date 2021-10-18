@@ -1,0 +1,18 @@
+username: retr00exe
+quotes:
+  - text: "Most good programmers do programming not because they expect to get paid or get adulation by the public, but because it is fun to program."
+    author: "Linus Torvalds"
+    author_detail_url: "https://id.wikipedia.org/wiki/Linus_Torvalds"
+    created_at: "18 Oktober 2021"
+  - text: "Sometimes, the elegant implementation is just a function. Not a method. Not a class. Not a framework. Just a function."
+    author: "John Carmack"
+    author_detail_url: "https://en.wikipedia.org/wiki/John_Carmack"
+    created_at: "18 Oktober 2021"
+  - text: "If you're changing the world, you're working on important things. You're excited to get up in the morning."
+    author: "Larry Page"
+    author_detail_url: "https://en.wikipedia.org/wiki/Larry_Page"
+    created_at: "18 Oktober 2021"
+  - text: "The purpose of software engineering is to control complexity, not to create it."
+    author: "Pamela Zave"
+    author_detail_url: "https://en.wikipedia.org/wiki/Pamela_Zave"
+    created_at: "18 Oktober 2021"
