@@ -9,6 +9,7 @@ export interface Quote {
   username: string
   github?: GithubProfile
   gradient_id: number
+  slug: string
   text: string
   author: string
   author_detail_url?: string
