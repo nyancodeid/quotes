@@ -22,7 +22,7 @@ declare module 'vue' {
     IRiSunLine: typeof import('~icons/ri/sun-line')['default']
     QuoteCard: typeof import('./components/QuoteCard.vue')['default']
     QuoteDialog: typeof import('./components/QuoteDialog.vue')['default']
-    QuoteGallery: typeof import('./components/QuoteGallery.vue')['default']
+    QuoteGallery: typeof import('./views/QuoteGallery.vue')['default']
     QuoteSearch: typeof import('./components/QuoteSearch.vue')['default']
     QuotesFilter: typeof import('./components/QuotesFilter.vue')['default']
   }
