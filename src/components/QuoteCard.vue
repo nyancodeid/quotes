@@ -28,19 +28,19 @@ function getGradientByIndex(index = 0) {
 </script>
 
 <template>
-  <div ref="card" class="w-full relative text-white overflow-hidden flex rounded-3xl shadow-lg p-2" :class="((size === 'lg') ? 'md:scale-150 md:hover:scale-160' : 'md:hover:rotate-1 md:hover:scale-105 duration-300') + ' ' + getGradientByIndex(quote.gradient_id)">
+  <div ref="card" class="w-full relative text-white overflow-hidden flex rounded-3xl shadow-lg p-2" :class="`card-size--${size} ` + getGradientByIndex(quote.gradient_id)">
     <div class="w-full flex flex-col dark:bg-gray-800 dark:rounded-2.2xl">
-      <div class="flex flex-col items-start relative p-6 xl:p-8">
-        <h2 class="text-xl font-semibold mb-2">
+      <div class="card-content flex flex-col items-start relative p-6 xl:p-8">
+        <h2 class="card-content--icon">
           <i-ri-double-quotes-l />
         </h2>
-        <p class="font-medium text-white mb-4" :class="(size === 'lg') ? 'text-xl md:text-lg' : 'text-lg'">
+        <p class="card-content--text">
           {{ quote.text }}
         </p>
-        <p v-if="isValidLink(quote.author_detail_url)" class="text-sm text-gray-100">
+        <p v-if="isValidLink(quote.author_detail_url)" class="card-content--author text-sm text-gray-100">
           - <a :href="quote.author_detail_url" target="_blank" :title="`Read more about ${quote.author}`" rel="noreferrer noopener" class="pb-1 hover:border-b-2 hover:border-gray-200">{{ quote.author }}</a>
         </p>
-        <p v-else class="text-sm text-gray-100">
+        <p v-else class="card-content--author text-sm text-gray-100">
           - {{ quote.author }}
         </p>
       </div>
@@ -90,4 +90,31 @@ function getGradientByIndex(index = 0) {
   </div>
 </template>
 
-<style></style>
+<style>
+.card-size--sm {
+  @apply md:hover:rotate-1 md:hover:scale-105 duration-300;
+}
+.card-size--lg {
+  @apply md:scale-150 md:hover:scale-150;
+}
+
+.card-content .card-content--icon {
+  @apply text-xl font-semibold mb-2;
+}
+.card-content .card-content--text {
+  @apply font-medium text-white mb-4;
+}
+.card-size--sm .card-content .card-content--text {
+  @apply text-lg;
+}
+.card-size--lg .card-content .card-content--text {
+  @apply text-xl md:text-lg;
+}
+.card-size--xl .card-content .card-content--icon,
+.card-size--xl .card-content .card-content--text {
+  @apply text-3xl leading-relaxed;
+}
+.card-size--xl .card-content .card-content--author {
+  @apply text-xl;
+}
+</style>
