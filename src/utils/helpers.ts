@@ -18,3 +18,12 @@ export const isValidLink = (link?: string): boolean => {
 export const NotEmpty = <T>(value: T | null | undefined): value is T => {
   return value !== null && value !== undefined
 }
+
+export const shuffle = <T>(items: T[]) => {
+  for (let i = items.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+
+    [items[i], items[j]] = [items[j], items[i]]
+  }
+  return items
+}
