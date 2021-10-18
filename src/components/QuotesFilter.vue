@@ -95,6 +95,9 @@ function changeFilterHandler(option: string) {
   @apply block w-full text-left px-4 py-2 text-sm capitalize text-gray-700 dark:text-gray-300;
 }
 .filter-popup--container button.filter-popup--menu-item.active {
-  @apply bg-gray-100 dark:bg-gray-800 text-gray-900 dark:text-gray-200;
+  @apply bg-gray-100 dark:bg-gray-700 text-gray-900 dark:text-gray-100;
+}
+.filter-popup--container button.filter-popup--menu-item:hover {
+  @apply bg-gray-50 dark:bg-gray-800 text-gray-800 dark:text-gray-200;
 }
 </style>
