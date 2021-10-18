@@ -23,7 +23,8 @@
     "html-to-image": "^1.9.0",
     "lozad": "^1.16.0",
     "vite-ssg": "^0.15.4",
-    "vue": "^3.2.16"
+    "vue": "^3.2.16",
+    "vue-router": "^4.0.12"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.9.0",
