@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { onMounted } from 'vue'
+import { useRoute } from 'vue-router'
 import useTheme from '../composables/useTheme'
 import { isFavoriteShow, toggleFavoriteShow } from '../composables/useFavorite'
 
+const route = useRoute()
 const { theme, titleTheme, toggleTheme, updateTheme } = useTheme()
 
 onMounted(() => {
@@ -14,6 +16,7 @@ onMounted(() => {
   <div class="relative pt-12 pb-4 md:py-12 flex flex-col items-center">
     <div class="absolute right-4 top-4 md:right-8 md:top-8 space-x-3">
       <button
+        v-if="route.name === 'quote-gallery'"
         aria-label="Show Favorite Quotes"
         class="button-toggle-fav p-2 border rounded-full"
         :class="`${isFavoriteShow ? 'text-red-500' : 'text-gray-900 dark:text-gray-100'}`"
@@ -38,7 +41,7 @@ onMounted(() => {
       #Quote's
     </h1>
     <p class="w-11/12 md:w-1/2 mb-4 text-sm md:text-xl text-center text-gray-500 dark:text-gray-50">
-      Kumpulan quote oleh orang-orang hebat di dunia sebagai penasehat dan penyemangat. Dibuat untuk memeriahkan event Hacktoberfest 2021.
+      Kumpulan quote oleh orang-orang hebat di dunia sebagai penasehat dan penyemangat. Dibuat untuk event Hacktoberfest 2021.
     </p>
 
     <div class="w-11/12 md:w-1/2 flex justify-center mb-4">
