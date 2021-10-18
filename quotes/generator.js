@@ -85,6 +85,7 @@ function getGithubProfileByHash(users, username) {
   const user = users.find(([hash]) => (hash === getHashUsername(username)))
 
   if (!user) return { available: false }
+  if (!user[1]) return { available: false }
 
   return {
     available: true,
@@ -106,6 +107,7 @@ async function getGithubProfileByUsername(username) {
   })
 
   if (res.status === 404) {
+    console.info(`[GENERATOR]: user [${username}] is unavailable!`)
     return {
       available: false,
     }
