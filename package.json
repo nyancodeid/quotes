@@ -8,6 +8,8 @@
     "serve": "vite preview",
     "lint": "eslint \"**/*.{vue,ts,js}\"",
     "lint:fix": "eslint \"**/*.{vue,ts,js}\" --fix",
+    "format:yaml": "prettier --list-different quotes/*.{yml,yaml}",
+    "format:yaml:fix": "prettier --write quotes/*.{yml,yaml}",
     "generate:quotes": "node quotes/generator.js"
   },
   "repository": {
@@ -40,6 +42,7 @@
     "md5": "^2.3.0",
     "node-fetch": "^2.6.1",
     "postcss": "^8.3.8",
+    "prettier": "^2.4.1",
     "tailwindcss": "^2.2.16",
     "typescript": "^4.4.3",
     "unplugin-icons": "^0.12.7",
