@@ -1,10 +1,10 @@
 username: prahenstark
 quotes:
-  - text: 'Enjoy every minute of life. Never second-guess life.'
-    author: 'Michael Jordan'
-    author_detail_url: 'https://en.wikiquote.org/wiki/Michael_Jordan'
-    created_at: '17 October 2021'
-  - text: 'You need to know what to do when the sun is not shining.'
-    author: 'Robert Downey Jr'
-    author_detail_url: 'https://en.wikipedia.org/wiki/Robert_Downey_Jr.'
-    created_at: '17 October 2021'
+  - text: "Enjoy every minute of life. Never second-guess life."
+    author: "Michael Jordan"
+    author_detail_url: "https://en.wikiquote.org/wiki/Michael_Jordan"
+    created_at: "17 October 2021"
+  - text: "You need to know what to do when the sun is not shining."
+    author: "Robert Downey Jr"
+    author_detail_url: "https://en.wikipedia.org/wiki/Robert_Downey_Jr."
+    created_at: "17 October 2021"

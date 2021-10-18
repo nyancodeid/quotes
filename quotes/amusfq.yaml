@@ -1,10 +1,10 @@
 username: amusfq
 quotes:
   - text: "Well, maybe it is stupid but it's also a little dumb."
-    author: 'Patrick Star'
-    author_detail_url: 'https://spongebob.fandom.com/wiki/Patrick_Star'
-    created_at: '11 Oktober 2021'
-  - text: 'Knowledge can never replace friendship. I prefer to be an idiot!'
-    author: 'Patrick Star'
-    author_detail_url: 'https://spongebob.fandom.com/wiki/Patrick_Star'
-    created_at: '11 Oktober 2021'
+    author: "Patrick Star"
+    author_detail_url: "https://spongebob.fandom.com/wiki/Patrick_Star"
+    created_at: "11 Oktober 2021"
+  - text: "Knowledge can never replace friendship. I prefer to be an idiot!"
+    author: "Patrick Star"
+    author_detail_url: "https://spongebob.fandom.com/wiki/Patrick_Star"
+    created_at: "11 Oktober 2021"

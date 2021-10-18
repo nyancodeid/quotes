@@ -1,10 +1,10 @@
 username: ayoub3bidi
 quotes:
-  - text: 'Code is like humor. When you have to explain it, it’s bad.'
-    author: 'Cory House'
-    author_detail_url: 'https://www.linkedin.com/in/coryhouse/'
-    created_at: 'October 17, 2021'
-  - text: 'When you want something, all the universe conspires in helping you to achieve it.'
-    author: 'Paulo Coelho - The Alchemist'
-    author_detail_url: 'https://www.goodreads.com/author/show/566.Paulo_Coelho'
-    created_at: 'October 17, 2021'
+  - text: "Code is like humor. When you have to explain it, it’s bad."
+    author: "Cory House"
+    author_detail_url: "https://www.linkedin.com/in/coryhouse/"
+    created_at: "October 17, 2021"
+  - text: "When you want something, all the universe conspires in helping you to achieve it."
+    author: "Paulo Coelho - The Alchemist"
+    author_detail_url: "https://www.goodreads.com/author/show/566.Paulo_Coelho"
+    created_at: "October 17, 2021"
