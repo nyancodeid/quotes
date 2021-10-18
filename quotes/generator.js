@@ -69,6 +69,7 @@ async function generateQuotesFile(quotes) {
         username: user.username,
         github,
         gradient_id: randomGradientIndex(),
+        slug: slugify(quote.text),
         ...quote,
       })
     }
@@ -173,6 +174,30 @@ function randomGradientIndex() {
   return Math.floor(Math.random() * (AVAILABLE_GRADIENT_VARIANTS - 0) + 0)
 }
 
+function slugify(title) {
+  const excludedWords = ['is', 'am', 'are', 'a', 'an', 'the', 'and', 'or', 'but', 'in', 'as']
+
+  if (title.length > 100) {
+    for (const word of excludedWords.sort().reverse()) {
+      const regex = RegExp(`(^|\\p{P}| )${word}($|\\p{P}| )`, 'gi')
+
+      title = title.replace(regex, ' ')
+    }
+  }
+
+  title = title
+    .normalize('NFD') // split an accented letter in the base letter and the acent
+    .replace(/[\u0300-\u036F]/g, '') // remove all previously split accents
+    .toLowerCase()
+    .trim()
+    .replace(/[^a-z0-9 ]/g, '') // remove all chars not letters, numbers and spaces (to be replaced)
+    .replace(/\s+/g, '-') // separator
+
+  if (title.length > 80) return title.slice(0, 80)
+
+  return title
+}
+
 (async function() {
   console.time('[GENERATOR]: Time Execution')
 
@@ -184,7 +209,7 @@ function randomGradientIndex() {
 
   console.info(`[GENERATOR]: ${quotes.length} quotes has been generated.`)
 
-  const file_contents = JSON.stringify(shuffleQuotes(quotes))
+  const file_contents = JSON.stringify(shuffleQuotes(quotes), null, 2)
 
   fs.writeFileSync(
     path.join(__dirname, '../src/assets/quotes.json'),
