@@ -13,7 +13,8 @@ jobs:
     - run: npm run format:yaml:fix
     - run: npm run lint:fix
     - name: Commit changes
-      if: steps.auto-commit-action.outputs.changes_detected == 'true'
+      if: always()
       uses: stefanzweifel/git-auto-commit-action@v4.1.2
       with:
+        skip_dirty_check: false
         commit_message: "style: apply formatting changes"
