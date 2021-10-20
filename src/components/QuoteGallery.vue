@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted, nextTick, watch } from 'vue'
-import { useThrottleFn, onKeyUp } from '@vueuse/core'
+import { useThrottleFn } from '@vueuse/core'
 import lozad from 'lozad'
 
 import { Quote, Search } from '../types.d'
@@ -105,7 +105,6 @@ watch([isFavoriteShow, favoriteLists], () => {
 onMounted(() => {
   window.addEventListener('scroll', handleScroll)
   observer = lozad('img.lozad')
-  onKeyUp('Escape', closeDialog)
 
   initializeLozad()
 })
