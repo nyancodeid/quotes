@@ -1,0 +1,10 @@
+username: pratap360
+quotes:
+  - text: "Talk is cheap. Show me the code"
+    author: "Linus Torvalds"
+    author_detail_url: "https://en.wikipedia.org/wiki/Linus_Torvalds"
+    created_at: "19 October 2021"
+  - text: "If you want to be Strong Learn to live Alone"
+    author: "Rowan Atkinson"
+    author_detail_url: "https://en.wikipedia.org/wiki/Rowan_Atkinson"
+    created_at: "19 October 2021"
