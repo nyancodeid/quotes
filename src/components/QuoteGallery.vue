@@ -105,7 +105,7 @@ watch([isFavoriteShow, favoriteLists], () => {
 onMounted(() => {
   window.addEventListener('scroll', handleScroll)
   observer = lozad('img.lozad')
-  onKeyUp('Escape', (e) => closeDialog(e))
+  onKeyUp('Escape', closeDialog)
 
   initializeLozad()
 })
