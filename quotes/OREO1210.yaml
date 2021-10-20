@@ -1,10 +1,10 @@
 username: OREO1210
 quotes:
-  - text: 'Your childhood hunger is the one that never leaves you.'
-    author: 'Chitra Banerjee Divakaruni'
-    author_detail_url: 'https://en.wikipedia.org/wiki/Chitra_Banerjee_Divakaruni'
-    created_at: '20 October 2021'
-  - text: 'I was looking for the key for years, but the door was always open.'
-    author: 'Aravind Adiga'
-    author_detail_url: 'https://en.wikipedia.org/wiki/Aravind_Adiga'
-    created_at: '20 October 2021'
+  - text: "Your childhood hunger is the one that never leaves you."
+    author: "Chitra Banerjee Divakaruni"
+    author_detail_url: "https://en.wikipedia.org/wiki/Chitra_Banerjee_Divakaruni"
+    created_at: "20 October 2021"
+  - text: "I was looking for the key for years, but the door was always open."
+    author: "Aravind Adiga"
+    author_detail_url: "https://en.wikipedia.org/wiki/Aravind_Adiga"
+    created_at: "20 October 2021"
