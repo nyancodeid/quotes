@@ -1,0 +1,20 @@
+name: Continuous Delivery
+on:
+  push:
+    branches: main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        ref: ${{ github.head_ref }}
+    - run: npm ci
+    - run: npm run format:yaml:fix
+    - run: npm run lint:fix
+    - name: Commit changes
+      if: always()
+      uses: stefanzweifel/git-auto-commit-action@v4.1.2
+      with:
+        skip_dirty_check: false
+        commit_message: "style: apply formatting changes"

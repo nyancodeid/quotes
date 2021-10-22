@@ -1,10 +1,10 @@
 username: pujakesuma
 quotes:
-  - text: 'Usaha dan keberanian tidak cukup tanpa tujuan dan arah perencanaan.'
-    author: 'John F. Kennedy'
-    author_detail_url: 'https://id.wikipedia.org/wiki/John_F._Kennedy'
-    created_at: '3 Oktober 2021'
-  - text: 'Sedikit lebih berbeda lebih baik daripada sedikit lebih baik.'
-    author: 'Pandji Pragiwaksono'
-    author_detail_url: 'https://id.wikipedia.org/wiki/Pandji_Pragiwaksono'
-    created_at: '3 Oktober 2021'
+  - text: "Usaha dan keberanian tidak cukup tanpa tujuan dan arah perencanaan."
+    author: "John F. Kennedy"
+    author_detail_url: "https://id.wikipedia.org/wiki/John_F._Kennedy"
+    created_at: "3 Oktober 2021"
+  - text: "Sedikit lebih berbeda lebih baik daripada sedikit lebih baik."
+    author: "Pandji Pragiwaksono"
+    author_detail_url: "https://id.wikipedia.org/wiki/Pandji_Pragiwaksono"
+    created_at: "3 Oktober 2021"

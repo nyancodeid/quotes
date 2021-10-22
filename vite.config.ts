@@ -9,10 +9,16 @@ export default defineConfig({
     Vue(),
     Icons({ compiler: 'vue3' }),
     Components({
-      resolvers: IconsResolver(),
+      extensions: ['vue'],
+      include: [/\.vue$/, /\.vue\?vue/],
+      resolvers: [
+        IconsResolver(),
+      ],
+      dts: 'src/components.d.ts',
     }),
   ],
   ssgOptions: {
-    script: 'async'
+    script: 'async',
+    formatting: 'minify',
   },
 })
