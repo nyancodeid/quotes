@@ -1,0 +1,10 @@
+username: richardoey
+quotes:
+  - text: "When you have eliminated the impossible, whatever remains, however improbable, must be the truth."
+    author: "Sherlock Holmes"
+    author_detail_url: "https://en.wikipedia.org/wiki/Sherlock_Holmes"
+    created_at: "19 Oktober 2021"
+  - text: "Resentment is like drinking poison and then hoping it will kill your enemies."
+    author: "Nelson Mandela"
+    author_detail_url: "https://id.wikipedia.org/wiki/Nelson_Mandela"
+    created_at: "20 Oktober 2021"

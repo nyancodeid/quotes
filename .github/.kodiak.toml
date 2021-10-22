@@ -1,0 +1,9 @@
+version = 1
+
+[merge]
+automerge_label = "auto-merge"
+blocking_labels = [ "invalid", "need-update" ]
+
+[merge.message]
+include_pr_number = true
+include_coauthors = true

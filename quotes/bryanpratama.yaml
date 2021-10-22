@@ -1,11 +1,14 @@
 username: bryanpratama
 quotes:
-  - text: 'Bila kita mau sukses, walau kita melihat beberapa kesempatan sekaligus, tetaplah fokus ke satu tujuan. Bila kita serakah dan ingin semuanya, bisa jadi malah tak ada yang kita dapat.'
-    author: 'Jack Ma'
-    created_at: '5 Oktober 2021'
-  - text: 'Jika Anda belum pernah mencobanya, bagaimana Anda akan tahu jika ada kesempatan?'
-    author: 'Jack Ma'
-    created_at: '5 Oktober 2021'
-  - text: 'Saat usia muda, buatlah kesalahan. Jangan khawatir.'
-    author: 'Jack Ma'
-    created_at: '5 Oktober 2021'
+  - text: "Bila kita mau sukses, walau kita melihat beberapa kesempatan sekaligus, tetaplah fokus ke satu tujuan. Bila kita serakah dan ingin semuanya, bisa jadi malah tak ada yang kita dapat."
+    author: "Jack Ma"
+    author_detail_url: "https://id.wikipedia.org/wiki/Jack_Ma"
+    created_at: "5 Oktober 2021"
+  - text: "Jika Anda belum pernah mencobanya, bagaimana Anda akan tahu jika ada kesempatan?"
+    author: "Jack Ma"
+    author_detail_url: "https://id.wikipedia.org/wiki/Jack_Ma"
+    created_at: "5 Oktober 2021"
+  - text: "Saat usia muda, buatlah kesalahan. Jangan khawatir."
+    author: "Jack Ma"
+    author_detail_url: "https://id.wikipedia.org/wiki/Jack_Ma"
+    created_at: "5 Oktober 2021"

@@ -1,5 +1,6 @@
 username: mohsulthana
 quotes:
-  - text: 'Kau harus hidup di dalam cinta, sebab manusia yang mati tidak dapat melakukan apa pun. Siapa yang hidup? Dia yang dilahirkan oleh Cinta.'
-    author: 'Jalaluddin Rumi'
-    created_at: '4 Oktober 2021'
+  - text: "Kau harus hidup di dalam cinta, sebab manusia yang mati tidak dapat melakukan apa pun. Siapa yang hidup? Dia yang dilahirkan oleh Cinta."
+    author: "Jalaluddin Rumi"
+    author_detail_url: "https://id.wikipedia.org/wiki/Jalaluddin_Rumi"
+    created_at: "4 Oktober 2021"
