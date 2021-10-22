@@ -12,3 +12,7 @@ quotes:
     author: "William Tanuwijaya"
     author_detail_url: "https://en.wikipedia.org/wiki/William_Tanuwijaya"
     created_at: "9 October 2021"
+  - text: "You might never fail on the scale I did, but some failure in life is inevitable. It is impossible to live without failing at something, unless you live so cautiously that you might as well not have lived at all – in which case, you fail by default."
+    author: "J.K Rowling"
+    author_detail_url: "http://www.jkrowling.com"
+    created_at: "22 October 2021"
