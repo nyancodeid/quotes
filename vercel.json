@@ -2,7 +2,6 @@
   "routes": [
     { "handle": "filesystem" },
     { "src": "/quote/(?<id>[^/]*)", "dest": "/quote/$id.html" },
-    { "src": "/quote/(.*)", "status": 404, "dest": "/not-found.html" },
     { "src": "/(.*)", "status": 404, "dest": "/not-found.html" }
   ]
 }
