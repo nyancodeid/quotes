@@ -1,0 +1,10 @@
+username: adzkar
+quotes:
+  - text: "When one door closes, another opens. But we often look so long and so regretfully upon the closed door that we do not see the one which has opened for us."
+    author: "Alexander Graham Bell"
+    author_detail_url: "https://www.britannica.com/biography/Alexander-Graham-Bell"
+    created_at: "24 Oktober 2021"
+  - text: "Two things are infinite: the universe and human stupidity; and I'm not sure about the universe."
+    author: "Albert Einstein"
+    author_detail_url: "https://en.wikipedia.org/wiki/Albert_Einstein"
+    created_at: "24 Oktober 2021"
