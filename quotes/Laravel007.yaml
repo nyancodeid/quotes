@@ -1,6 +1,6 @@
 username: Laravel007
 quotes:
-  - text: 'Aku tidak pernah sekalipun menyesali diamku. Tetapi, aku berkali-kali menyesali bicaraku.'
-    author: 'Umar bin Khattab'
-    author_detail_url: 'https://id.wikipedia.org/wiki/Umar_bin_Khattab'
-    created_at: '4 Oktober 2021'
+  - text: "Aku tidak pernah sekalipun menyesali diamku. Tetapi, aku berkali-kali menyesali bicaraku."
+    author: "Umar bin Khattab"
+    author_detail_url: "https://id.wikipedia.org/wiki/Umar_bin_Khattab"
+    created_at: "4 Oktober 2021"

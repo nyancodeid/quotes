@@ -5,10 +5,11 @@ import useTheme from '../composables/useTheme'
 import { isFavoriteShow, toggleFavoriteShow } from '../composables/useFavorite'
 
 const route = useRoute()
-const { theme, titleTheme, toggleTheme, updateTheme } = useTheme()
+const { theme, titleTheme, isThemeMounted, toggleTheme, updateTheme } = useTheme()
 
 onMounted(() => {
   updateTheme()
+  isThemeMounted.value = true
 })
 </script>
 
@@ -31,9 +32,11 @@ onMounted(() => {
         :title="titleTheme"
         @click="toggleTheme"
       >
-        <i-mdi-circle-half-full v-if="theme === 'system'" />
-        <i-ri-sun-line v-else-if="theme === 'light'" />
-        <i-ri-moon-clear-line v-else />
+        <span :class="{ 'invisible': !isThemeMounted }">
+          <i-mdi-circle-half-full v-if="theme === 'system'" />
+          <i-ri-sun-line v-else-if="theme === 'light'" />
+          <i-ri-moon-clear-line v-else />
+        </span>
       </button>
     </div>
 

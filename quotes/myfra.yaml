@@ -1,9 +1,9 @@
 username: myfra
 quotes:
-  - text: 'Berikan aku 1000 orang tua niscaya akan kucabut semeru dari akarnya. Berikan aku satu pemuda niscaya akan kuguncangkan dunia.'
-    author: 'Ir. Soekarno'
-    author_detail_url: 'https://id.wikipedia.org/wiki/Soekarno'
-    created_at: '4 Oktober 2021'
-  - text: 'Miliki impian, tujuan dan cita-cita.'
-    author: 'Tomy Wibowo'
-    created_at: '4 Oktober 2021'
+  - text: "Berikan aku 1000 orang tua niscaya akan kucabut semeru dari akarnya. Berikan aku satu pemuda niscaya akan kuguncangkan dunia."
+    author: "Ir. Soekarno"
+    author_detail_url: "https://id.wikipedia.org/wiki/Soekarno"
+    created_at: "4 Oktober 2021"
+  - text: "Miliki impian, tujuan dan cita-cita."
+    author: "Tomy Wibowo"
+    created_at: "4 Oktober 2021"

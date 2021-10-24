@@ -1,11 +1,11 @@
 name: Continuous integration
-on: pull_request
+on:
+  pull_request:
+    branches: [ main ]
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Install Node Modules
-      run: npm install
-    - name: Run ESLint
-      run: npm run lint
+    - run: npm ci
+    - run: npm run lint

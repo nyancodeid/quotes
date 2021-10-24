@@ -1,10 +1,11 @@
-import { computed, watch } from 'vue'
+import { computed, watch, ref } from 'vue'
 import { usePreferredDark, useStorage } from '@vueuse/core'
 import { Theme } from '../types.d'
 
 const useTheme = () => {
   const theme = useStorage('theme', Theme.System)
   const isSystemDark = usePreferredDark()
+  const isThemeMounted = ref<boolean>(false)
 
   const themeSteps = computed<string[]>(() => {
     return isSystemDark.value
@@ -69,7 +70,7 @@ const useTheme = () => {
   })
 
   return {
-    theme, titleTheme, toggleTheme, updateTheme,
+    theme, titleTheme, isThemeMounted, toggleTheme, updateTheme,
   }
 }
 

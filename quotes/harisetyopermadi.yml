@@ -1,7 +1,6 @@
-username: harysetyopermadi 
-quotes: 
-  - text: 'Life is what happens when you’re busy making other plans.' 
-    author: 'John Lennon'
-    author_detail_url: 'https://id.wikipedia.org/wiki/John_Lennon'
-    created_at: '5 Oktober 2021' 
-    
+username: harysetyopermadi
+quotes:
+  - text: "Life is what happens when you’re busy making other plans."
+    author: "John Lennon"
+    author_detail_url: "https://id.wikipedia.org/wiki/John_Lennon"
+    created_at: "5 Oktober 2021"
