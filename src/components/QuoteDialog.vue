@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { ref, toRef } from 'vue'
 import { onClickOutside } from '@vueuse/core'
-import { Quote } from '../types'
+import { IQuote } from '../types'
 
 const props = defineProps<{
-  quote?: Quote
+  quote?: IQuote
   show: boolean
 }>()
 

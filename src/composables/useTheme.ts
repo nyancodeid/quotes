@@ -7,7 +7,7 @@ const useTheme = () => {
   const isSystemDark = usePreferredDark()
   const isThemeMounted = ref<boolean>(false)
 
-  const themeSteps = computed<Array<string>>(() => {
+  const themeSteps = computed<string[]>(() => {
     return isSystemDark.value
       ? [Theme.System, Theme.Light, Theme.Dark]
       : [Theme.System, Theme.Dark, Theme.Light]

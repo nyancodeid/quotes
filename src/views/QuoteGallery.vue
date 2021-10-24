@@ -1,34 +1,33 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted, nextTick, watch } from 'vue'
 import { useThrottleFn } from '@vueuse/core'
-import lozad from 'lozad'
+import { useHead } from '@vueuse/head'
 
-import { Quote, Search } from '../types.d'
+import { IQuote, ISearch } from '../types'
 import { chunk, NotEmpty } from '../utils/helpers'
 import quotesRaw from '../assets/quotes.json'
 
 import { isFavoriteShow, favoriteLists } from '../composables/useFavorite'
 import useDialog from '../composables/useDialog'
+import useLozad from '../composables/useLozad'
+import { generateIndexMeta } from '../utils/meta'
 
 const CHUNKED_SIZE = 8
 
-let observer: lozad.Observer
-const allQuotes = ref<Quote[]>(quotesRaw)
+useHead(generateIndexMeta())
+
+const allQuotes = ref<IQuote[]>(quotesRaw)
 let quotesChunked = chunk(allQuotes.value, CHUNKED_SIZE)
 
-const quotes = ref<Quote[]>(quotesChunked[0])
+const quotes = ref<IQuote[]>(quotesChunked[0])
 const quotesCount = ref(allQuotes.value.length)
 const quotesIndex = ref(0)
 const galleryElement = ref<HTMLDivElement>()
+
+const { reObserver } = useLozad('img.lozad')
 const { isShowDialog, selectedQuote, showDialog, closeDialog } = useDialog()
 
 const isEmpty = computed(() => (quotes.value.length === 0 && quotesIndex.value === 0))
-
-function initializeLozad() {
-  nextTick(() => {
-    observer?.observe()
-  })
-}
 
 function loadQuotes() {
   if (quotesIndex.value > (quotesChunked.length - 1)) return
@@ -43,7 +42,7 @@ function loadQuotes() {
   }
 }
 
-function onSearchChanged(search: Search) {
+function onSearchChanged(search: ISearch) {
   const filtered = allQuotes.value.filter((quote) => {
     if (search.keyword.length === 0) return true
 
@@ -65,13 +64,13 @@ function onSearchChanged(search: Search) {
   applyfilteredQuotes(filtered)
 }
 
-function applyfilteredQuotes(filtered: Quote[]) {
+function applyfilteredQuotes(filtered: IQuote[]) {
   quotesChunked = chunk(filtered, CHUNKED_SIZE)
   quotesIndex.value = 0
   quotesCount.value = filtered.length
   quotes.value = quotesChunked[0] || []
 
-  initializeLozad()
+  reObserver()
 }
 
 const handleScroll = useThrottleFn(() => {
@@ -82,14 +81,14 @@ const handleScroll = useThrottleFn(() => {
       quotesIndex.value = quotesIndex.value + 1
 
       loadQuotes()
-      initializeLozad()
+      reObserver()
     }
   }
 }, 100)
 
 watch([isFavoriteShow, favoriteLists], () => {
   if (isFavoriteShow.value) {
-    const filtered: Quote[] = favoriteLists.value.map((quoteId) => {
+    const filtered: IQuote[] = favoriteLists.value.map((quoteId) => {
       const item = allQuotes.value.find(quote => quote.id === quoteId)
 
       return item || null
@@ -104,9 +103,8 @@ watch([isFavoriteShow, favoriteLists], () => {
 
 onMounted(() => {
   window.addEventListener('scroll', handleScroll)
-  observer = lozad('img.lozad')
 
-  initializeLozad()
+  reObserver()
 })
 onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)

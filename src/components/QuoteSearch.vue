@@ -2,13 +2,13 @@
 import { ref, toRef } from 'vue'
 import { debouncedWatch } from '@vueuse/core'
 
-import { Search } from '../types'
+import { ISearch } from '../types'
 
 const props = defineProps<{
   count: number
 }>()
 const emit = defineEmits<{
-  (e: 'searchChanged', search: Search): void
+  (e: 'searchChanged', search: ISearch): void
 }>()
 
 const count = toRef(props, 'count')
