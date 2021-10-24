@@ -1,4 +1,54 @@
-# 1.3.0 (2021-10-17)
+# Changelog
+
+All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+
+## 1.5.0 (2021-10-24)
+
+
+### Features
+
+* add author_detail_url as an optional ([e937720](https://github.com/nyancodeid/quotes/commit/e9377201713aa615cf30b7d3f23ecce5cd9a3530))
+* add eslint and eslint-config ([cd76f88](https://github.com/nyancodeid/quotes/commit/cd76f8887ae34702633584a2375f5e856e42d7f7))
+* add event listener for system preferred mode ([c38c73c](https://github.com/nyancodeid/quotes/commit/c38c73c7e6b256956f1f2f5cedb2d5d71e0101e0))
+* add kodiak auto-merge PR with label ([641f9ff](https://github.com/nyancodeid/quotes/commit/641f9fff88d39a43df696ce4b5b125f44e1636ec))
+* add link author_detail_link ([21d00a3](https://github.com/nyancodeid/quotes/commit/21d00a39a7c04ccbfa24b66ae3f7ca7f54b74231))
+* add router ([07e3449](https://github.com/nyancodeid/quotes/commit/07e34490e23fe75742428c38ba55849e9271dd76))
+* add save icon and save card method ([c233162](https://github.com/nyancodeid/quotes/commit/c233162ef01403229608a50e4b27bbc8dee07685))
+* add search feature ([49df600](https://github.com/nyancodeid/quotes/commit/49df6003e5d57c064d872237ee294d1ab21700ec)), closes [#90](https://github.com/nyancodeid/quotes/issues/90)
+* add search feature ([24331b4](https://github.com/nyancodeid/quotes/commit/24331b43a0a1bea3ab36f429ab701dd2399f3173))
+* add system mode ([40e1c1e](https://github.com/nyancodeid/quotes/commit/40e1c1e56b4007b340f65bd9f4e106f74c8133c8))
+* **card:** gallery and modal version + mobile view ([3444aae](https://github.com/nyancodeid/quotes/commit/3444aaefdac14a7eec686f7cab3ef50099d23720))
+* **components:** quote-card new size `xl` ([39aa06d](https://github.com/nyancodeid/quotes/commit/39aa06d6684c2af7571798d5449f2adb54e39723))
+* create eslint configuration file ([202e2fc](https://github.com/nyancodeid/quotes/commit/202e2fc447e17cc427014bf9a2b768a9c8fa5101))
+* **gallery:** empty state or no quote can be displayed ([9026109](https://github.com/nyancodeid/quotes/commit/902610972acf2be628d5177a596042de62b1db74))
+* **gallery:** infinite scroll / load more ([1986af1](https://github.com/nyancodeid/quotes/commit/1986af19e12d863478c2cabf3dad2beb8a24d9b5))
+* **gallery:** use debounce when scrolling ([f3e07ea](https://github.com/nyancodeid/quotes/commit/f3e07eae76ed6804b9804eed57a3429db1095f03))
+* generate CHANGELOG.md ([775b67b](https://github.com/nyancodeid/quotes/commit/775b67b175b0330e1158a854358d2e1f69ab5efd))
+* **helpers:** add shuffle method ([a4a1c4e](https://github.com/nyancodeid/quotes/commit/a4a1c4e2c2334aa266397905abafe655d0dc67ef))
+* improve ux for mode toggler ([2d119f6](https://github.com/nyancodeid/quotes/commit/2d119f6305e2915511ffa3e4cec10c2cc758a2b5))
+* mobile view information card ([6f405c1](https://github.com/nyancodeid/quotes/commit/6f405c1ebdf15905cc6fc69d3eb6c228104664a3))
+* not-found page ([1a97f13](https://github.com/nyancodeid/quotes/commit/1a97f13d48c6b6cbafcb7dce50e721a3d3a203f0))
+* prepare search component ([7b610f3](https://github.com/nyancodeid/quotes/commit/7b610f39dfb090e8dbb666b9f796316d5afd109a))
+* quote meta, sitemap, slug format, and predefined routes ([1fdf9bf](https://github.com/nyancodeid/quotes/commit/1fdf9bf2b0f8dc7b5b338552bd519acd452e45e8))
+* **quote-card:** card size xl and open link ([98d4932](https://github.com/nyancodeid/quotes/commit/98d49326e289388c93249b21dfc4cc488d76ac3b))
+* **quote:** add 2 new quotes ([d7553d6](https://github.com/nyancodeid/quotes/commit/d7553d615810edadc4bcfcc797a2d8969505ad2c))
+* **quote:** add quote from Edsger W. Dijkstra ([e3a45a7](https://github.com/nyancodeid/quotes/commit/e3a45a717d080afc7c7f4c4fc72304e526605c45))
+* **quote:** add quotes from Ali bin Abi Thali, Ibnu Atha’illah, and Imam Syafi'i ([#2](https://github.com/nyancodeid/quotes/issues/2)) ([d61f472](https://github.com/nyancodeid/quotes/commit/d61f4724062e3470b920f762185d7538ac9c1e3e))
+* **quote:** nyancodeid add quotes ([f9388c5](https://github.com/nyancodeid/quotes/commit/f9388c55a524e97ada1548ca715d6868f1bd0680))
+* **quotes:** add quote from Ali bin Abi Thali, Ibnu Atha’illah, Imam Syafi'i ([9b7d429](https://github.com/nyancodeid/quotes/commit/9b7d4293f8156ea4f144b52a8dd99a2ac5336c2f))
+* **quotes:** add quote from Ali bin Abi Thalib & Abu Hamid Al Ghazali ([dc54c03](https://github.com/nyancodeid/quotes/commit/dc54c03c713d9143941a11b5930dc314419e52ac))
+* **quotes:** add quote from Ali bin Abi Thalib, Ibnu Atha’illah, Imam Syafi'i ([10b9897](https://github.com/nyancodeid/quotes/commit/10b989728d46317900b4c5cce790c2e5aca03b3d))
+* **quotes:** add quote from Gus Dur ([e21d069](https://github.com/nyancodeid/quotes/commit/e21d069d39972a654db222fbdd59e62c5cd0edac))
+* **quotes:** add quote from John F Kennedy and Pandji ([0fb3c64](https://github.com/nyancodeid/quotes/commit/0fb3c6479299af374d32fd3b067a73655799744a))
+* **quotes:** add quotes from dyvue ([9f2a2ce](https://github.com/nyancodeid/quotes/commit/9f2a2cea450e5124439ca2f8f59f7d132fdff7de))
+* **quotes:** quotes from faisalindrianto and minor fix ([#9](https://github.com/nyancodeid/quotes/issues/9)) ([2fdf53a](https://github.com/nyancodeid/quotes/commit/2fdf53a860169c96bb4ba914d20ad61732cc1a75))
+* **search:** adjust border color and bg filter ([031d7d5](https://github.com/nyancodeid/quotes/commit/031d7d5cc11b2137a5a92909d62e1d1408a61acd))
+* **search:** close filter popup when click outside ([e92d67b](https://github.com/nyancodeid/quotes/commit/e92d67b021bc336bf5c61f9cbfcf97f87db8ec76))
+* **search:** new light theme for search component ([d0807f1](https://github.com/nyancodeid/quotes/commit/d0807f1e551e0cca89b684d70f11791e1de8391f))
+* **search:** quotes count and clear search ([b9ac6b2](https://github.com/nyancodeid/quotes/commit/b9ac6b23693e50dbe5ab493f06bf35e926016af0))
+* **search:** use debounce on search changed ([ca51621](https://github.com/nyancodeid/quotes/commit/ca516212c2957379badd1972f86a17714cd722ca))
+* setup Github Action CI Linting Check ([543447a](https://github.com/nyancodeid/quotes/commit/543447a9b1f842bb17590425a9e02f54486940f7))
+* **types:** add url slug ([03a5c9d](https://github.com/nyancodeid/quotes/commit/03a5c9dc1e84e39b04a84760bf3dd62070874b70))
 
 
 ### Bug Fixes
@@ -29,51 +79,8 @@
 * quote escape ([58e4b83](https://github.com/nyancodeid/quotes/commit/58e4b8343799368518e73deb846d74052effe0c1))
 * quotes ([b264874](https://github.com/nyancodeid/quotes/commit/b264874089991b6d5372cff51a4372bd49d2c65e))
 
+### Changelog
 
-### Features
+All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
-* add author_detail_url as an optional ([e937720](https://github.com/nyancodeid/quotes/commit/e9377201713aa615cf30b7d3f23ecce5cd9a3530))
-* add eslint and eslint-config ([cd76f88](https://github.com/nyancodeid/quotes/commit/cd76f8887ae34702633584a2375f5e856e42d7f7))
-* add event listener for system preferred mode ([c38c73c](https://github.com/nyancodeid/quotes/commit/c38c73c7e6b256956f1f2f5cedb2d5d71e0101e0))
-* add kodiak auto-merge PR with label ([641f9ff](https://github.com/nyancodeid/quotes/commit/641f9fff88d39a43df696ce4b5b125f44e1636ec))
-* add link author_detail_link ([21d00a3](https://github.com/nyancodeid/quotes/commit/21d00a39a7c04ccbfa24b66ae3f7ca7f54b74231))
-* add save icon and save card method ([c233162](https://github.com/nyancodeid/quotes/commit/c233162ef01403229608a50e4b27bbc8dee07685))
-* add search feature ([49df600](https://github.com/nyancodeid/quotes/commit/49df6003e5d57c064d872237ee294d1ab21700ec)), closes [#90](https://github.com/nyancodeid/quotes/issues/90)
-* add search feature ([24331b4](https://github.com/nyancodeid/quotes/commit/24331b43a0a1bea3ab36f429ab701dd2399f3173))
-* add system mode ([40e1c1e](https://github.com/nyancodeid/quotes/commit/40e1c1e56b4007b340f65bd9f4e106f74c8133c8))
-* **card:** gallery and modal version + mobile view ([3444aae](https://github.com/nyancodeid/quotes/commit/3444aaefdac14a7eec686f7cab3ef50099d23720))
-* create eslint configuration file ([202e2fc](https://github.com/nyancodeid/quotes/commit/202e2fc447e17cc427014bf9a2b768a9c8fa5101))
-* **gallery:** empty state or no quote can be displayed ([9026109](https://github.com/nyancodeid/quotes/commit/902610972acf2be628d5177a596042de62b1db74))
-* **gallery:** infinite scroll / load more ([1986af1](https://github.com/nyancodeid/quotes/commit/1986af19e12d863478c2cabf3dad2beb8a24d9b5))
-* **gallery:** use debounce when scrolling ([f3e07ea](https://github.com/nyancodeid/quotes/commit/f3e07eae76ed6804b9804eed57a3429db1095f03))
-* improve ux for mode toggler ([2d119f6](https://github.com/nyancodeid/quotes/commit/2d119f6305e2915511ffa3e4cec10c2cc758a2b5))
-* mobile view information card ([6f405c1](https://github.com/nyancodeid/quotes/commit/6f405c1ebdf15905cc6fc69d3eb6c228104664a3))
-* prepare search component ([7b610f3](https://github.com/nyancodeid/quotes/commit/7b610f39dfb090e8dbb666b9f796316d5afd109a))
-* **quote:** add 2 new quotes ([d7553d6](https://github.com/nyancodeid/quotes/commit/d7553d615810edadc4bcfcc797a2d8969505ad2c))
-* **quote:** add quote from Edsger W. Dijkstra ([e3a45a7](https://github.com/nyancodeid/quotes/commit/e3a45a717d080afc7c7f4c4fc72304e526605c45))
-* **quote:** add quotes from Ali bin Abi Thali, Ibnu Atha’illah, and Imam Syafi'i ([#2](https://github.com/nyancodeid/quotes/issues/2)) ([d61f472](https://github.com/nyancodeid/quotes/commit/d61f4724062e3470b920f762185d7538ac9c1e3e))
-* **quote:** nyancodeid add quotes ([f9388c5](https://github.com/nyancodeid/quotes/commit/f9388c55a524e97ada1548ca715d6868f1bd0680))
-* **quotes:** add quote from Ali bin Abi Thalib & Abu Hamid Al Ghazali ([dc54c03](https://github.com/nyancodeid/quotes/commit/dc54c03c713d9143941a11b5930dc314419e52ac))
-* **quotes:** add quote from Ali bin Abi Thalib, Ibnu Atha’illah, Imam Syafi'i ([10b9897](https://github.com/nyancodeid/quotes/commit/10b989728d46317900b4c5cce790c2e5aca03b3d))
-* **quotes:** add quote from Gus Dur ([e21d069](https://github.com/nyancodeid/quotes/commit/e21d069d39972a654db222fbdd59e62c5cd0edac))
-* **quotes:** add quote from John F Kennedy and Pandji ([0fb3c64](https://github.com/nyancodeid/quotes/commit/0fb3c6479299af374d32fd3b067a73655799744a))
-* **quotes:** add quotes from dyvue ([9f2a2ce](https://github.com/nyancodeid/quotes/commit/9f2a2cea450e5124439ca2f8f59f7d132fdff7de))
-* **quotes:** quotes from faisalindrianto and minor fix ([#9](https://github.com/nyancodeid/quotes/issues/9)) ([2fdf53a](https://github.com/nyancodeid/quotes/commit/2fdf53a860169c96bb4ba914d20ad61732cc1a75))
-* **search:** adjust border color and bg filter ([031d7d5](https://github.com/nyancodeid/quotes/commit/031d7d5cc11b2137a5a92909d62e1d1408a61acd))
-* **search:** close filter popup when click outside ([e92d67b](https://github.com/nyancodeid/quotes/commit/e92d67b021bc336bf5c61f9cbfcf97f87db8ec76))
-* **search:** new light theme for search component ([d0807f1](https://github.com/nyancodeid/quotes/commit/d0807f1e551e0cca89b684d70f11791e1de8391f))
-* **search:** quotes count and clear search ([b9ac6b2](https://github.com/nyancodeid/quotes/commit/b9ac6b23693e50dbe5ab493f06bf35e926016af0))
-* **search:** use debounce on search changed ([ca51621](https://github.com/nyancodeid/quotes/commit/ca516212c2957379badd1972f86a17714cd722ca))
-* setup Github Action CI Linting Check ([543447a](https://github.com/nyancodeid/quotes/commit/543447a9b1f842bb17590425a9e02f54486940f7))
-
-
-### Performance Improvements
-
-* improve lighthouse score ([588d005](https://github.com/nyancodeid/quotes/commit/588d005a63eedab8109f38ff3211bf8274d69355))
-* lighthouse score ([128b2dd](https://github.com/nyancodeid/quotes/commit/128b2dd21d72cebe95f9c5367ea0091f56ca0ef8))
-* lighthouse score ([7d4c725](https://github.com/nyancodeid/quotes/commit/7d4c7259919cee5e3b8b66c8cd4ec4f33d4200d4))
-* remove vue-composable ([197509e](https://github.com/nyancodeid/quotes/commit/197509e675a20857f9cdf99d28ec2d6f53945122))
-* use tailwind responsive utility to card height issue ([9a5e144](https://github.com/nyancodeid/quotes/commit/9a5e1445a276bd6077d3b163c9e6ff8f8039cc56))
-
-
-
+Generated by [`auto-changelog`](https://github.com/CookPete/auto-changelog).
