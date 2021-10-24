@@ -3,7 +3,7 @@ import { ref, computed, onMounted, onUnmounted, nextTick, watch } from 'vue'
 import { useThrottleFn } from '@vueuse/core'
 import lozad from 'lozad'
 
-import { Quote, Search } from '../types'
+import { IQuote, ISearch } from '../types'
 import { chunk, NotEmpty } from '../utils/helpers'
 import quotesRaw from '../assets/quotes.json'
 
@@ -16,7 +16,7 @@ const CHUNKED_SIZE = 8
 const allQuotes = ref<Quote[]>(quotesRaw)
 let quotesChunked = chunk(allQuotes.value, CHUNKED_SIZE)
 
-const quotes = ref<Quote[]>(quotesChunked[0])
+const quotes = ref<IQuote[]>(quotesChunked[0])
 const quotesCount = ref(allQuotes.value.length)
 const quotesIndex = ref(0)
 const galleryElement = ref<HTMLDivElement>()
@@ -39,7 +39,7 @@ function loadQuotes() {
   }
 }
 
-function onSearchChanged(search: Search) {
+function onSearchChanged(search: ISearch) {
   const filtered = allQuotes.value.filter((quote) => {
     if (search.keyword.length === 0) return true
 
@@ -61,7 +61,7 @@ function onSearchChanged(search: Search) {
   applyfilteredQuotes(filtered)
 }
 
-function applyfilteredQuotes(filtered: Quote[]) {
+function applyfilteredQuotes(filtered: IQuote[]) {
   quotesChunked = chunk(filtered, CHUNKED_SIZE)
   quotesIndex.value = 0
   quotesCount.value = filtered.length
@@ -85,7 +85,7 @@ const handleScroll = useThrottleFn(() => {
 
 watch([isFavoriteShow, favoriteLists], () => {
   if (isFavoriteShow.value) {
-    const filtered: Quote[] = favoriteLists.value.map((quoteId) => {
+    const filtered: IQuote[] = favoriteLists.value.map((quoteId) => {
       const item = allQuotes.value.find(quote => quote.id === quoteId)
 
       return item || null
