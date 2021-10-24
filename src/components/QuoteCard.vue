@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, toRef, computed, withDefaults } from 'vue'
 
-import { Quote } from '../types'
+import { IQuote } from '../types'
 import { isValidLink } from '../utils/helpers'
 import { gradients } from '../utils/gradients'
 
@@ -9,7 +9,7 @@ import useSaveCard from '../composables/useSaveCard'
 import { isFavorite, toggleIsFavorite } from '../composables/useFavorite'
 
 const props = withDefaults(defineProps<{
-  quote: Quote
+  quote: IQuote
   size?: string
 }>(), {
   size: 'sm',

@@ -1,12 +1,12 @@
 import { ref } from 'vue'
 
-import { Quote } from '../types.d'
+import { IQuote } from '../types.d'
 
 const useDialog = () => {
   const isShowDialog = ref(false)
-  const selectedQuote = ref<Quote>()
+  const selectedQuote = ref<IQuote>()
 
-  const showDialog = (quote: Quote, event: Event): void => {
+  const showDialog = (quote: IQuote, event: Event): void => {
     const element = (event.target as HTMLElement)
     if (element.classList.contains('button-save')) return
 

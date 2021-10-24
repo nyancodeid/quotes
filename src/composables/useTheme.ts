@@ -6,7 +6,7 @@ const useTheme = () => {
   const theme = useStorage('theme', Theme.System)
   const isSystemDark = usePreferredDark()
 
-  const themeSteps = computed<Array<string>>(() => {
+  const themeSteps = computed<string[]>(() => {
     return isSystemDark.value
       ? [Theme.System, Theme.Light, Theme.Dark]
       : [Theme.System, Theme.Dark, Theme.Light]
