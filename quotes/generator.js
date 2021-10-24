@@ -5,10 +5,12 @@ const path = require('path')
 const yaml = require('js-yaml')
 const md5 = require('md5')
 const fetch = require('node-fetch')
+const sitemap = require('sitemap')
 
 const dotenv = require('dotenv-flow')
 dotenv.config()
 
+const BASE_URL = 'https://quotes.nyandev.id'
 const AVAILABLE_GRADIENT_VARIANTS = 14
 
 async function fetchAllQuotesYaml() {
@@ -64,13 +66,17 @@ async function generateQuotesFile(quotes) {
       github = await getGithubProfileByUsername(user.username)
 
     for (const quote of user.quotes) {
+      const slug = (`${slugify(quote.text, 45)}-${slugify(quote.author)}`)
+        .replace(/--/gm, '-')
+
       quotes_valid.push({
         id: md5(`${user.username}:${quote.text}`),
         username: user.username,
         github,
         gradient_id: randomGradientIndex(),
-        slug: slugify(quote.text),
+        slug,
         ...quote,
+        lastmod: parseDate(quote.created_at),
       })
     }
   }
@@ -160,6 +166,12 @@ async function getGithubProfiles(users) {
   return Object.entries(data.data)
 }
 
+function parseDate(date) {
+  date = date.toLowerCase().replace('oktober', 'october')
+
+  return new Date(`${date} 12:00`)
+}
+
 function shuffleQuotes(quotes) {
   for (let i = quotes.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -174,7 +186,7 @@ function randomGradientIndex() {
   return Math.floor(Math.random() * (AVAILABLE_GRADIENT_VARIANTS - 0) + 0)
 }
 
-function slugify(title) {
+function slugify(title, max = 80) {
   const excludedWords = ['is', 'am', 'are', 'a', 'an', 'the', 'and', 'or', 'but', 'in', 'as']
 
   if (title.length > 100) {
@@ -193,9 +205,36 @@ function slugify(title) {
     .replace(/[^a-z0-9 ]/g, '') // remove all chars not letters, numbers and spaces (to be replaced)
     .replace(/\s+/g, '-') // separator
 
-  if (title.length > 80) return title.slice(0, 80)
+  if (title.length > max) return title.slice(0, max)
+  if (title.endsWith('-')) return title.slice(0, -1)
 
   return title
+}
+
+function generateSitemap(quotes) {
+  const quoteSitemapLists = quotes.map((quote) => {
+    return {
+      url: `/quote/${quote.slug}`,
+      lastmod: quote.lastmod,
+      changefreq: 'daily',
+      priority: 0.3,
+    }
+  })
+
+  sitemap.simpleSitemapAndIndex({
+    hostname: BASE_URL,
+    destinationDir: path.join(__dirname, '../public/'),
+    gzip: false,
+    sourceData: [
+      {
+        url: '/',
+        lastmod: new Date().toISOString().slice(0, 10),
+        changefreq: 'hourly',
+        priority: 0.8,
+      },
+      ...quoteSitemapLists,
+    ],
+  })
 }
 
 (async function() {
@@ -208,6 +247,8 @@ function slugify(title) {
   const quotes = await generateQuotesFile(quotes_raw)
 
   console.info(`[GENERATOR]: ${quotes.length} quotes has been generated.`)
+
+  generateSitemap(quotes)
 
   const file_contents = JSON.stringify(shuffleQuotes(quotes), null, 2)
 

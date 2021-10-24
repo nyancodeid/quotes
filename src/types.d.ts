@@ -20,6 +20,11 @@ export interface ISearch {
   keyword: string
   filter: string
 }
+export interface IMeta {
+  title: string
+  description: string
+  url: string
+}
 export enum Theme {
   System = 'system',
   Light = 'light',

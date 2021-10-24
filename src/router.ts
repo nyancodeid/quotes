@@ -1,7 +1,15 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import { RouteRecordRaw } from 'vue-router'
+import { IQuote } from './types'
+import { quoteRouteLists } from './utils/routes'
 
 import QuoteGallery from './views/QuoteGallery.vue'
-import QuotePage from './views/QuotePage.vue'
+import QuoteNotFound from './views/QuoteNotFound.vue'
+
+declare module 'vue-router' {
+  interface RouteMeta {
+    quote: IQuote
+  }
+}
 
 export const routes: RouteRecordRaw[] = [
   {
@@ -9,19 +17,7 @@ export const routes: RouteRecordRaw[] = [
     name: 'quote-gallery',
     component: QuoteGallery,
   },
+  ...quoteRouteLists,
   {
-    path: '/quote/:slug?',
-    name: 'quote-page',
-    component: QuotePage,
-    beforeEnter: (to, from, next) => {
-      if (!to.params.slug) return false
-
-      next()
-    },
   },
 ]
-
-export const router = createRouter({
-  history: createWebHistory(),
-  routes,
-})

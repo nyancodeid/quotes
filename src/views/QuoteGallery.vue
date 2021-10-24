@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted, nextTick, watch } from 'vue'
 import { useThrottleFn } from '@vueuse/core'
-import lozad from 'lozad'
+import { useHead } from '@vueuse/head'
 
 import { IQuote, ISearch } from '../types'
 import { chunk, NotEmpty } from '../utils/helpers'
@@ -10,10 +10,13 @@ import quotesRaw from '../assets/quotes.json'
 import { isFavoriteShow, favoriteLists } from '../composables/useFavorite'
 import useDialog from '../composables/useDialog'
 import useLozad from '../composables/useLozad'
+import { generateIndexMeta } from '../utils/meta'
 
 const CHUNKED_SIZE = 8
 
-const allQuotes = ref<Quote[]>(quotesRaw)
+useHead(generateIndexMeta())
+
+const allQuotes = ref<IQuote[]>(quotesRaw)
 let quotesChunked = chunk(allQuotes.value, CHUNKED_SIZE)
 
 const quotes = ref<IQuote[]>(quotesChunked[0])
