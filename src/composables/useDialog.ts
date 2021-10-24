@@ -8,14 +8,14 @@ const useDialog = () => {
 
   const showDialog = (quote: IQuote, event: Event): void => {
     const element = (event.target as HTMLElement)
-    if (element.classList.contains('button-save')) return
+    if (element.classList.contains('hide-on-save')) return
 
     isShowDialog.value = true
     selectedQuote.value = quote
   }
   const closeDialog = (event: Event): void => {
     const element = (event.target as HTMLElement)
-    if (element.classList.contains('button-save')) return
+    if (element.classList.contains('hide-on-save')) return
 
     isShowDialog.value = false
     selectedQuote.value = undefined
