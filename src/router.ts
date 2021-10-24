@@ -19,8 +19,12 @@ export const routes: RouteRecordRaw[] = [
   },
   ...quoteRouteLists,
   {
-    path: '/:pathMatch(.*)*',
+    path: '/not-found',
     name: 'not-found',
     component: QuoteNotFound,
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    redirect: '/not-found',
   },
 ]
