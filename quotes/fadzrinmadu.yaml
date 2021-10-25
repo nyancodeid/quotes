@@ -8,3 +8,7 @@ quotes:
     author: "Howard Schultz"
     author_detail_url: "https://en.wikipedia.org/wiki/Howard_Schultz"
     created_at: "24 Oktober 2021"
+  - text: "When it is obvious that the goals cannot be reached, don't adjust the goals, adjust the action steps."
+    author: "Confucius"
+    author_detail_url: "https://en.wikipedia.org/wiki/Confucius"
+    created_at: "25 Oktober 2021"
