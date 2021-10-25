@@ -12,3 +12,7 @@ quotes:
     author: "Confucius"
     author_detail_url: "https://en.wikipedia.org/wiki/Confucius"
     created_at: "25 Oktober 2021"
+  - text: "Don't let what you cannot do interfere with what you can do."
+    author: "John Wooden"
+    author_detail_url: "https://en.wikipedia.org/wiki/John_Wooden"
+    created_at: "25 Oktober 2021"
