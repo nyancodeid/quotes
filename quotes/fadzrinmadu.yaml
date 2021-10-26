@@ -20,3 +20,7 @@ quotes:
     author: "Mark Zuckerberg"
     author_detail_url: "https://en.wikipedia.org/wiki/Mark_Zuckerberg"
     created_at: "26 Oktober 2021"
+  - text: "Don't give up when you still have something to give. Nothing is really over until the moment you stop trying."
+    author: "Brian Dyson"
+    author_detail_url: "https://en.wikipedia.org/wiki/Brian_Dyson"
+    created_at: "27 Oktober 2021"
