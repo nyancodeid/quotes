@@ -68,7 +68,7 @@ function getGradientByIndex(index = 0) {
 
           <div class="flex flex-col flex-1">
             <div>
-              <a class="text-xs" :href="`https://github.com/${quote.username}`" nofollow="true" target="_blank" rel="noopener">{{ quote.github?.name }}</a>
+              <a class="text-xs" :href="`https://github.com/${quote.username}`" nofollow="true" target="_blank" rel="noopener" @click.stop>{{ quote.github?.name }}</a>
             </div>
 
             <div class="flex items-center">
