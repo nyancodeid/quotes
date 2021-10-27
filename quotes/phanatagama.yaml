@@ -12,3 +12,7 @@ quotes:
     author: "Nikola Tesla"
     author_detail_url: "https://id.wikipedia.org/wiki/Nikola_Tesla"
     created_at: "21 Oktober 2021"
+  - text: "It's fine to celebrate success, but it is more important to heed the lessons of failure."
+    author: "Bill Gates"
+    author_detail_url: "https://id.wikipedia.org/wiki/Bill_Gates"
+    created_at: "27 Oktober 2021"    
