@@ -25,18 +25,13 @@ const isFavorited = computed(() => isFavorite(quote.value.id))
 function getGradientByIndex(index = 0) {
   return gradients[index]
 }
-function openQuotePage(event: Event) {
-  const element = (event.currentTarget as HTMLLinkElement)
-
-  window.open(element.href, '_blank')
-}
 </script>
 
 <template>
   <div ref="card" class="w-full relative text-white overflow-hidden flex rounded-3xl shadow-lg p-2" :class="`card-size--${size} ` + getGradientByIndex(quote.gradient_id)">
     <div class="w-full flex flex-col dark:bg-gray-800 dark:rounded-2.2xl">
       <div class="card-content flex flex-col items-start relative p-6 xl:p-8">
-        <a v-if="(size === 'sm')" :href="`/quote/${quote.slug}`" target="_blank" class="absolute top-4 right-6 p-2 rounded-full hover:bg-black hover:bg-opacity-25 dark:hover:bg-gray-600 transition-colors hide-on-save button-save cursor-pointer" @click.stop="openQuotePage">
+        <a v-if="(size === 'sm')" :href="`/quote/${quote.slug}`" target="_blank" class="absolute top-4 right-6 p-2 rounded-full hover:bg-black hover:bg-opacity-25 dark:hover:bg-gray-600 transition-colors hide-on-save button-save cursor-pointer" @click.stop>
           <i-mdi-open-in-new />
         </a>
 
@@ -73,7 +68,14 @@ function openQuotePage(event: Event) {
 
           <div class="flex flex-col flex-1">
             <div>
-              <a class="text-xs" :href="`https://github.com/${quote.username}`" nofollow="true" target="_blank" rel="noopener">{{ quote.github?.name }}</a>
+              <a
+                class="text-xs"
+                :href="`https://github.com/${quote.username}`"
+                nofollow="true"
+                target="_blank"
+                rel="noopener"
+                @click.stop
+              >{{ quote.github?.name }}</a>
             </div>
 
             <div class="flex items-center">
