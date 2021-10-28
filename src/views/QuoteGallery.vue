@@ -43,19 +43,17 @@ function loadQuotes() {
 }
 
 function onSearchChanged(search: ISearch) {
-  const filtered = allQuotes.value.filter((quote) => {
-    if (search.keyword.length === 0) return true
+  if (search.keyword.length === 0) return applyfilteredQuotes(allQuotes.value)
 
+  const filtered = allQuotes.value.filter((quote) => {
     switch (search.filter) {
       case 'quotes':
         return (quote.text.toLowerCase().includes(search.keyword.toLowerCase()))
       case 'from':
         return (quote.author.toLowerCase().includes(search.keyword.toLowerCase()))
       case 'user':
-        if (!quote.github?.available)
-          return (quote.username.toLowerCase().includes(search.keyword.toLowerCase()))
-
-        return (quote.github?.name.toLowerCase().includes(search.keyword.toLowerCase()))
+        return (quote.username.toLowerCase().includes(search.keyword.toLowerCase()))
+          || (quote.github?.name.toLowerCase().includes(search.keyword.toLowerCase()))
       default:
         return true
     }
