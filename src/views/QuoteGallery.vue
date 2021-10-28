@@ -43,9 +43,9 @@ function loadQuotes() {
 }
 
 function onSearchChanged(search: ISearch) {
-  const filtered = allQuotes.value.filter((quote) => {
-    if (search.keyword.length === 0) return true
+  if (search.keyword.length === 0) return applyfilteredQuotes(allQuotes.value)
 
+  const filtered = allQuotes.value.filter((quote) => {
     switch (search.filter) {
       case 'quotes':
         return (quote.text.toLowerCase().includes(search.keyword.toLowerCase()))
