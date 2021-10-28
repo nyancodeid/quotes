@@ -24,3 +24,7 @@ quotes:
     author: "Brian Dyson"
     author_detail_url: "https://en.wikipedia.org/wiki/Brian_Dyson"
     created_at: "27 Oktober 2021"
+  - text: "The weak can never forgive. Forgiveness is the attribute of the strong."
+    author: "Mahatma Gandhi"
+    author_detail_url: "https://en.wikipedia.org/wiki/Mahatma_Gandhi"
+    created_at: "28 Oktober 2021"
