@@ -52,10 +52,8 @@ function onSearchChanged(search: ISearch) {
       case 'from':
         return (quote.author.toLowerCase().includes(search.keyword.toLowerCase()))
       case 'user':
-        if (!quote.github?.available)
-          return (quote.username.toLowerCase().includes(search.keyword.toLowerCase()))
-
-        return (quote.github?.name.toLowerCase().includes(search.keyword.toLowerCase()))
+        return (quote.username.toLowerCase().includes(search.keyword.toLowerCase()))
+          || (quote.github?.name.toLowerCase().includes(search.keyword.toLowerCase()))
       default:
         return true
     }
