@@ -28,3 +28,7 @@ quotes:
     author: "Mahatma Gandhi"
     author_detail_url: "https://en.wikipedia.org/wiki/Mahatma_Gandhi"
     created_at: "28 Oktober 2021"
+  - text: "Nothing is permanent in this wicked world, not even our problems."
+    author: "Charlie Chaplin"
+    author_detail_url: "https://en.wikipedia.org/wiki/Charlie_Chaplin"
+    created_at: "29 Oktober 2021"
