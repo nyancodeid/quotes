@@ -2,9 +2,14 @@ username: NATSU03
 quotes:
   - text: "Those who break the rules are considered scum...but those who abandon their comrades are worse than scum."
     author: "obito uchiha"
-    author_detail_url: "https://en.wikiquote.org/wiki/Naruto"
-    created_at: "26 October 2021"
+    author_detail_url: "https://naruto.fandom.com/wiki/Obito_Uchiha"
+    created_at: "29 October 2021"
   - text: "The desire for a more positive experience is itself a negative experience. And, paradoxically, the acceptance of one's negative experience is itself a positive experience."
     author: "mark manson"
-    created_at: "26 October 2021"
+    author_detail_url: "https://en.wikipedia.org/wiki/Mark_Manson"
+    created_at: "29 October 2021"
+    text: "Every head must bow, every tongue must confess, this man (Ali) is the greatest of all time."
+    author: "mike tyson"
+    author_detail_url: "https://en.wikipedia.org/wiki/Mike_Tyson"
+    created_at: "29 October 2021"
     
