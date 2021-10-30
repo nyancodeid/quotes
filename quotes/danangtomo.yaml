@@ -1,0 +1,14 @@
+username: danangtomo
+quotes:
+  - text: "It is not the mountain we conquer but ourselves."
+    author: "Edmund Hillary"
+    author_detail_url: "https://id.wikipedia.org/wiki/Edmund_Hillary"
+    created_at: "4 Oktober 2021"
+  - text: "The top of one mountain is always the bottom of another."
+    author: "Marianne Williamson"
+    author_detail_url: "https://en.wikipedia.org/wiki/Marianne_Williamson"
+    created_at: "4 Oktober 2021"
+  - text: "You don't need to climb a mountain to know that it's high."
+    author: "Paulo Coelho"
+    author_detail_url: "https://id.wikipedia.org/wiki/Paulo_Coelho"
+    created_at: "4 Oktober 2021"

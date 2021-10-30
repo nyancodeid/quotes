@@ -14,6 +14,11 @@ $ npm run generate:quotes
 $ npm run dev
 ```
 
+Agar quotes bisa digunakan/dikonsumsi oleh website, oleh karena itu kita perlu men-*generate* quotes kita menjadi satu file dengan format `JSON`. Caranya dengan menjalankan perintah `npm run generate:quotes`. Perintah ini diperlukan setiap kita mengubah file YAML kita. 
+
+Untuk melihat versi website nya kamu bisa menjalankan perintah `npm run dev` untuk menjalankan web server dalam mode development yang berjalan pada port `localhost:3000`.
+
+
 ## Getting Started
 Kami membuka peluang untuk memeriahkan event Hacktoberfest 2021 dengan cara berkontribusi menambahkan fitur dan memperbaiki bug yang mungkin dilaporkan di-halaman issues repository ini, atau membantu kami dengan menambah quotes milikmu. 
 
@@ -26,12 +31,14 @@ username: nyancodeid
 quotes:
   - text: 'Yang terbaik di antara kalian ialah mereka nan berakhlak paling mulia.'
     author: 'Ali bin Abi Thalib'
+    author_detail_url: 'https://id.wikipedia.org/wiki/Ali_bin_Abi_Thalib'
     created_at: '3 Oktober 2021'
   - text: 'Hiduplah dengan rendah hati, tidak peduli seberapa kekayaanmu.'
     author: 'Ali bin Abi Thalib'
+    author_detail_url: 'https://id.wikipedia.org/wiki/Ali_bin_Abi_Thalib'
     created_at: '3 Oktober 2021'
 ```
 
-Agar quotes bisa digunakan/dikonsumsi oleh website, kita perlu men-*generate* quotes kita. Caranya dengan menjalankan perintah `npm run generate:quotes`. Perintah ini diperlukan setiap kita mengubah file YAML kita. 
+> `author_detail_url` ini adalah informasi tambahan untuk `author`. Diutamakan diambil dari website (wiki) wikipedia, linkedin, atau wiki fansbase yang tujuannya merujuk pada detail biografi lengkap dibalik author.
 
-Untuk melihat versi website nya kamu bisa menjalankan perintah `npm run dev` untuk menjalankan web server dalam mode development yang berjalan pada port `localhost:3000`.
+Catatan : Pastikan kamu hanya commit file `.yaml` saja jika tujuan kamu adalah untuk berkontribusi dalam menambah / submit quote.

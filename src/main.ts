@@ -1,6 +1,7 @@
-import { createApp } from 'vue'
+import { ViteSSG } from 'vite-ssg'
+import { routes } from './router'
 import App from './App.vue'
 
 import './styles/tailwind.css'
 
-createApp(App).mount('#app')
+export const createApp = ViteSSG(App, { routes })

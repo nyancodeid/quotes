@@ -3,4 +3,7 @@ node_modules
 dist
 dist-ssr
 *.local
+public/quotes.json
+public/*.xml
 src/assets/quotes.json
+yarn.lock

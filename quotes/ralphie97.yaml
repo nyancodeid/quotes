@@ -1,0 +1,9 @@
+username: ralphie97
+quotes:
+  - text: "If you're afraid to fail, then you're probably going to fail."
+    author: "Kobe Bryant"
+    author_detail_url: "https://en.wikipedia.org/wiki/Kobe_Bryant"
+    created_at: "29 October 2021"
+  - text: "When you reach the end of your rope, tie a knot in it and hang on."
+    author: "Franklin D. Roosevelt"
+    created_at: "29 October 2021"

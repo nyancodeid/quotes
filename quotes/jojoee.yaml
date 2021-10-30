@@ -1,0 +1,10 @@
+username: jojoee
+quotes:
+  - text: "What I cannot create, I do not understand"
+    author: "Richard Feynman"
+    author_detail_url: "https://en.wikipedia.org/wiki/Richard_Feynman"
+    created_at: "17 Oktober 2021"
+  - text: "Cogito, ergo sum"
+    author: "René Descartes"
+    author_detail_url: "https://en.wikipedia.org/wiki/Ren%C3%A9_Descartes"
+    created_at: "17 Oktober 2021"
