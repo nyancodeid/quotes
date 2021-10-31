@@ -1,50 +1,16 @@
 <script setup lang="ts">
-import { ref, toRef } from 'vue'
-import { debouncedWatch } from '@vueuse/core'
+import { search, count } from '../composables/useSearch'
 
-import { ISearch } from '../types'
-
-const props = defineProps<{
-  count: number
-}>()
-const emit = defineEmits<{
-  (e: 'searchChanged', search: ISearch): void
-}>()
-
-const count = toRef(props, 'count')
-const filter = ref('quotes')
-const search = ref('')
-
-function onFilterChanged(selected: string) {
-  filter.value = selected
-
-  emit('searchChanged', {
-    keyword: search.value,
-    filter: filter.value,
-  })
-}
 const clearSearch = () => {
   search.value = ''
-
-  emit('searchChanged', {
-    keyword: '',
-    filter: filter.value,
-  })
 }
-
-debouncedWatch(search, () => {
-  emit('searchChanged', {
-    keyword: search.value,
-    filter: filter.value,
-  })
-}, { debounce: 100 })
 </script>
 
 <template>
   <div class="search-wrapper">
     <div class="search-container">
       <div class="search-main">
-        <quotes-filter :filter="filter" @filterChanged="onFilterChanged" />
+        <quotes-filter />
 
         <i-heroicons-solid-search class="search-main--icon" />
 
