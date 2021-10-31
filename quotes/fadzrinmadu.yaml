@@ -44,3 +44,7 @@ quotes:
     author: "Robert Kiyosaki"
     author_detail_url: "https://en.wikipedia.org/wiki/Robert_Kiyosaki"
     created_at: "31 Oktober 2021"
+  - text: "You only fail when you stop trying."
+    author: "Albert Einstein"
+    author_detail_url: "https://en.wikipedia.org/wiki/Albert_Einstein"
+    created_at: "1 November 2021"
