@@ -56,3 +56,7 @@ quotes:
     author: "Mark Twain"
     author_detail_url: "https://en.wikipedia.org/wiki/Mark_Twain"
     created_at: "3 November 2021"
+  - text: "It’s a little like wrestling a gorilla. You don’t quit when you’re tired, you quit when the gorilla is tired."
+    author: "Robert Strauss"
+    author_detail_url: "https://en.wikipedia.org/wiki/Robert_Strauss_(actor)"
+    created_at: "4 November 2021"
