@@ -4,3 +4,7 @@ quotes:
     author: "Carl Gustav Jung"
     author_detail_url: "https://id.wikipedia.org/wiki/Carl_Gustav_Jung"
     created_at: "29 Oktober 2021"
+  - text: "The very important thing you should have is patience."
+    author: "Jack Ma"
+    author_detail_url: "https://id.wikipedia.org/wiki/Jack_Ma"
+    created_at: "3 November 2021"
