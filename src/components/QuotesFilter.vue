@@ -1,16 +1,9 @@
 <script setup lang="ts">
-import { ref, toRef } from 'vue'
+import { ref } from 'vue'
 import { onClickOutside } from '@vueuse/core'
-
-const props = defineProps<{
-  filter: string
-}>()
-const emit = defineEmits<{
-  (e: 'filterChanged', filter: string): void
-}>()
+import { filter } from '../composables/useSearch'
 
 const filterOpen = ref(false)
-const selectedFilter = toRef(props, 'filter')
 const filterPopupElement = ref<HTMLDivElement>()
 const filterOptions = ref(['quotes', 'from', 'user'])
 
@@ -19,8 +12,7 @@ onClickOutside(filterPopupElement, () => {
 })
 
 function changeFilterHandler(option: string) {
-  emit('filterChanged', option)
-
+  filter.value = option
   filterOpen.value = false
 }
 </script>
@@ -37,7 +29,7 @@ function changeFilterHandler(option: string) {
         aria-haspopup="true"
         @click="filterOpen = !filterOpen"
       >
-        <span class="hidden md:inline-block">{{ selectedFilter }}</span>
+        <span class="hidden md:inline-block">{{ filter }}</span>
         <i-heroicons-outline-filter class="h-5 w-5 md:hidden" />
 
         <i-heroicons-solid-chevron-down class="hidden md:inline-block -mr-1 ml-2 h-5 w-5" />
@@ -67,7 +59,7 @@ function changeFilterHandler(option: string) {
             class="filter-popup--menu-item"
             role="menuitem"
             tabindex="-1"
-            :class="{ active: (option === selectedFilter) }"
+            :class="{ active: (option === filter) }"
             @click="changeFilterHandler(option)"
           >
             {{ option }}

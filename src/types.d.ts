@@ -16,10 +16,6 @@ export interface IQuote {
   created_at?: string
   created?: string
 }
-export interface ISearch {
-  keyword: string
-  filter: string
-}
 export interface IMeta {
   title: string
   description: string
@@ -29,4 +25,8 @@ export enum Theme {
   System = 'system',
   Light = 'light',
   Dark = 'dark',
+}
+export enum SearchType {
+  Main = 'main',
+  Favorite = 'favorite',
 }
