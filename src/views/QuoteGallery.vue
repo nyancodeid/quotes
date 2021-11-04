@@ -57,13 +57,13 @@ function handleFavoriteSearch() {
   })
 }
 
-function applyfilteredQuotes(filtered: IQuote[]) {
+function applyfilteredQuotes(filtered: IQuote[], withObserver = true) {
   quotesChunked = chunk(filtered, CHUNKED_SIZE)
   quotesIndex.value = 0
   count.value = filtered.length
   quotes.value = quotesChunked[0] || []
 
-  reObserver()
+  if (withObserver) reObserver()
 }
 
 const handleScroll = useThrottleFn(() => {
@@ -100,10 +100,12 @@ debouncedWatch([search, filter], () => {
     handleMainSearch()
 }, { debounce: 100 })
 
+applyfilteredQuotes(allQuotes.value, false)
+
 onMounted(() => {
   window.addEventListener('scroll', handleScroll)
 
-  applyfilteredQuotes(allQuotes.value)
+  reObserver()
 })
 onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
