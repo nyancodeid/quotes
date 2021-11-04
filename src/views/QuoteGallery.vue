@@ -129,7 +129,7 @@ onUnmounted(() => {
                   <p class="font-medium text-lg md:text-2xl text-gray-800 dark:text-red-100 mb-4">
                     <span v-if="!isEmpty">Submit quote milikmu dengan berkontribusi langsung di Repository Github.</span>
                     <span v-else>
-                      Quote yang kamu cari tidak ditemukan? {{ isFavoriteShow }} <br />
+                      Quote yang kamu cari tidak ditemukan? <br />
                       <span v-if="isFavoriteShow" class="text-base md:text-lg">Tambahkan quote pilihanmu kedalam daftar favorit dengan menekan ikon <i-ri-heart-2-fill class="inline-block mb-1 text-red-500" />.</span>
                       <span v-else class="text-base md:text-lg">bantu kami dengan berkontribusi langsung di Repository Github kami.</span>
                     </span>
