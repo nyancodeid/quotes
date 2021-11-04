@@ -1,7 +1,6 @@
 import { ref, reactive, computed } from 'vue'
 
 import { IQuote, SearchType } from '../types.d'
-import { NotEmpty } from '../utils/helpers'
 
 export const type = ref(SearchType.Main)
 export const filter = ref('quotes')
@@ -56,11 +55,7 @@ export const searchFilter = (quotes: IQuote[]) => {
  * process here.
  */
 export const favoriteFilter = (lists: string[], quotes: IQuote[]): IQuote[] => {
-  const filtered = lists.map((quoteId) => {
-    const item = quotes.find(quote => quote.id === quoteId)
-
-    return item || null
-  }).filter(NotEmpty)
+  const filtered = quotes.filter(quote => lists.includes(quote.id))
 
   return searchFilter(filtered)
 }
