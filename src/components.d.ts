@@ -24,8 +24,10 @@ declare module 'vue' {
     IRiShuffleFill: typeof import('~icons/ri/shuffle-fill')['default']
     IRiSunLine: typeof import('~icons/ri/sun-line')['default']
     QuoteCard: typeof import('./components/QuoteCard.vue')['default']
+    QuoteCardMini: typeof import('./components/QuoteCardMini.vue')['default']
     QuoteDialog: typeof import('./components/QuoteDialog.vue')['default']
     QuoteGallery: typeof import('./views/QuoteGallery.vue')['default']
+    QuoteMore: typeof import('./components/QuoteMore.vue')['default']
     QuoteSearch: typeof import('./components/QuoteSearch.vue')['default']
     QuotesFilter: typeof import('./components/QuotesFilter.vue')['default']
   }
