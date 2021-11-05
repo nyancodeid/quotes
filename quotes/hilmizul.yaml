@@ -8,3 +8,7 @@ quotes:
     author: "Jack Ma"
     author_detail_url: "https://id.wikipedia.org/wiki/Jack_Ma"
     created_at: "3 November 2021"
+  - text: "The only way to do great work is to love what you do."
+    author: "Steve Jobs"
+    author_detail_url: "https://id.wikipedia.org/wiki/Steve_Jobs"
+    created_at: "5 November 2021"
