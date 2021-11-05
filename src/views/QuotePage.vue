@@ -26,6 +26,9 @@ onMounted(() => {
       <div class="grid grid-flow-row-dense grid-cols-1 gap-5 md:gap-6 xl:gap-8">
         <quote-card :quote="quote" size="xl" class="z-20 p-3" />
       </div>
+      <div class="mt-6">
+        <quote-more :id="quote.id" :author="quote.author" />
+      </div>
     </div>
   </div>
 </template>
