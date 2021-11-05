@@ -64,3 +64,7 @@ quotes:
     author: "Jordan Peterson"
     author_detail_url: "https://en.wikipedia.org/wiki/Jordan_Peterson"
     created_at: "4 November 2021"
+  - text: "Do something today that your future self will thank you for."
+    author: "Sean Patrick Flanery"
+    author_detail_url: "https://en.wikipedia.org/wiki/Sean_Patrick_Flanery"
+    created_at: "5 November 2021"
