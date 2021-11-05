@@ -68,3 +68,7 @@ quotes:
     author: "Sean Patrick Flanery"
     author_detail_url: "https://en.wikipedia.org/wiki/Sean_Patrick_Flanery"
     created_at: "5 November 2021"
+  - text: "The ones who are crazy enough to think that they can change the world, are the ones who do."
+    author: "Steve Jobs"
+    author_detail_url: "https://en.wikipedia.org/wiki/Steve_Jobs"
+    created_at: "6 November 2021"
