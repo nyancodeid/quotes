@@ -72,3 +72,7 @@ quotes:
     author: "Steve Jobs"
     author_detail_url: "https://en.wikipedia.org/wiki/Steve_Jobs"
     created_at: "6 November 2021"
+  - text: "A man who dares to waste one hour of time has not discovered the value of life."
+    author: "Charles Darwin"
+    author_detail_url: "https://en.wikipedia.org/wiki/Charles_Darwin"
+    created_at: "7 November 2021"
