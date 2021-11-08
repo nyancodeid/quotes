@@ -80,3 +80,7 @@ quotes:
     author: "T. Harv Eker"
     author_detail_url: "https://en.wikipedia.org/wiki/T._Harv_Eker"
     created_at: "8 November 2021"
+  - text: "Learn the rules like a pro, so you can break them like an artist."
+    author: "Pablo Picasso"
+    author_detail_url: "https://en.wikipedia.org/wiki/Pablo_Picasso"
+    created_at: "9 November 2021"
