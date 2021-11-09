@@ -7,6 +7,9 @@
 
 Website sederhana yang menampilkan Kutipan Inspirasional secara acak. Website ini menampilkan kutipan yang submit oleh para kontributor terbuka dan para peserta event Hacktoberfest 2021. Dapatkan kutipan yang membuatmu tetap termotivasi!
 
+## Activities
+![Alt](https://repobeats.axiom.co/api/embed/3e1da626835587af79aba2b522fe662cd383f2bb.svg "Repobeats analytics image")
+
 ## Screenshot
 
 <p  align="center">
