@@ -84,3 +84,7 @@ quotes:
     author: "Pablo Picasso"
     author_detail_url: "https://en.wikipedia.org/wiki/Pablo_Picasso"
     created_at: "9 November 2021"
+  - text: "Start where you are, use what you have, do what you can."
+    author: "Arthur Ashe"
+    author_detail_url: "https://en.wikipedia.org/wiki/Arthur_Ashe"
+    created_at: "12 November 2021"
