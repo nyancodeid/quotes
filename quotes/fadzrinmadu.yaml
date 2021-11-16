@@ -100,3 +100,7 @@ quotes:
     author: "James Cameron"
     author_detail_url: "https://en.wikipedia.org/wiki/James_Cameron"
     created_at: "16 November 2021"
+  - text: "Whether you think you can or you think you can't, you're right."
+    author: "Henry Ford"
+    author_detail_url: "https://en.wikipedia.org/wiki/Henry_Ford"
+    created_at: "17 November 2021"
