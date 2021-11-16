@@ -96,3 +96,7 @@ quotes:
     author: "Walt Disney"
     author_detail_url: "https://en.wikipedia.org/wiki/Walt_Disney"
     created_at: "15 November 2021"
+  - text: "If you set your goals ridiculously high and it's a failure, you will fail above everyone else's success."
+    author: "James Cameron"
+    author_detail_url: "https://en.wikipedia.org/wiki/James_Cameron"
+    created_at: "16 November 2021"
