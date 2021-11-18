@@ -104,3 +104,7 @@ quotes:
     author: "Henry Ford"
     author_detail_url: "https://en.wikipedia.org/wiki/Henry_Ford"
     created_at: "17 November 2021"
+  - text: "Successful people do what unsuccessful people are not willing to do. Don't wish it were easier, wish you were better."
+    author: "Jim Rohn"
+    author_detail_url: "https://en.wikipedia.org/wiki/Jim_Rohn"
+    created_at: "19 November 2021"
