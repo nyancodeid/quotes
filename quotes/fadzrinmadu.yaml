@@ -112,3 +112,7 @@ quotes:
     author: "Mother Teresa"
     author_detail_url: "https://en.wikipedia.org/wiki/Mother_Teresa"
     created_at: "20 November 2021"
+  - text: "Always remember that you are absolutely unique. Just like everyone else."
+    author: "Margaret Mead"
+    author_detail_url: "https://en.wikipedia.org/wiki/Margaret_Mead"
+    created_at: "23 November 2021"
