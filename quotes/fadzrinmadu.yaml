@@ -108,3 +108,7 @@ quotes:
     author: "Jim Rohn"
     author_detail_url: "https://en.wikipedia.org/wiki/Jim_Rohn"
     created_at: "19 November 2021"
+  - text: "In this life we cannot do great things. We can only do small things with great love."
+    author: "Mother Teresa"
+    author_detail_url: "https://en.wikipedia.org/wiki/Mother_Teresa"
+    created_at: "20 November 2021"
