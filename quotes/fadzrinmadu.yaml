@@ -116,3 +116,7 @@ quotes:
     author: "Margaret Mead"
     author_detail_url: "https://en.wikipedia.org/wiki/Margaret_Mead"
     created_at: "23 November 2021"
+  - text: "The only impossible journey is the one you never begin."
+    author: "Tony Robbins"
+    author_detail_url: "https://en.wikipedia.org/wiki/Tony_Robbins"
+    created_at: "28 November 2021"
