@@ -120,3 +120,7 @@ quotes:
     author: "Tony Robbins"
     author_detail_url: "https://en.wikipedia.org/wiki/Tony_Robbins"
     created_at: "28 November 2021"
+  - text: "If you don't like the road you're walking, start paving another one."
+    author: "Dolly Parton"
+    author_detail_url: "https://en.wikipedia.org/wiki/Dolly_Parton"
+    created_at: "2 Desember 2021"
