@@ -128,3 +128,7 @@ quotes:
     author: "George Bernard Shaw"
     author_detail_url: "https://en.wikipedia.org/wiki/George_Bernard_Shaw"
     created_at: "4 Desember 2021"
+  - text: "I have no special talent. I am only passionately curious."
+    author: "Albert Einstein"
+    author_detail_url: "https://en.wikipedia.org/wiki/Albert_Einstein"
+    created_at: "7 Desember 2021"
