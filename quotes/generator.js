@@ -170,8 +170,8 @@ async function getGithubProfiles(users) {
 
 function parseDate(date) {
   date = date.toLowerCase()
-     .replace('oktober', 'october')
-     .replace('desember', 'december')
+    .replace('oktober', 'october')
+    .replace('desember', 'december')
 
   return new Date(`${date} 12:00`)
 }
