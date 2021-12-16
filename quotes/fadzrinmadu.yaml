@@ -152,3 +152,7 @@ quotes:
     author: "Naruto Uzumaki"
     author_detail_url: "https://en.wikipedia.org/wiki/Naruto_Uzumaki"
     created_at: "14 Desember 2021"
+  - text: "Life isn't about finding yourself. Life is about creating yourself."
+    author: "George Bernard Shaw"
+    author_detail_url: "https://en.wikipedia.org/wiki/George_Bernard_Shaw"
+    created_at: "16 Desember 2021"
