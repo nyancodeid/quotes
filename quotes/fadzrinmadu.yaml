@@ -160,3 +160,7 @@ quotes:
     author: "Les Brown"
     author_detail_url: "https://en.wikipedia.org/wiki/Les_Brown_(speaker)"
     created_at: "17 Desember 2021"
+  - text: "The future belongs to those who believe in the beauty of their dreams."
+    author: "Eleanor Roosevelt"
+    author_detail_url: "https://en.wikipedia.org/wiki/Eleanor_Roosevelt"
+    created_at: "18 Desember 2021"
