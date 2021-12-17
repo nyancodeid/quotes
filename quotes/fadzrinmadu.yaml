@@ -156,3 +156,7 @@ quotes:
     author: "George Bernard Shaw"
     author_detail_url: "https://en.wikipedia.org/wiki/George_Bernard_Shaw"
     created_at: "16 Desember 2021"
+  - text: "Life has no limitations, except the ones you make."
+    author: "Les Brown"
+    author_detail_url: "https://en.wikipedia.org/wiki/Les_Brown_(speaker)"
+    created_at: "17 Desember 2021"
