@@ -168,3 +168,7 @@ quotes:
     author: "Maya Angelou"
     author_detail_url: "https://en.wikipedia.org/wiki/Maya_Angelou"
     created_at: "20 Desember 2021"
+  - text: "The purpose of our lives is to be happy."
+    author: "Dalai Lama"
+    author_detail_url: "https://en.wikipedia.org/wiki/Dalai_Lama"
+    created_at: "21 Desember 2021"
