@@ -164,3 +164,7 @@ quotes:
     author: "Eleanor Roosevelt"
     author_detail_url: "https://en.wikipedia.org/wiki/Eleanor_Roosevelt"
     created_at: "18 Desember 2021"
+  - text: "You will face many defeats in life, but never let yourself be defeated."
+    author: "Maya Angelou"
+    author_detail_url: "https://en.wikipedia.org/wiki/Maya_Angelou"
+    created_at: "20 Desember 2021"
