@@ -30,7 +30,7 @@ const useSaveCard = () => {
     if (image) image = await changeDpiBlob(image, BASE_DPI * SCALE_FACTOR)
     if (!image) return
 
-    saveAs(image, `quotes-nyandev-id-${Date.now()}.png`)
+    saveAs(image, `quotes-nyan-my-id-${Date.now()}.png`)
   }
 
   return {

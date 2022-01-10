@@ -40,7 +40,7 @@ function generateMeta({ title, description, url }: IMeta) {
 export function generateQuoteMeta(quote: IQuote) {
   const title = `Quotes — Best Quote from ${quote.author}`
   const description = `"${quote.text}" - ${quote.author}`
-  const url = `https://quotes.nyandev.id/quote/${quote.slug}`
+  const url = `https://quotes.nyan.my.id/quote/${quote.slug}`
 
   return {
     title,
@@ -55,7 +55,7 @@ export function generateQuoteMeta(quote: IQuote) {
 export function generateIndexMeta() {
   const title = 'Quotes — Every Day Inspirasional Quotes'
   const description = 'Website sederhana yang menampilkan Kutipan Inspirasional secara acak. Website ini menampilkan kutipan yang submit oleh para kontributor terbuka dan para peserta event Hacktoberfest 2021. Dapatkan kutipan yang membuatmu tetap termotivasi!'
-  const url = 'https://quotes.nyandev.id'
+  const url = 'https://quotes.nyan.my.id'
 
   return {
     title,

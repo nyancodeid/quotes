@@ -10,7 +10,7 @@ const sitemap = require('sitemap')
 const dotenv = require('dotenv-flow')
 dotenv.config()
 
-const BASE_URL = 'https://quotes.nyandev.id'
+const BASE_URL = 'https://quotes.nyan.my.id'
 const AVAILABLE_GRADIENT_VARIANTS = 14
 
 async function fetchAllQuotesYaml() {

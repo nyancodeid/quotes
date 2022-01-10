@@ -4,4 +4,4 @@ Disallow: /nogooglebot/
 User-agent: *
 Allow: /
 
-Sitemap: https://quotes.nyandev.id/sitemap-index.xml
+Sitemap: https://quotes.nyan.my.id/sitemap-index.xml
