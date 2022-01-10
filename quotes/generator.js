@@ -91,8 +91,8 @@ function getHashUsername(username) {
 function getGithubProfileByHash(users, username) {
   const user = users.find(([hash]) => (hash === getHashUsername(username)))
 
-  if (!user) return { available: false }
-  if (!user[1]) return { available: false }
+  if (!user) return { available: null }
+  if (!user[1]) return { available: null }
 
   return {
     available: true,
@@ -116,7 +116,7 @@ async function getGithubProfileByUsername(username) {
   if (res.status === 404) {
     console.info(`[GENERATOR]: user [${username}] is unavailable!`)
     return {
-      available: false,
+      available: null,
     }
   }
 
@@ -169,9 +169,17 @@ async function getGithubProfiles(users) {
 }
 
 function parseDate(date) {
+  let months = ['januari', 'februari', 'maret', 'april', 'mei', 'juni', 'juli', 'agustus', 'september', 'oktober', 'november', 'desember']
+
+  months = months.map((month, index) => {
+    const monthName = new Date(2021, index, 1).toLocaleString('default', { month: 'long' })
+    return [monthName.toLowerCase(), month]
+  })
+
   date = date.toLowerCase()
-    .replace('oktober', 'october')
-    .replace('desember', 'december')
+
+  for (const [m_en, m_id] of months)
+    date = date.replace(m_id, m_en)
 
   return new Date(`${date} 12:00`)
 }

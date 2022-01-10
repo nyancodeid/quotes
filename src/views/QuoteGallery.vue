@@ -17,7 +17,7 @@ const CHUNKED_SIZE = 8
 
 useHead(generateIndexMeta())
 
-const allQuotes = ref<IQuote[]>(quotesRaw)
+const allQuotes = ref<IQuote[]>((quotesRaw as IQuote[]))
 let quotesChunked = chunk(([] as IQuote[]), CHUNKED_SIZE)
 
 const quotes = ref<IQuote[]>([])
