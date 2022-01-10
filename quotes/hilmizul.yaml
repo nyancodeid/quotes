@@ -16,3 +16,7 @@ quotes:
     author: "Steve Jobs"
     author_detail_url: "https://id.wikipedia.org/wiki/Steve_Jobs"
     created_at: "10 November 2021"
+  - text: "People work better when they know what the goal is and why."
+    author: "Elon Musk"
+    author_detail_url: "https://id.wikipedia.org/wiki/Elon_Musk"
+    created_at: "9 Desember 2021"
