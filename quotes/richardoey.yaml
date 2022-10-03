@@ -8,3 +8,7 @@ quotes:
     author: "Nelson Mandela"
     author_detail_url: "https://id.wikipedia.org/wiki/Nelson_Mandela"
     created_at: "20 Oktober 2021"
+  - text: "Peace begins with a smile."
+    author: "Mother Teresa"
+    author_detail_url: "https://en.wikipedia.org/wiki/Mother_Teresa"
+    created_at: "3 Oktober 2022"
