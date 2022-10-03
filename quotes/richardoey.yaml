@@ -12,3 +12,7 @@ quotes:
     author: "Mother Teresa"
     author_detail_url: "https://en.wikipedia.org/wiki/Mother_Teresa"
     created_at: "3 Oktober 2022"
+  - text: "We must accept finite disappointment, but never lose infinite hope."
+    author: "Martin Luther King Jr."
+    author_detail_url: "https://en.wikipedia.org/wiki/Martin_Luther_King_Jr."
+    created_at: "3 Oktober 2022"
