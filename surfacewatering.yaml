@@ -1,0 +1,10 @@
+username: surfacewatering
+quotes:
+  - text: "The grass is greener on the other side."
+    author: "Pūblius Ovidius Nāsō "
+    author_detail_url: "https://en.wikipedia.org/wiki/Ovid"
+    created_at: "04 October 2022"
+  - text: "And now that you don't have to be perfect, you can be good."
+    author: "John Steinbeck"
+    author_detail_url: "https://en.wikipedia.org/wiki/John_Steinbeck"
+    created_at: "04 October 2022"
