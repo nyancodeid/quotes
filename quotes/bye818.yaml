@@ -1,0 +1,15 @@
+username: bye818
+quotes:
+  - text: "Know yourself, know the enemy, and you need not fear the result of 1000 battles."
+    author: "Sun Tzu"
+    author_detail_url: "https://en.wikipedia.org/wiki/Sun_Tzu"
+    created_at: "3 October 2022"
+  - text: "Shoot for the moon, even if you miss, you'll land amongst the stars."
+    author: "Norman Vincent Peale"
+    author_detail_url: "https://en.wikipedia.org/wiki/Norman_Vincent_Peale"
+    created_at: "3 October 2022"
+  - text: "There is no elevator to success, you'll have to take the stairs."
+    author: "Zig Ziglar"
+    author_detail_url: "https://en.wikipedia.org/wiki/Zig_Ziglar"
+    created_at: "3 October 2022"
+  
