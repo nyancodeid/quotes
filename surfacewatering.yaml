@@ -8,3 +8,7 @@ quotes:
     author: "John Steinbeck"
     author_detail_url: "https://en.wikipedia.org/wiki/John_Steinbeck"
     created_at: "04 October 2022"
+- text: "If life were predictable it would cease to be life, and be without flavor."
+    author: "Eleanor Roosevelt"
+    author_detail_url: "https://en.m.wikipedia.org/wiki/Eleanor_Roosevelt"
+    created_at: "07 October 2022"
