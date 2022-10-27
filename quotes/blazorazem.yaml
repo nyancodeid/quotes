@@ -2,7 +2,9 @@ username: blazorazem
 quotes:
   - text: "We all need people who will give us feedback. That’s how we improve."
     author: "Bill Gates"
-    created_at: "7. October 2022"
+    author_detail_url: "https://www.uschamber.com/co/start/strategy/bill-gates-business-quotes"
+    created_at: "7 October 2022"
   - text: "Success is a lousy teacher. It seduces smart people into thinking they can’t lose."
     author: "Bill Gates"
-    created_at: "7. October 2022"
+    author_detail_url: "https://www.uschamber.com/co/start/strategy/bill-gates-business-quotes"
+    created_at: "7 October 2022"
