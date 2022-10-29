@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, toRef, computed, withDefaults } from 'vue'
+import { toRef, computed, withDefaults } from 'vue'
 
 import { IQuote } from '../types'
 import { isValidLink } from '../utils/helpers'
