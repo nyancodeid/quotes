@@ -32,3 +32,7 @@ quotes:
     author: "Grace Hopper"
     author_detail_url: "https://en.wikipedia.org/wiki/Grace_Hopper"
     created_at: "6 Februari 2023"
+  - text: "Move Fast. Break Things."
+    author: "Mark Zuckerberg"
+    author_detail_url: "https://en.wikipedia.org/wiki/Mark_Zuckerberg"
+    created_at: "6 Februari 2023"
